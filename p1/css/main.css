@@ -1,0 +1,40 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    color: #666666;
+    font-family: 'Lucida Grande', sans-serif;
+    line-height: 2;
+}
+h1 {
+    color: inherit;
+    font-size: 48px;
+    margin-top: 42px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #F07C17;
+}
+.sidebar {
+    display: inline-block;
+}
+p, li {
+    font-size: 16px;
+}
+.container {
+}
+.main-features {
+    border: 1px solid #CCCCCC;
+    padding: 30px;
+    margin-top: 30px;
+}
+.main-info {
+}
