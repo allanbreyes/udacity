@@ -136,6 +136,7 @@ Prize.prototype.update = function(dt) {
     player.reset();
     this.x = selectRandom(this.startX);
     playerScore += 1;
+    $('#score').text(playerScore);
   }
 };
 
