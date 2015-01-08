@@ -1,0 +1,52 @@
+/* base */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  position: relative;
+}
+p {
+  margin: 0;
+}
+header, footer, aside {
+  background: rgba(255,255,255,0.5);
+  margin: 6px;
+  padding: 8px;
+  position: absolute;
+}
+/* header */
+header {
+  background: rgba(255,255,255,0.5);
+  height: 50px;
+  left: 24px;
+  top: 0;
+}
+h1 {
+  margin: 0;
+}
+q
+/* footer */
+footer {
+  bottom: 0;
+  background: rgba(255,255,255,0.5);
+  left: 0;
+}
+
+/* map */
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* aside */
+aside {
+  top: 0;
+  right: 0;
+  height: 200px;
+  width: 200px;
+}
