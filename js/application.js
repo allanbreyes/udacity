@@ -89,10 +89,9 @@ var ViewModel = function() {
   // initialize search query to empty
   self.query = ko.observable('');
 
-  // initialize selected corner
-  self.selectedCorner = ko.observable();
-
-  self.search = function() {};
+  self.search = function() {
+    infoWindow.setMap(null);
+  };
 
   self.filteredCornerList = ko.computed(function() {
     self.cornerList().forEach(function(corner) {
@@ -107,14 +106,17 @@ var ViewModel = function() {
     return results;
   });
 
-  console.log(self.filteredCornerList());
+  /* SELECTION */
 
-  /* INITIALIZATION */
+  // initialize selected corner
+  self.selectedCorner = ko.observable();
 
-  function initialize() {
-    drawMap(center, mapCanvas);
-    fetchMeetups(meetupApiUrl);
-  }
+  self.selectCorner = function(corner) {
+    self.selectedCorner(corner);
+    infoWindow.setContent(corner.name());
+    infoWindow.open(map, corner.marker);
+    map.panTo(corner.marker.position);
+  };
 
   /* GOOGLE MAPS */
 
@@ -216,6 +218,7 @@ var ViewModel = function() {
       });
       google.maps.event.addListener(marker, 'click', function () {
         console.log('Clicked!');
+        self.selectCorner(corner);
       });
     }
     return marker;
@@ -316,6 +319,13 @@ var ViewModel = function() {
       });
     }
     return foundCorner;
+  }
+
+  /* INITIALIZATION */
+
+  function initialize() {
+    drawMap(center, mapCanvas);
+    fetchMeetups(meetupApiUrl);
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);

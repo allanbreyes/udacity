@@ -26,8 +26,10 @@
     </form>
     <ul data-bind="foreach: {data: filteredCornerList, as: 'corner'}">
       <li>
-        <span data-bind="text: corner.name"></span>
-        <span data-bind="text: corner.meetups().length"></span>
+        <div data-bind="click: $root.selectCorner">
+          <span data-bind="text: corner.name"></span>
+          <span data-bind="text: corner.meetups().length"></span>
+        </div>
         <div>
           <ul data-bind="foreach: corner.meetups">
             <li>
