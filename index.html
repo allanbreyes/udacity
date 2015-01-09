@@ -18,19 +18,24 @@
     </h1>
   </header>
   <aside>
-    <form id="search-form">
-      <input id="search-input" placeholder="Search..." autofocus />
+    <form id="search-form" data-bind="submit: search">
+      <input id="search-input" data-bind="value: query" placeholder="Search..." autofocus />
       <button id="search-btn" type="submit">
         <span class="glyphicon glyphicon-search"></span>
       </button>
     </form>
-    <ul data-bind="foreach: {data: cornerList, as: 'corner'}">
+    <ul data-bind="foreach: {data: filteredCornerList, as: 'corner'}">
       <li>
         <span data-bind="text: corner.name"></span>
         <span data-bind="text: corner.meetups().length"></span>
         <div>
           <ul data-bind="foreach: corner.meetups">
-            <li data-bind="text: name"></li>
+            <li>
+              <a data-bind="attr: {href: url}">
+                <span data-bind="text: name"></span>
+              </a>
+              <span data-bind="text: date"></span>
+            </li>
           </ul>
         </div>
       </li>

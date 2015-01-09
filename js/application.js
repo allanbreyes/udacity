@@ -16,6 +16,10 @@ String.prototype.titleize = function() {
   return array.join(' ');
 };
 
+String.prototype.contains = function(other) {
+  return this.indexOf(other) !== -1;
+};
+
 // corner model constructor, where `venueObject` == sub-item from Meetup API `open_venue` JSON response
 var Corner = function(venueObject) {
   var self = this;
@@ -62,7 +66,7 @@ var Meetup = function(meetup) {
   self.date = ko.computed(function() {
     var milliseconds = meetup.time;
     var date = new Date(milliseconds);
-    return date.toLocaleString();
+    return date.toLocaleDateString();
   });
   self.url = ko.observable(meetup.event_url);
 };
@@ -73,16 +77,37 @@ var ViewModel = function() {
   var map;
   var mapCanvas = $('#map-canvas')[0];
   var center = new google.maps.LatLng(41.878114, -87.629798); // Chicago City Center
+  var infoWindow = new google.maps.InfoWindow();
 
-  this.meetupList = ko.observableArray([]);
-  this.cornerList = ko.observableArray([]);
-  this.testMeetup = {'name': ko.observable('Loading...')};
-  this.testCorner = {'name': ko.observable('Loading...')};
+  self.meetupList = ko.observableArray([]);
+  self.cornerList = ko.observableArray([]);
+
+  /* SEARCH */
+
+  // initialize search query to empty
+  self.query = ko.observable('');
+
+  // initialize selected corner
+  self.selectedCorner = ko.observable();
+
+  self.search = function() {};
+
+  self.filteredCornerList = ko.computed(function() {
+    return ko.utils.arrayFilter(self.cornerList(), function(corner) {
+      return corner.name().toLowerCase().contains(self.query());
+    });
+  });
+
+  console.log(self.filteredCornerList());
+
+  /* INITIALIZATION */
 
   function initialize() {
     drawMap(center, mapCanvas);
     fetchMeetups(meetupApiUrl);
   }
+
+  /* GOOGLE MAPS */
 
   // creates a black and white google map centered on 'center' onto the 'element' DOM element
   function drawMap(center, element) {
@@ -184,6 +209,8 @@ var ViewModel = function() {
       });
     }
   }
+
+  /* MEETUP */
 
   // fetch meetups via JSON-P from Meetup API
   function fetchMeetups(url) {
