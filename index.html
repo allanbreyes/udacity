@@ -24,8 +24,16 @@
         <span class="glyphicon glyphicon-search"></span>
       </button>
     </form>
-    <ul data-bind="foreach: cornerList">
-      <li data-bind="text: name"></li>
+    <ul data-bind="foreach: {data: cornerList, as: 'corner'}">
+      <li>
+        <span data-bind="text: corner.name"></span>
+        <span data-bind="text: corner.meetups().length"></span>
+        <div>
+          <ul data-bind="foreach: corner.meetups">
+            <li data-bind="text: name"></li>
+          </ul>
+        </div>
+      </li>
     </ul>
   </aside>
   <footer>

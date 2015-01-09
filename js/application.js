@@ -32,7 +32,8 @@ var Corner = function(venueObject) {
   });
 
   // load metadata
-  self.id = ko.observable(venueObject.id);
+  // self.id = ko.observable(venueObject.id);
+  self.id = venueObject.id;
   self.name = ko.observable(venueObject.name.titleize());
   self.address = ko.observable(venueObject.address_1);
 
@@ -224,13 +225,14 @@ var ViewModel = function() {
     self.meetupList().forEach(function(meetup){
       // check if meetup object has a valid venue id
       if (meetup.hasVenue()) {
-        // attempt to fetch an existing corner, if it appears in the corner list
-        var corner = getCornerById(meetup.venueObject.id);
+        var corner;
+        var id = meetup.venueObject.id;
 
         // if exists
-        if (corner !== null) {
+        if (hasCornerId(id)) {
           // push the meetup object onto the corner's meetups
-          corner.meetups().push(meetup);
+          corner = getCornerById(id);
+          corner.meetups.push(meetup);
 
         // if does not exist
         } else {
@@ -239,7 +241,7 @@ var ViewModel = function() {
           self.cornerList.push(corner);
 
           // and push the meetup object onto that new corner object
-          corner.meetups().push(meetup);
+          corner.meetups.push(meetup);
 
           // add a marker
           addMarker(corner);
@@ -249,14 +251,28 @@ var ViewModel = function() {
     console.log(self.cornerList().length + ' unique corners fetched...');
   }
 
-  // checks if a specific corner already exists in `cornerList`
-  function getCornerById(id) {
+  // checks if a specific corner by `id` already exists in `cornerList`
+  function hasCornerId(id) {
+    var result = false;
     self.cornerList().forEach(function(corner) {
-      if (corner.id() === id) {
-        return corner;
+      if (corner.id.toString() === id.toString()) {
+        result = true;
       }
     });
-    return null;
+    return result;
+  }
+
+  // fetches a corner from `cornerList` by `id`
+  function getCornerById(id) {
+    var foundCorner = null;
+    if (hasCornerId(id)) {
+      self.cornerList().forEach(function(corner) {
+        if (corner.id.toString() === id.toString()) {
+          foundCorner = corner;
+        }
+      });
+    }
+    return foundCorner;
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);

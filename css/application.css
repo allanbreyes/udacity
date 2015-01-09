@@ -46,6 +46,7 @@ html, body, #map-canvas {
 aside {
   top: 0;
   right: 0;
-  height: 200px;
-  width: 200px;
+  max-height: 100%;
+  overflow: auto;
+  width: 600px;
 }
