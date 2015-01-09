@@ -36,13 +36,15 @@ var Corner = function(venueObject) {
   });
 
   // load metadata
-  // self.id = ko.observable(venueObject.id);
   self.id = venueObject.id;
   self.name = ko.observable(venueObject.name.titleize());
   self.address = ko.observable(venueObject.address_1);
 
   // initialize empty meetup
   self.meetups = ko.observableArray([]);
+
+  // initialize empty marker
+  self.marker = new google.maps.Marker();
 };
 
 // meetup model constructor, where `meetup` == item from Meetup API `open_venue` JSON response
@@ -93,9 +95,16 @@ var ViewModel = function() {
   self.search = function() {};
 
   self.filteredCornerList = ko.computed(function() {
-    return ko.utils.arrayFilter(self.cornerList(), function(corner) {
+    self.cornerList().forEach(function(corner) {
+      corner.marker.setMap(null);
+    });
+    var results = ko.utils.arrayFilter(self.cornerList(), function(corner) {
       return corner.name().toLowerCase().contains(self.query());
     });
+    results.forEach(function(corner) {
+      corner.marker.setMap(map);
+    });
+    return results;
   });
 
   console.log(self.filteredCornerList());
@@ -199,8 +208,9 @@ var ViewModel = function() {
 
   // create a map marker
   function addMarker(corner) {
+    var marker;
     if (corner.location()) {
-      var marker = new google.maps.Marker({
+      marker = new google.maps.Marker({
         position: corner.location(),
         map: map,
       });
@@ -208,6 +218,7 @@ var ViewModel = function() {
         console.log('Clicked!');
       });
     }
+    return marker;
   }
 
   /* MEETUP */
@@ -263,15 +274,20 @@ var ViewModel = function() {
 
         // if does not exist
         } else {
-          // instantiate a new corner object and push it to the corner list
+          // instantiate a new corner object
           corner = new Corner(meetup.venueObject);
-          self.cornerList.push(corner);
 
-          // and push the meetup object onto that new corner object
-          corner.meetups.push(meetup);
+          // check if has valid location
+          if (corner.location()) {
+            // push it to the corner list
+            self.cornerList.push(corner);
 
-          // add a marker
-          addMarker(corner);
+            // and push the meetup object onto that new corner object
+            corner.meetups.push(meetup);
+
+            // add a marker
+            corner.marker = addMarker(corner);
+          }
         }
       }
     });
