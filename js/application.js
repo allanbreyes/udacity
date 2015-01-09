@@ -1,49 +1,17 @@
-var meetupApiUrl = 'http://api.meetup.com/2/open_events?status=upcoming&radius=30&category=34&and_text=False&limited_events=False&text=coding+programming+ruby+python+javascript+html&desc=False&offset=0&photo-host=public&format=json&lat=41.878114&page=200&lon=-87.629798&sig_id=178346822&sig=4dc9c0999b0508c2d262b1e2f21d355c21d04f26';
-
-var meetup = {
-  "status": "upcoming",
-  "visibility": "public",
-  "maybe_rsvp_count": 0,
-  "venue": {
-    "id": 17723242,
-    "lon": -87.637566,
-    "repinned": false,
-    "name": "Dev Bootcamp",
-    "state": "IL",
-    "address_1": "351 W. Hubbard, Suite 700",
-    "lat": 41.88969,
-    "city": "Chicago",
-    "country": "us"
-  },
-  "id": "219671197",
-  "utc_offset": -21600000,
-  "distance": 0.8959337472915649,
-  "time": 1420759800000,
-  "waitlist_count": 0,
-  "updated": 1420654517000,
-  "yes_rsvp_count": 4,
-  "created": 1420654517000,
-  "event_url": "http://www.meetup.com/Chicago-DevBootcamp-Speaker-Series/events/219671197/",
-  "description": "<p>Interested in learning more about Dev Bootcamp? Are you a current student that is unsure about the job search or what it is like to work in the industry? Here is an event for you! Three DBC alumni that are all employed at Brad's Deals are going to form a panel for an \"Ask me Anything.\" Come ask questions about life before, during and after DBC!</p>",
-  "name": "DBCx: AMA with DBC Alumni",
-  "headcount": 0,
-  "group": {
-    "id": 11343122,
-    "created": 1386185186000,
-    "group_lat": 41.88999938964844,
-    "name": "DBCxCHI (Dev Bootcamp Chicago Speaker Series)",
-    "group_lon": -87.63999938964844,
-    "join_mode": "open",
-    "urlname": "Chicago-DevBootcamp-Speaker-Series",
-    "who": "Attendees"
-  }
-};
+var meetupApiUrl = 'http://api.meetup.com/2/open_events?status=upcoming&radius=5&category=34&and_text=False&limited_events=False&text=coding+programming+ruby+python+javascript+html&desc=False&offset=0&photo-host=public&format=json&lat=41.878114&page=100&lon=-87.629798&sig_id=178346822&sig=1a186723262b63d4b2deee474b8d95bc0ec2ec9f';
 
 String.prototype.titleize = function() {
   var words = this.split(' ');
   var array = [];
+  var firstLetter, remainder;
   for (var i=0; i<words.length; ++i) {
-    array.push(words[i].charAt(0).toUpperCase() + words[i].slice(1));
+    firstLetter = words[i].charAt(0).toUpperCase();
+    if (this == this.toUpperCase() && this.length > 10) {
+      remainder = words[i].toLowerCase().slice(1);
+    } else {
+      remainder = words[i].slice(1);
+    }
+    array.push(firstLetter + remainder);
   }
   return array.join(' ');
 };
@@ -77,9 +45,9 @@ var Meetup = function(meetup) {
   var self = this;
 
   // attach venue object
-  self.venueObject = ko.observable(meetup.venue);
+  self.venueObject = meetup.venue;
   self.hasVenue = ko.computed(function() {
-    if (self.venueObject()) {
+    if (self.venueObject) {
       return true;
     } else {
       return false;
@@ -257,18 +225,18 @@ var ViewModel = function() {
       // check if meetup object has a valid venue id
       if (meetup.hasVenue()) {
         // attempt to fetch an existing corner, if it appears in the corner list
-        var corner = getCornerById(meetup.venueObject().id);
+        var corner = getCornerById(meetup.venueObject.id);
 
         // if exists
-        if (corner) {
+        if (corner !== null) {
           // push the meetup object onto the corner's meetups
           corner.meetups().push(meetup);
 
         // if does not exist
         } else {
           // instantiate a new corner object and push it to the corner list
-          corner = new Corner(meetup.venueObject());
-          self.cornerList().push(corner);
+          corner = new Corner(meetup.venueObject);
+          self.cornerList.push(corner);
 
           // and push the meetup object onto that new corner object
           corner.meetups().push(meetup);
@@ -284,7 +252,7 @@ var ViewModel = function() {
   // checks if a specific corner already exists in `cornerList`
   function getCornerById(id) {
     self.cornerList().forEach(function(corner) {
-      if (corner.id === id) {
+      if (corner.id() === id) {
         return corner;
       }
     });
