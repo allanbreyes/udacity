@@ -17,11 +17,23 @@
       C<sup>4</sup> Chicago Coding Corners
     </h1>
   </header>
-  <aside></aside>
+  <aside>
+    <form id="search-form">
+      <input id="search-input" placeholder="Search..." autofocus />
+      <button id="search-btn" type="submit">
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
+    </form>
+    <ul data-bind="foreach: {data: cornerList, as: 'corner'}">
+      <li data-bind="text: corner.name"></li>
+    </ul>
+  </aside>
   <footer>
     <p>
       made with &hearts; by
       <a href="https://twitter.com/allanbreyes">Allan</a>
+      as part of Udacity's
+      <a href="https://www.udacity.com/course/nd001">Front-End Developer Nanodgree</a>
     </p>
   </footer>
   <script src="lib/jquery-2.1.3.min.js"></script>
