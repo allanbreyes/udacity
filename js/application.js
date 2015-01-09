@@ -99,7 +99,7 @@ var ViewModel = function() {
       corner.marker.setMap(null);
     });
     var results = ko.utils.arrayFilter(self.cornerList(), function(corner) {
-      return corner.name().toLowerCase().contains(self.query());
+      return corner.name().toLowerCase().contains(self.query().toLowerCase());
     });
     results.forEach(function(corner) {
       corner.marker.setMap(map);
