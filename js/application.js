@@ -83,6 +83,7 @@ var ViewModel = function() {
 
   self.meetupList = ko.observableArray([]);
   self.cornerList = ko.observableArray([]);
+  self.numCorners = ko.observable(0);
 
   /* SEARCH */
 
@@ -103,6 +104,7 @@ var ViewModel = function() {
     results.forEach(function(corner) {
       corner.marker.setMap(map);
     });
+    self.numCorners(results.length);
     return results;
   });
 
@@ -113,7 +115,29 @@ var ViewModel = function() {
 
   self.selectCorner = function(corner) {
     self.selectedCorner(corner);
-    infoWindow.setContent(corner.name());
+    var formattedMeetupList = (function(corner) {
+      result = '<ul class="info-window-list">';
+      corner.meetups().forEach(function(meetup) {
+        result += '<li>' +
+                  '<a href="' +
+                  meetup.url() +
+                  '">' +
+                  meetup.name() +
+                  '</a>' +
+                  ' on ' +
+                  meetup.date() +
+                  '</li>';
+      });
+      result += '</ul>';
+      return result;
+    })(corner);
+    infoWindow.setContent('<div class="info-window-content">' +
+                          '<span class="info-window-header">' +
+                            corner.name() +
+                          '</span>' +
+                            formattedMeetupList +
+                          '</div>'
+                         );
     infoWindow.open(map, corner.marker);
     map.panTo(corner.marker.position);
   };
@@ -165,7 +189,7 @@ var ViewModel = function() {
       }, {
         "featureType": "road",
         "stylers": [
-          { "saturation": -100 }
+          { "color": '#D0B2B2' },
         ]
       }, {
         "featureType": "administrative",
@@ -196,6 +220,7 @@ var ViewModel = function() {
       mapTypeControl: false,
       panControl: false,
       streetViewControl: false,
+      zoomControl: false,
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.SMALL
       }
@@ -217,7 +242,6 @@ var ViewModel = function() {
         map: map,
       });
       google.maps.event.addListener(marker, 'click', function () {
-        console.log('Clicked!');
         self.selectCorner(corner);
       });
     }
@@ -327,6 +351,8 @@ var ViewModel = function() {
     drawMap(center, mapCanvas);
     fetchMeetups(meetupApiUrl);
   }
+
+  /* LISTENERS */
 
   google.maps.event.addDomListener(window, 'load', initialize);
 };
