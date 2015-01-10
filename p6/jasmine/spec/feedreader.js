@@ -8,6 +8,21 @@
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
+
+// simple check for valid url (does not pass localhost), credit: http://stackoverflow.com/questions/18364404/javascript-url-validation-regex
+function isValidUrl(url) {
+    try {
+        return !!url.match(/^(ht|f)tps?:\/\/[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?$/);
+    } catch(error) {
+        return false;
+    }
+}
+
+// checks if a string is blank, null, or undefined, credit: http://stackoverflow.com/questions/154059/how-do-you-check-for-an-empty-string-in-javascript
+function isBlank(string) {
+    return (!string || /^\s*$/.test(string));
+}
+
 $(function() {
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
@@ -26,17 +41,25 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
+        /* Loops through each feed in the allFeeds object and ensures
+         * it has a URL defined and that the URL is not empty.
          */
+        it('have valid link URLs defined', function() {
+            allFeeds.forEach(function(feed) {
+                expect(feed.url).toBeDefined();
+                expect(isValidUrl(feed.url)).toBe(true);
+            });
+        });
 
-
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
+        /* Loops through each feed in the allFeeds object and ensures
+         * it has a name defined and that the name is not empty.
          */
+         it('have valid names defined', function() {
+            allFeeds.forEach(function(feed) {
+                expect(feed.name).toBeDefined();
+                expect(isBlank(feed.name)).not.toBe(true);
+            });
+         });
     });
 
 
