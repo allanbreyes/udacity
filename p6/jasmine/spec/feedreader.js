@@ -64,10 +64,8 @@ $(function() {
 
     /* Test suite for the menu */
     describe('The menu', function() {
-        /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
+        /* Tests that the menu element is hidden by default, by
+         * checking that the body has the class `menu-hidden`
          */
         var body = $('body');
         var menuIcon = $('.menu-icon-link');
@@ -75,11 +73,9 @@ $(function() {
             expect(body.hasClass('menu-hidden')).toBe(true);
         });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+        /* Tests that the menu changes visibility when the menu
+         * icon is clicked.
+         */
         it('changes visibility when the menu icon is clicked', function() {
             menuIcon.trigger('click');
             expect(body.hasClass('menu-hidden')).toBe(false);
@@ -90,16 +86,16 @@ $(function() {
 
     /* Test suite for initial entries */
     describe('Initial Entries', function() {
-
+        /* Calls the `loadFeed` function with a callback `done`
+         * to ensure that it's complete.
+         */
         beforeEach(function(done) {
             loadFeed(0, done);
         });
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
+        /* Once `loadFeed` function is called and completes its work,
+         * there is at least one .entry element within the .feed
+         * container.
          */
          it('has at least one entry', function(done) {
             var entries = $('.feed').find('.entry');
