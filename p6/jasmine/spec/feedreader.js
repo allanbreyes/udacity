@@ -97,18 +97,44 @@ $(function() {
          * there is at least one .entry element within the .feed
          * container.
          */
-         it('has at least one entry', function(done) {
+        it('has at least one entry', function(done) {
             var entries = $('.feed').find('.entry');
             expect(entries.length >= 1).toBe(true);
             done();
-         });
+        });
     });
 
+    /* Test suite for New Feed Selection */
+    describe('New Feed Selection', function() {
+        var before, after;
 
-    /* TODO: Write a new test suite named "New Feed Selection"
-
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
+        /* Calls the `loadFeed` function with callbacks to ensure that
+         * they're complete.
          */
+        beforeEach(function(done) {
+            /* Make sure that there are at least two feeds to test */
+            expect(allFeeds.length >= 2).toBe(true);
+
+            /* Load the first feed at index 0 */
+            loadFeed(0, function() {
+                /* Set the before to content of feed */
+                before = $('.header-title').text() + $('.feed').find('.entry').text().replace(/ +/g, " ");
+                /* Load second feed at index 1 */
+                loadFeed(1, function() {
+                    /* Set the after to content of new feed */
+                    after = $('.header-title').text() + $('.feed').find('.entry').text().replace(/ +/g, " ");
+                    done();
+                });
+            });
+        });
+
+        /* Tests that when a new feed is loaded by the loadFeed function
+         * that the content actually changes.
+         */
+        it('changes content', function(done) {
+            expect(before != after).toBe(true);
+            done();
+        });
+    });
+
 }());
