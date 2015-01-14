@@ -46,7 +46,7 @@ p-value: 0.025
 
 > R^2 is essentially the percentage of variance that is explained, and is a quantitative measure of the “goodness of fit.”  While it only explains 45.8% of variation, I think a better metric is to plot the residuals.
 
-`[plot]`
+![Residuals histogram](https://raw.githubusercontent.com/allanbreyes/udacity-data-science/master/p1/figures/residuals-histogram.png)
 
 > To decisively conclude whether or not this model was a good fit certainly depends on the context and use case for the prediction data.  If this were a use case that had safety and security concerns, it would certainly be insufficient!  The residual plot shows that most of the residuals were close to `0 +/- 5,000`.  Qualitatively, and for the objective of being able to “ballpark” ridership, the linear model is sufficient.
 
@@ -55,13 +55,13 @@ p-value: 0.025
 ##Section 3. Visualization
 *3.1 Include and describe a visualization containing two histograms: one of  ENTRIESn_hourly for rainy days and one of ENTRIESn_hourly for non-rainy days.*
 
-`[plot]`
+![ENTRIESn_hourly histogram](https://raw.githubusercontent.com/allanbreyes/udacity-data-science/master/p1/figures/histogram-of-ENTRIESn_hourly-rain-vs-no-rain.png)
 
 > Plotting overlaid histograms of subway entries for both rainy and dry hours shows that both distributions are not normally-distributed.  Of note, it’s important to clarify that these are aggregate values and that there were less rainy days than there were not rainy days; it would be grossly incorrect to draw from this graph that subway ridership is less when it rains. 
 
 *3.2 Include and describe a freeform visualization.*
 
-`[plot]`
+![Average subway entries by time of day](https://raw.githubusercontent.com/allanbreyes/udacity-data-science/master/p1/figures/average-subway-entries-by-time-of-day.png)
 
 > By plotting the average number of subway entries at each hour, it’s clear that there are several peaks throughout the day, with the most prominent ones being at noon and 8pm.  Interestingly, these peaks are larger than those during rush hours (8-9am and 5-6pm).  It raises some intriguing questions about the demographics and characteristics of NYC subway riders: assuming a 9-5pm workday, why are more subway entries occurring at 5pm vs. 9am? Are more people going out to lunch (12pm) and dinner (8pm), or is that there work schedule?  Without any demographic data, it would be impossible to determine these questions from the current data set.
 
