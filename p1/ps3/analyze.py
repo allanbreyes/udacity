@@ -49,8 +49,8 @@ def mann_whitney_plus_means(turnstile_weather, csv=False):
     else:
         df = turnstile_weather
 
-    df_wet = df['ENTRIESn_hourly'][df['rain'] == 1]
-    df_dry = df['ENTRIESn_hourly'][df['rain'] == 0]
+    df_wet = df['ENTRIESn_hourly'][df['rain'] == 1] # 44104
+    df_dry = df['ENTRIESn_hourly'][df['rain'] == 0] # 87847
 
     with_rain_mean = df_wet.mean()
     without_rain_mean = df_dry.mean()
@@ -91,7 +91,6 @@ def gradient_descent(features, values, theta, alpha, num_iterations):
         theta = theta - (alpha/m) * np.dot(predicted_values, features)
         cost = compute_cost(features, values, theta)
         cost_history.append(cost)
-    print cost_history
     return theta, pandas.Series(cost_history)
 
 def predictions(dataframe):
@@ -99,11 +98,12 @@ def predictions(dataframe):
     runs predictions via gradient descent on turnstile dataframe
     '''
     # Select Features (try different features!)
-    features = dataframe[['rain', 'precipi', 'Hour', 'meantempi']]
+    features = dataframe[['rain', 'precipi', 'meanwindspdi', 'Hour', 'meantempi']]
 
     # Add UNIT to features using dummy variables
     dummy_units = pandas.get_dummies(dataframe['UNIT'], prefix='unit')
     features = features.join(dummy_units)
+    print len(features)
 
     # Values
     values = dataframe['ENTRIESn_hourly']
@@ -127,6 +127,7 @@ def predictions(dataframe):
                                                             theta_gradient_descent,
                                                             alpha,
                                                             num_iterations)
+    print theta_gradient_descent
     plot = plot_cost_history(alpha, cost_history)
     predictions = np.dot(features_array, theta_gradient_descent)
     return predictions, plot
@@ -150,7 +151,10 @@ def plot_residuals(turnstile_weather, predictions):
     '''
 
     plt.figure()
-    (turnstile_weather['ENTRIESn_hourly'] - predictions).hist()
+    (turnstile_weather['ENTRIESn_hourly'] - predictions).hist(bins=150)
+    plt.suptitle('Residual histogram')
+    plt.xlabel('Residuals')
+    plt.ylabel('Frequency')
     return plt
 
 def compute_r_squared(data, predictions):
@@ -175,17 +179,26 @@ def compute_r_squared(data, predictions):
 
 if __name__ == '__main__':
     filename = 'turnstile_data_master_with_weather.csv'
+    df = pandas.DataFrame.from_csv(filename)
 
-    print "Histogram of turnstile data:"
-    entries_histogram(filename, True)
+    # print "Histogram of turnstile data:"
+    # entries_histogram(filename, True)
+    # plt.show()
+    # raw_input("Press enter to continue...")
+
+    # print "Mann-Whitney U test:"
+    # print mann_whitney_plus_means(filename, csv=True)
+    # raw_input("Press enter to continue...")
+
+    print "Linear regression predictions via gradient descent:"
+    predicted, plot = predictions(df)
+    print plot
+    raw_input("Press enter to continue...")
+
+    print "Plotting residuals:"
+    plot_residuals(df, predicted)
     plt.show()
     raw_input("Press enter to continue...")
 
-    print "Mann-Whitney U test:"
-    print mann_whitney_plus_means(filename, csv=True)
-    raw_input("Press enter to continue...")
-
-    print "Linear regression predictions via gradient descent:"
-    p, plot = predictions(pandas.DataFrame.from_csv(filename))
-    print p
-    print plot
+    print "R-squared value:"
+    print compute_r_squared(df['ENTRIESn_hourly'], predicted)
