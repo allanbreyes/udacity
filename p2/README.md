@@ -1,4 +1,4 @@
-#Final Project for Data Wrangling with MongoDB
+#Final Project for Data Wrangling with MongoDB ([PDF]())
 by Allan Reyes in fulfillment of Udacity’s Data Analyst Nanodegree, Project 2
 ##Project Summary
 Name: Allan Reyes
@@ -245,3 +245,18 @@ There are still several opportunities for cleaning and validation that I left un
 
 ###Comments
 This review of this data is cursory.  While there are many additional opportunities for cleaning and validation, I believe the data set was well-cleaned for the purposes of this exercise.
+
+##Files
+- `data/`:
+- `lesson6/`:
+- `audit.py`:
+- `data.py`:
+- `mapparser.py`:
+- `mongodb.conf`:
+- `query.py`:
+- `README.md`:
+- `setup.sh`: 
+- `submission.pdf`:
+- `subset.py`:
+- `suffix.py`:
+- `tags.py`:
