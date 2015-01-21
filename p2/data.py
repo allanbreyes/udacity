@@ -12,7 +12,12 @@ import audit
 Builds JSON file from OSM. Parses, cleans, and shapes data accordingly.
 '''
 
-OSMFILE = 'data/austin.osm'
+DEBUG = True
+
+if DEBUG:
+    OSMFILE = 'data/austin-subset.osm'
+else:
+    OSMFILE = 'data/austin.osm'
 
 lower = re.compile(r'^([a-z]|_)*$')
 lower_colon = re.compile(r'^([a-z]|_)*:([a-z]|_)*$')
@@ -214,20 +219,26 @@ def process_zipcode(string):
 def process_map(file_in, pretty=False):
     file_out = '{0}.json'.format(file_in)
     data = []
+    debug_counter = 0
     with codecs.open(file_out, 'w') as fo:
+        fo.write('[\n')
         for _, element in ET.iterparse(file_in):
             el = shape_element(element)
             # if el and len(el) > 4:
             if el:
                 data.append(el)
                 if pretty:
-                    fo.write(json.dumps(el, indent=2)+'\n')
+                    fo.write(json.dumps(el, indent=2)+',\n')
                 else:
-                    fo.write(json.dumps(el) + '\n')
+                    fo.write(json.dumps(el) + ',\n')
+                debug_counter += 1
+            if debug_counter >= 10 and DEBUG:
+                break
+        fo.write('{}]\n')
     return data
 
 def main():
-    data = process_map(OSMFILE, pretty=True)
+    data = process_map(OSMFILE, pretty=DEBUG)
     # pprint(data)
 
 def test_branched():

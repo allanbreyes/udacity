@@ -4,5 +4,10 @@ courses
 *.pyc
 p2/data/austin.osm
 p2/data/austin.osm.json
+<<<<<<< HEAD
 */db
 */log
+=======
+p2/db
+*/log
+>>>>>>> 65b0689... add queries and submission draft
