@@ -11,11 +11,21 @@ from pprint import pprint
 
 CSVFILE = 'data/suffixes.csv'
 ADDONS = {
-    'rt': 'route',
-    'blv': 'boulevard',
+    'expwy': 'expressway',
+    'texas': 'texas',
+    'i': 'interstate',
+    'h': 'highway',
+    'ih': 'interstate highway',
+    'n': 'north',
+    's': 'south',
+    'e': 'east',
+    'w': 'west',
+    'ih35': 'interstate highway 35',
+    'i35': 'interstate highway 35',
+    'cr': 'county road',
+    'fm': 'farm to market',
     'avene': 'avenue',
-    'steet': 'street',
-    'nwe': 'new'
+    'jr': 'junior'
 }
 
 def parse_suffixes_csv(filename):
@@ -35,12 +45,13 @@ def parse_suffixes_csv(filename):
 class SuffixTable(object):
     """ main class module, provides `has_suffix` and `convert` methods """
     def __init__(self):
-        suffixes_dict = dict(parse_suffixes_csv(CSVFILE).items() + ADDONS.items())
+        suffixes_dict = parse_suffixes_csv(CSVFILE)
         self.suffixes = suffixes_dict.keys()
         self.suffix_table = {}
         for key in suffixes_dict:
             for abbreviation in suffixes_dict[key]:
                 self.suffix_table[abbreviation] = key
+        self.suffix_table = dict(self.suffix_table.items() + ADDONS.items())
 
     def has_suffix(self, suffix):
         """ returns if the suffix is present in the table """

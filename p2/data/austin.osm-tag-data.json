@@ -1,0 +1,3285 @@
+{
+  "shop": [
+    "coffee",
+    "outdoor",
+    "bicycle",
+    "alcohol",
+    "hairdresser",
+    "pet",
+    "greeting_card",
+    "department_store",
+    "convenience",
+    "supermarket",
+    "thrift",
+    "bakery",
+    "books",
+    "video_games",
+    "toys",
+    "laundry",
+    "electronics",
+    "doityourself",
+    "car_repair",
+    "clothes"
+  ],
+  "tiger:source": [
+    "City of Austin GIS",
+    "tiger_import_dch_v0.6_20070830",
+    "tiger_import_dch_v0.6_20070829:tiger_import_dch_v0.6_20070830",
+    "tiger_import_dch_v0.6_20070829",
+    "2011",
+    "tiger_import_dch_v0.6_20070830; tiger_import_dch_v0.6_20070829; tiger_import_dch_v0.6_20070829"
+  ],
+  "maxspeed": [
+    "25",
+    "45 mph",
+    "30",
+    "20",
+    "10 mph",
+    "40 mph",
+    "65 mph",
+    "30 mph",
+    "70 mph",
+    "20 mph",
+    "55 mph",
+    "80 mph",
+    "40",
+    "35 mph",
+    "25 mph",
+    "60 mph",
+    "75 mph",
+    "50 mph",
+    "15 mph",
+    "50"
+  ],
+  "golf": [
+    "water_hazard",
+    "pin",
+    "fairway",
+    "tee",
+    "driving_range",
+    "green",
+    "bunker",
+    "hole"
+  ],
+  "gnis:ST_num": [
+    "48"
+  ],
+  "text": [
+    "dubious"
+  ],
+  "indoor": [
+    "yes"
+  ],
+  "social_facility": [
+    "shelter",
+    "group_home"
+  ],
+  "tiger:Name": [
+    "Kyle"
+  ],
+  "payment:debit_cards": [
+    "yes"
+  ],
+  "gauge": [
+    "1435",
+    "narrow"
+  ],
+  "capacity:parent": [
+    "no"
+  ],
+  "gnis:id": [
+    "1378706",
+    "2034661",
+    "1380748",
+    "1378711",
+    "1362128",
+    "1388615",
+    "1355183",
+    "1378134",
+    "1334175",
+    "1867567",
+    "1340003",
+    "1852765",
+    "1365131",
+    "1374988",
+    "1360676",
+    "1340895",
+    "1699806",
+    "1330128",
+    "2034781",
+    "1360424"
+  ],
+  "is_in": [
+    "Burnet,Texas,Tex.,TX,USA",
+    "Hays,Texas,Tex.,TX,USA",
+    "Travis,Texas,Tex.,TX,USA",
+    "Williamson,Texas,Tex.,TX,USA",
+    "Bastrop,Texas,Tex.,TX,USA",
+    "USA, Texas",
+    "Austin, Texas",
+    "Caldwell,Texas,Tex.,TX,USA"
+  ],
+  "tiger:zip_left_4": [
+    "78749",
+    "78759",
+    "78620",
+    "78734",
+    "78660",
+    "78737",
+    "78757",
+    "78602",
+    "78642",
+    "78610",
+    "78645"
+  ],
+  "tiger:zip_left_3": [
+    "78749",
+    "78664",
+    "78610",
+    "78620",
+    "78621",
+    "78734",
+    "78728",
+    "78737",
+    "78730",
+    "78757",
+    "78602",
+    "78676",
+    "78640",
+    "78741",
+    "78750",
+    "78653",
+    "78645",
+    "78759",
+    "78724",
+    "78660"
+  ],
+  "tiger:zip_left_2": [
+    "78612",
+    "78610",
+    "78617",
+    "78725",
+    "78620",
+    "78621",
+    "78734",
+    "78619",
+    "78737",
+    "78666",
+    "78731",
+    "78602",
+    "78676",
+    "78640",
+    "78654",
+    "78652",
+    "78724",
+    "78738",
+    "78746",
+    "78669"
+  ],
+  "tiger:zip_left_1": [
+    "78612",
+    "78669",
+    "78617",
+    "78681",
+    "78620",
+    "78621",
+    "78662",
+    "78663",
+    "78619",
+    "78737",
+    "78602",
+    "78957",
+    "78640",
+    "78654",
+    "78652",
+    "78610",
+    "78650",
+    "78620:78666",
+    "78676",
+    "78616"
+  ],
+  "gnis:feature_type": [
+    "Plain",
+    "Airport",
+    "Military",
+    "Bay"
+  ],
+  "lake:surface_area:acres": [
+    "18930"
+  ],
+  "fenced": [
+    "yes"
+  ],
+  "addr:state": [
+    "78722",
+    "tX",
+    "Tx",
+    "Texas",
+    "TX"
+  ],
+  "wood": [
+    "mixed"
+  ],
+  "local": [
+    "yes"
+  ],
+  "tiger:name_base_1": [
+    "County Road 90",
+    "State Loop 150",
+    "County Road 52",
+    "County Road 130",
+    "County Road 356",
+    "Blue Jack Oak",
+    "County Road 103",
+    "Avenue H",
+    "County Road 220",
+    "County Road 73",
+    "United States Highway 183",
+    "County Road 182",
+    "County Road 246",
+    "County Road 65",
+    "County Road 41",
+    "County Road 364",
+    "County Road 303",
+    "County Road 418",
+    "County Road 275",
+    "Elm"
+  ],
+  "gnis:county_id": [
+    "209",
+    "453",
+    "149",
+    "021",
+    "055",
+    "491",
+    "287",
+    "053"
+  ],
+  "fax": [
+    "512-891-9570",
+    "5122368009",
+    "512-287-4893",
+    "512-458-3033"
+  ],
+  "addr:suite": [
+    "Suite 604"
+  ],
+  "iata": [
+    "AUS"
+  ],
+  "stop": [
+    "all",
+    "N;S",
+    "E",
+    "w",
+    "n",
+    "S",
+    "W",
+    "yes",
+    "N",
+    "minor"
+  ],
+  "trees": [
+    "pecan_trees"
+  ],
+  "icao": [
+    "KAUS"
+  ],
+  "recycling:glass_bottles": [
+    "yes"
+  ],
+  "recycling:magazines": [
+    "yes"
+  ],
+  "tiger:county": [
+    "Travis, TX; Williamson, TX",
+    "Comal, TX",
+    "Bastrop, TX",
+    "Burnet, TX",
+    "Williamson, TX",
+    "Williamson, TX;Travis, TX",
+    "Bastrop, TX:Lee, TX",
+    "Blanco, TX",
+    "Anderson, TX:Freestone, TX:Leon, TX:Milam, TX:Robertson, TX:Williamson, TX",
+    "Hays, TX",
+    "Lee, TX",
+    "Caldwell, TX:Travis, TX",
+    "Bastrop, TX:Caldwell, TX:Hays, TX",
+    "Burnet, TX:Llano, TX:Williamson, TX",
+    "Travis, TX:Williamson, TX",
+    "Bastrop, TX:Lee, TX:Travis, TX",
+    "Milam, TX",
+    "Caldwell, TX",
+    "Travis, TX",
+    "Hays, TX; Travis, TX; Hays, TX"
+  ],
+  "note:odbl": [
+    "I would have made any tainted changes anyway -NE2"
+  ],
+  "roundabout": [
+    "yes"
+  ],
+  "name:uk": [
+    "Остін"
+  ],
+  "motor_vehicle": [
+    "yes",
+    "destination",
+    "permissive",
+    "private",
+    "no"
+  ],
+  "gnis:County": [
+    "Hays",
+    "Williamson",
+    "Caldwell",
+    "Burnet",
+    "Travis",
+    "Bastrop"
+  ],
+  "fireplace": [
+    "yes"
+  ],
+  "addr:street": [
+    "Avenue B",
+    "Steck Avenue",
+    "West Slaughter Lane",
+    "South I-35 Service SB",
+    "Loyola Lane",
+    "Jones Road",
+    "East Riverside Drive",
+    "Lavaca Street",
+    "Stonebridge Dr.",
+    "Exposition Boulevard",
+    "Barton Hills Drive",
+    "West Anderson Lane",
+    "San Jacinto Boulevard",
+    "Picadilly",
+    "Burleson Road",
+    "North Congress Avenue",
+    "East Ben White Boulevard",
+    "North IH 35",
+    "Mesa Drive",
+    "East 10th Street"
+  ],
+  "source:name": [
+    "OSM US TIGER 2012 ROADS OVERLAY",
+    "TIGER 2011"
+  ],
+  "name:en": [
+    "Austin-Bergstrom International Airport",
+    "Austin",
+    "Saint Albert the Great Catholic Church"
+  ],
+  "tiger:cfcc": [
+    "B11:B21",
+    "C20",
+    "A63; A64; A64; A35",
+    "A25",
+    "A35",
+    "A64",
+    "A74",
+    "A31; A35",
+    "A31",
+    "B21",
+    "A63",
+    "A51",
+    "B11",
+    "A45",
+    "A43",
+    "A41",
+    "A63:A64",
+    "C10",
+    "A41:A64",
+    "A49"
+  ],
+  "level": [
+    "1",
+    "-1",
+    "6"
+  ],
+  "cosntruction": [
+    "residential"
+  ],
+  "health_specialty:palliative_medicine": [
+    "yes"
+  ],
+  "payment:credit_cards": [
+    "yes"
+  ],
+  "moving boxes": [
+    "moving boxes"
+  ],
+  "tiger:zip_right_2": [
+    "78749",
+    "78612",
+    "78610",
+    "78617",
+    "78620",
+    "78621",
+    "78734",
+    "78619",
+    "78724",
+    "78666",
+    "78757",
+    "78602",
+    "78676",
+    "78640",
+    "78669",
+    "78653",
+    "78645",
+    "78759",
+    "78746",
+    "78750"
+  ],
+  "public_transport": [
+    "platform",
+    "station",
+    "stop_position"
+  ],
+  "power_source": [
+    "hydro"
+  ],
+  "sidewalk": [
+    "both",
+    "none",
+    "right",
+    "separate",
+    "left"
+  ],
+  "disused": [
+    "yes"
+  ],
+  "recycling:paper": [
+    "yes"
+  ],
+  "clothes": [
+    "yes"
+  ],
+  "gnis:state_id": [
+    "48"
+  ],
+  "bicycle": [
+    "permissive",
+    "no",
+    "designated",
+    "private",
+    "dismount",
+    "yes"
+  ],
+  "gnis:county_name": [
+    "Hays",
+    "Williamson",
+    "Lee",
+    "Blanco",
+    "Burnet",
+    "DeWitt",
+    "Travis",
+    "Bastrop"
+  ],
+  "reference": [
+    "CR 140",
+    "CR 225",
+    "CR 122",
+    "CR 149",
+    "CR 117",
+    "CR 130"
+  ],
+  "lamp_type": [
+    "HPSV",
+    "LED"
+  ],
+  "crop": [
+    "maize",
+    "native_pasture"
+  ],
+  "tiger:STATEFP": [
+    "48"
+  ],
+  "design": [
+    "donau;one-level"
+  ],
+  "name:brand": [
+    "Chevron"
+  ],
+  "parking": [
+    "multi-storey",
+    "Surface",
+    "garage",
+    "surface",
+    "underground",
+    "multi-storey3",
+    "multi-storey2"
+  ],
+  "parking:condition:left": [
+    "free"
+  ],
+  "name:ru": [
+    "Остин"
+  ],
+  "traffic_signals:sound": [
+    "yes",
+    "walk",
+    "no"
+  ],
+  "exit_to": [
+    "Brodie Lane;Southwest Parkway",
+    "Spicewood Springs Road",
+    "Loop 360;Capital of Texas Highway;Great Hills Trail",
+    "FM 969;Martin Luther King Jr Boulevard",
+    "Oak Knoll Drive",
+    "FM 1325;Burnet Road",
+    "TX 45 west",
+    "I 35 North;Waco",
+    "Loop 343;Lamar Boulevard;West Gate Boulevard",
+    "Avery Ranch Boulevard",
+    "FM 685 north;Gattis School Road",
+    "Cesar Chavez Street;5th Street;Lake Austin Boulevard",
+    "I 35 north",
+    "FM 967;Kyle Crossing",
+    "Manchaca Road;Pack Saddle Pass;Victory Drive",
+    "Anderson Mill Road;Lake Creek Parkway",
+    "Brushy Creek Road;Cypress Creek Road",
+    "South 1st Street",
+    "Ohlen Road;Payton Gin Road",
+    "I 35 south"
+  ],
+  "capacity": [
+    "11",
+    "150",
+    "45",
+    "12",
+    "59",
+    "22",
+    "25",
+    "18",
+    "16",
+    "51",
+    "50",
+    "15",
+    "0",
+    "110",
+    "90",
+    "20",
+    "100"
+  ],
+  "power": [
+    "substation",
+    "transformer",
+    "generator",
+    "minor_line",
+    "busbar",
+    "switch",
+    "pole",
+    "station",
+    "tower",
+    "sub_station",
+    "line"
+  ],
+  "fuel:diesel": [
+    "yes"
+  ],
+  "contact:email": [
+    "marketing@momentsfromtheheart.com",
+    "info@ampofirearms.com"
+  ],
+  "wikipedia:en": [
+    "Austin-Bergstrom_International_Airport"
+  ],
+  "Hardware Store": [
+    "Hardware Store"
+  ],
+  "isced": [
+    "3",
+    "0,1"
+  ],
+  "access": [
+    "private3",
+    "customers",
+    "destination",
+    "permissive",
+    "unknown",
+    "government",
+    "no",
+    "designated",
+    "private",
+    "restricted",
+    "yes",
+    "public",
+    "bus"
+  ],
+  "generator:output:electricity": [
+    "204 MW",
+    "351 MW",
+    "221 MW",
+    "144 MW",
+    "196 MW",
+    "285 MW"
+  ],
+  "reg_ref": [
+    "RM 2222"
+  ],
+  "boundary": [
+    "protected_area",
+    "census",
+    "administrative"
+  ],
+  "email": [
+    "support@premiumgiftcards.com",
+    "saltlick@saltlickbbq.com"
+  ],
+  "city_served": [
+    "Greater Austin"
+  ],
+  "voltage-high": [
+    "345000",
+    "138000"
+  ],
+  "commercial": [
+    "office"
+  ],
+  "destination:ref:to": [
+    "RM 150",
+    "Lockhart;Lampasas",
+    "51st Street;Cameron Road",
+    "Lampasas",
+    "FM 1625",
+    "Toll 130",
+    "Hutto;Taylor",
+    "Austin;Houston",
+    "Austin"
+  ],
+  "tiger:tlid": [
+    "45464964",
+    "45479441:45479445",
+    "45479449",
+    "45484235:45484236:45484241:45484229",
+    "45481568",
+    "45467869",
+    "45494704",
+    "45466679",
+    "45479443",
+    "45484928:45484931:45484932:45463576:45493473:45493474",
+    "45504513",
+    "45504519",
+    "45461617:45461317",
+    "45479446",
+    "45467300:45468424",
+    "45473227:45473228",
+    "126434082:126434084:126430876:126475800:126470951:126471219:126471962",
+    "63935055:63935167:63935172:63935290:63935296:63951754:63951755:63951757:63951759:63952009:63952016:63968301:63977839:63977948:63981572:63981719:63981991:63988109:63988110:63995028:63995030:64002903:64002906:64016112:64016991:64016992:64016997:64016998:640",
+    "45504516",
+    "45464157:45464158:45478943"
+  ],
+  "denomination": [
+    "catholic",
+    "baptist",
+    "anglican",
+    "latter_day_saints",
+    "ahmadiyya",
+    "lutheran",
+    "mormon",
+    "roman_catholic",
+    "methodist",
+    "presbyterian",
+    "quaker",
+    "jehovahs_witness",
+    "episcopal",
+    "mormon3",
+    "nondenominational",
+    "pentecostal",
+    "seventh_day_adventist"
+  ],
+  "water": [
+    "reservoir",
+    "intermittent",
+    "lake",
+    "lake;pond",
+    "pool",
+    "pond",
+    "Pool"
+  ],
+  "census:population": [
+    "42467;2006",
+    "2703;2006",
+    "15322;2006",
+    "4551;2006",
+    "852;2006",
+    "2657;2006",
+    "241;2006",
+    "5794;2006",
+    "308;2006",
+    "1472;2006",
+    "7591;2006",
+    "2121;2006",
+    "790;2006",
+    "2197;2006",
+    "20655;2006",
+    "698;2006",
+    "376;2006",
+    "486;2006",
+    "385;2006",
+    "190;2006"
+  ],
+  "baseball": [
+    "softball"
+  ],
+  "key": [
+    "Lumber Yard",
+    "Travis County International Cemetery",
+    "footway",
+    "McCoy's Build Supply Store"
+  ],
+  "building:use": [
+    "education"
+  ],
+  "hoops": [
+    "2"
+  ],
+  "lake:shore_length": [
+    "434"
+  ],
+  "source": [
+    "http://www.solidconcepts.com/rapid-prototyping-in-austin-texas/",
+    "http://www.krausesprings.net/",
+    "http://saintwilliams.org",
+    "local knowledge and website",
+    "local_knowledge",
+    "Bing",
+    "ourairports.com",
+    "Yahoo",
+    "self",
+    "survey",
+    "wetap.org",
+    "info@ringerwindows.com",
+    "http://www.coindesk.com/menufy-now-supports-bitcoin-payments-400-us-restaurants/",
+    "www.amcaustin.org",
+    "USGS Geonames + bing",
+    "http://www.ltisdschools.org/site/Default.aspx?PageID=8354",
+    "Survey",
+    "bing",
+    "USGS Geonames",
+    "GPS"
+  ],
+  "microbrewery": [
+    "yes"
+  ],
+  "EXit_to": [
+    "North Loop 360"
+  ],
+  "tiger:PLACEFP": [
+    "46440",
+    "74216",
+    "58586",
+    "76924",
+    "29336",
+    "13552",
+    "80058",
+    "06242",
+    "71324",
+    "39952",
+    "77632",
+    "71948",
+    "05000",
+    "50200",
+    "42664",
+    "65552",
+    "32906",
+    "40984",
+    "17612",
+    "51492"
+  ],
+  "destination:left": [
+    "Industrial Oaks Boulevard"
+  ],
+  "fuel:e10": [
+    "no"
+  ],
+  "addr:city": [
+    "Austin, TX",
+    "Georgetown",
+    "Cedar Creek",
+    "Taylor",
+    "Westlake Hills, TX",
+    "Leander",
+    "Round Rock",
+    "Wimberley",
+    "Sunset Valley",
+    "Elgin, TX",
+    "Bee Cave, TX",
+    "Spicewood, TX",
+    "Pflugerville, TX",
+    "Buda",
+    "Dripping Springs, Tx",
+    "Cedar Park, TX",
+    "Cedar Park",
+    "Dripping Springs",
+    "Bastrop, TX",
+    "Austin"
+  ],
+  "school_type": [
+    "charter",
+    "public",
+    "private"
+  ],
+  "priority_road": [
+    "yes_unposted"
+  ],
+  "advertising": [
+    "billboard"
+  ],
+  "county_fips": [
+    "48055/48453"
+  ],
+  "military": [
+    "barracks",
+    "range"
+  ],
+  "railway": [
+    "abandoned",
+    "level_crossing",
+    "rail",
+    "platform",
+    "station",
+    "crossing"
+  ],
+  "source_ref": [
+    "geonames.usgs.gov"
+  ],
+  "comment": [
+    "They move a lot, but this is a common spot for them",
+    "Turning circle"
+  ],
+  "wikipedia": [
+    "en:Solid Concepts",
+    "Uhland,_Texas",
+    "en:Texas State Highway Loop 4",
+    "en:Austin, Texas",
+    "Creedmoor,_Texas",
+    "Briarcliff,_Texas",
+    "Hays,_Texas",
+    "en:Austin Community College District",
+    "en:DTRules",
+    "Manor,_Texas",
+    "http://en.wikipedia.org/wiki/McKinney_Falls_State_Park",
+    "en:Cathedral of Saint Mary (Austin, Texas)",
+    "en:Kyle,_Texas",
+    "Bear_Creek,_Texas",
+    "http://en.wikipedia.org/wiki/Lake_Travis",
+    "Sunset_Valley,_Texas",
+    "Niederwald,_Texas",
+    "Jonestown,_Texas",
+    "en:Woodcreek, Texas",
+    "San_Leanna,_Texas"
+  ],
+  "gnis:County_num": [
+    "209",
+    "453",
+    "021",
+    "055",
+    "491",
+    "053"
+  ],
+  "parking:lane:left": [
+    "perpendicular"
+  ],
+  "note:ref": [
+    "It actually is FM Business according to the books"
+  ],
+  "color": [
+    "red"
+  ],
+  "surveillance:type": [
+    "camera"
+  ],
+  "turn:lanes": [
+    "left|none|none|none",
+    "reverse|left|left;through|through|right",
+    "left|left|none",
+    "left|left;through|through|right",
+    "left|left;through|through",
+    "left|none|none|right",
+    "none|none|none|right"
+  ],
+  "amenity": [
+    "place_of_worship",
+    "fire_station",
+    "school",
+    "veterinary",
+    "police",
+    "grave_yard",
+    "theatre",
+    "toilets",
+    "post_box",
+    "hospital",
+    "atm",
+    "fast_food",
+    "pub",
+    "pharmacy",
+    "swimming_pool",
+    "nursing home",
+    "fountain",
+    "fuel",
+    "post_office",
+    "cafe"
+  ],
+  "height": [
+    "190",
+    "0",
+    "405 ft",
+    "50",
+    "150"
+  ],
+  "tower:type": [
+    "communication",
+    "clock"
+  ],
+  "name:pl": [
+    "Austin"
+  ],
+  "ele": [
+    "150",
+    "153",
+    "138",
+    "172",
+    "143",
+    "156",
+    "248",
+    "350",
+    "190",
+    "226",
+    "219",
+    "168",
+    "229",
+    "112",
+    "251",
+    "253",
+    "175",
+    "174",
+    "222",
+    "162"
+  ],
+  "boat": [
+    "private",
+    "no"
+  ],
+  "recycling:cartons": [
+    "yes"
+  ],
+  "fee": [
+    "yes",
+    "no"
+  ],
+  "tiger:name_direction_prefix_1": [
+    "S",
+    "E",
+    "W",
+    "N"
+  ],
+  "FIXME:ref": [
+    "verify"
+  ],
+  "tiger:name_type_3": [
+    "Rd",
+    "Cir",
+    "Hwy"
+  ],
+  "tiger:name_type_2": [
+    "Expy",
+    "Ln",
+    "Pky",
+    "St",
+    "Rd",
+    "Cir",
+    "Way",
+    "Hwy",
+    "Blvd",
+    "Ter",
+    "Dr"
+  ],
+  "tiger:name_type_1": [
+    "Rte",
+    "Expy",
+    "Run",
+    "Trl",
+    "Xing",
+    "Ln",
+    "Path",
+    "Pky",
+    "FMRd",
+    "St",
+    "Rd",
+    "Cir",
+    "Way",
+    "Hwy",
+    "Ave",
+    "Ter",
+    "Dr",
+    "Cv",
+    "Pl",
+    "Ct"
+  ],
+  "diet:vegetarian": [
+    "only"
+  ],
+  "direction": [
+    "forward",
+    "backward",
+    "anticlockwise"
+  ],
+  "ref:right": [
+    "238A"
+  ],
+  "maxspeed:conditional": [
+    "20 mph @ (when flashing)",
+    "20 mph @ (signal flashing)"
+  ],
+  "lcn": [
+    "yes"
+  ],
+  "note:lanes": [
+    "1 northbound, 2 southbound",
+    "1 westbound, 2 eastbound",
+    "1 southbound, 2 northbound"
+  ],
+  "basin": [
+    "detention",
+    "retention"
+  ],
+  "expressway": [
+    "yes"
+  ],
+  "type": [
+    "gay",
+    "route",
+    "gas",
+    "county",
+    "Public",
+    "multipolygon"
+  ],
+  "start_date": [
+    "1998.06"
+  ],
+  "website": [
+    "http://www.uachurch.org/",
+    "http://www.heightsassembly.com/",
+    "http://www.templomontesinai.com/",
+    "premiumoutlets.com",
+    "http://smcaustin.org/",
+    "http://www.ucc-austin.org/",
+    "http://westover.org/",
+    "http://stmarksaustin.org/",
+    "http://www.uumc.org/",
+    "http://www.austinparks.org/our-parks.html?parkid=239",
+    "http://texasmilitaryforcesmuseum.org/",
+    "http://www.hillcrestaustin.org/",
+    "http://fumcaustin.org/",
+    "http://www.stpetersaustin.org/",
+    "http://crownandanchorpub.com",
+    "http://www.stmattsaustin.org/",
+    "http://www.fbcaustin.org/",
+    "http://www.clcaustin.com/",
+    "http://www.faithbaptistaustin.org/",
+    "http://www.ecraustin.org/"
+  ],
+  "addr:unit": [
+    "D",
+    "Suite 107c",
+    "Suite 300",
+    "Suite 201",
+    "250",
+    "800",
+    "Suite 404"
+  ],
+  "lanes": [
+    "1",
+    "3",
+    "2",
+    "5",
+    "4",
+    "6"
+  ],
+  "club": [
+    "country"
+  ],
+  "reg_name": [
+    "Loop 111"
+  ],
+  "capacity:women": [
+    "no"
+  ],
+  "al": [
+    "Gateway D.A.E.P. School"
+  ],
+  "phone": [
+    "512-345-3771",
+    "512-477-6104",
+    "512-385-7265",
+    "(512) 282-0182",
+    "(512) 782-5659",
+    "512-444-0762",
+    "512-459-0027",
+    "512-476-6182",
+    "512-442-0655",
+    "+1 512 322-9168",
+    "512-476-2625",
+    "512-476-6941",
+    "512-478-5684",
+    "512-892-6038",
+    "512-476-6088",
+    "512-345-8314",
+    "512-478-9387",
+    "512-345-6386",
+    "512-444-1449",
+    "512-892-4200"
+  ],
+  "grades": [
+    "pk,k,1,2,3,4,5,6,7,8",
+    "k,1,2,3,4,5,6,7,8",
+    "10,11,12",
+    "k,1,2,6",
+    "k,6,7,8",
+    "k,1,3,4,5,6,7,8",
+    "6,7,8",
+    "pk",
+    "ec,pk,k,1,2,3,4,5",
+    "pk-12",
+    "pk,k,1,2,3,4,5,6",
+    "k,1,2,3,4,5",
+    "k,1,2,3,4,5,6,7,8,9,10,11,12",
+    "pk,k,1,2,3,4,5",
+    "6,7,8,9,10,11,12",
+    "k,1,2,3,4,5,6",
+    "11,12",
+    "9,10,11,12",
+    "4,5,6,7,8,9",
+    "pk,k,1,2,3,4,5,6,7,8,9"
+  ],
+  "craft": [
+    "roofer",
+    "carpenter",
+    "boatbuilder",
+    "tailor",
+    "agricultural_engines",
+    "metal_construction",
+    "brewery",
+    "painter"
+  ],
+  "official_name": [
+    "Pickle Parkway"
+  ],
+  "gnis:import_uuid": [
+    "57871b70-0100-4405-bb30-88b2e001a944"
+  ],
+  "smoking": [
+    "outside",
+    "isolated",
+    "no"
+  ],
+  "incline": [
+    "down",
+    "up"
+  ],
+  "traffic_calming": [
+    "chicane",
+    "bump",
+    "island",
+    "hump",
+    "table",
+    "yes"
+  ],
+  "osmarenderer": [
+    "no"
+  ],
+  "sloped_curb": [
+    "both",
+    "yes"
+  ],
+  "tunnel": [
+    "yes",
+    "culvert",
+    "no"
+  ],
+  "source:note": [
+    "http://www.dot.state.tx.us/tpp/hwy/SH/SH0165.htm"
+  ],
+  "cash": [
+    "no"
+  ],
+  "tiger:NAME": [
+    "Hays",
+    "Uhland",
+    "Niederwald",
+    "Georgetown",
+    "Manor",
+    "San Leanna",
+    "West Lake Hills",
+    "Austin",
+    "Sunset Valley",
+    "Bear Creek",
+    "Kyle",
+    "Point Venture",
+    "Mustang Ridge",
+    "Lakeway",
+    "Webberville",
+    "Cedar Park",
+    "Briarcliff",
+    "Woodcreek",
+    "Creedmoor",
+    "Liberty Hill"
+  ],
+  "fuel:biogas": [
+    "no"
+  ],
+  "bridge:name": [
+    "Montopolis Bridge",
+    "Pennybacker Bridge"
+  ],
+  "noref": [
+    "yes"
+  ],
+  "twoway": [
+    "yes"
+  ],
+  "history": [
+    "Retrieved from v3",
+    "Retrieved from v2",
+    "Retrieved from v1",
+    "Retrieved from v11",
+    "Retrieved from v5"
+  ],
+  "construciton": [
+    "motorway"
+  ],
+  "layer": [
+    "-5",
+    "1",
+    "0",
+    "3",
+    "2",
+    "-1",
+    "4",
+    "-2"
+  ],
+  "isced:level": [
+    "2-3",
+    "0,2",
+    "0,1",
+    "1;2",
+    "0",
+    "3",
+    "2",
+    "0,1,2",
+    "0;1;2",
+    "0;1",
+    "1;2;3",
+    "2,3"
+  ],
+  "toilets:disposal": [
+    "pitlatrine",
+    "flush"
+  ],
+  "presbyterian": [
+    "Presbyterian Church (U.S.A.)"
+  ],
+  "surface": [
+    "concrete:plates",
+    "cobblestone",
+    "grass",
+    "Asphalt",
+    "asphalt",
+    "dirt",
+    "ground",
+    "Indoor",
+    "unpaved",
+    "concrete",
+    "sand",
+    "wood",
+    "fine_gravel",
+    "asphalt2",
+    "tartan",
+    "paving_stones",
+    "yes",
+    "gravel",
+    "compacted",
+    "paved"
+  ],
+  "Lit": [
+    "yes"
+  ],
+  "lanes:forward": [
+    "2"
+  ],
+  "payment:notes": [
+    "yes"
+  ],
+  "social_facility:for": [
+    "mental_health"
+  ],
+  "elevation": [
+    "258"
+  ],
+  "waterway": [
+    "drain",
+    "stream",
+    "ditch",
+    "dam",
+    "weir",
+    "dock",
+    "waterfall",
+    "boatyard",
+    "river",
+    "riverbank",
+    "mooring"
+  ],
+  "gnis_freature_id": [
+    "2009189"
+  ],
+  "place_name": [
+    "Hays",
+    "Uhland",
+    "Niederwald",
+    "Georgetown",
+    "Manor",
+    "San Leanna",
+    "West Lake Hills",
+    "Sunset Valley",
+    "Bear Creek",
+    "Kyle",
+    "Point Venture",
+    "Mustang Ridge",
+    "Lakeway",
+    "Volente",
+    "Cedar Park",
+    "Briarcliff",
+    "Webberville",
+    "Woodcreek",
+    "Creedmoor",
+    "Liberty Hill"
+  ],
+  "information": [
+    "map",
+    "board",
+    "board;map",
+    "guidepost"
+  ],
+  "par": [
+    "3"
+  ],
+  "unsigned_ref": [
+    "Spur 69"
+  ],
+  "lanes:backward": [
+    "1"
+  ],
+  "emergency": [
+    "phone",
+    "yes",
+    "fire_hydrant",
+    "no"
+  ],
+  "surveillance": [
+    "outdoor"
+  ],
+  "fuel:octane_98": [
+    "yes"
+  ],
+  "collection_times": [
+    "Mo-Sa 17:00",
+    "Mo-Fr 17:00; Sa 12:00",
+    "Mo-Fr 15:00"
+  ],
+  "NHS": [
+    "yes",
+    "STRAHNET"
+  ],
+  "exit_to:left": [
+    "I 35 N;US 290 East"
+  ],
+  "old_railway_operator": [
+    "SP",
+    "MKT",
+    "MP"
+  ],
+  "fuel:octane_95": [
+    "yes"
+  ],
+  "FIXME": [
+    "Blend with other road on county line",
+    "confirm existence",
+    "doesn't exist at this location in real life",
+    "does this still exist ?",
+    "street signs say this is \"Enchanted Forest Drive\" - where is 'bruges lane' coming from ?",
+    "Provisional to maintain connectivity",
+    "Verify name, as the old names changes.  Not in TIGER 2012",
+    "Incorrect location",
+    "is the correct maxspeed 25 mph (40 km/h) or 40 mph?",
+    "continue",
+    "need name",
+    "extrapolated location",
+    "verify",
+    "incorrect location",
+    "name?",
+    "verify where Long Rifle and Larch Valley meet",
+    "approximate location",
+    "what's this? not on sat imagery",
+    "dual carriageway",
+    "check ref"
+  ],
+  "description": [
+    "2nd Floor. Korean, Pizza, Chinese, Kebab, Subs, Cookies, etc.",
+    "real, authentic cantonese food in south austin",
+    "BTC payment via Menufy.",
+    "gay bar and dance club",
+    "Dr. Michael Flurry",
+    "Cell phone sales and services",
+    "aquariums and tropical fish",
+    "swimming area",
+    "Asian (Taiwanese) bakery with sweet and savory breads.",
+    "best imperial rolls!",
+    "Best Tex-Mex in Austin, Texas!",
+    "access from inside Han Yang Supermarket",
+    "indonesian weekend lunch buffet",
+    "Best breakfast taco's in town.",
+    "31 flavors Ice cream",
+    "gay bar and nightclub",
+    "W Hotel Austin",
+    "pier",
+    "Tanning salon",
+    "enter through side facing Mopac, East"
+  ],
+  "beauty": [
+    "eyebrow"
+  ],
+  "cuisine": [
+    "ICe_cream",
+    "mexican",
+    "Greek/Mediteranian",
+    "chinese",
+    "greek",
+    "Hamburgers and fires",
+    "sandwich",
+    "japanese",
+    "french",
+    "Sandwhich shop",
+    "burger",
+    "american",
+    "Coffee shop",
+    "asian",
+    "pizza",
+    "thai",
+    "ice_cream",
+    "coffee_shop",
+    "tex-mex",
+    "italian"
+  ],
+  "source:maxspeed": [
+    "US:TX:urban",
+    "http://www.txdot.gov/safety/speed_limit/75mph.htm",
+    "sign"
+  ],
+  "fence_type": [
+    "pole",
+    "chain_link"
+  ],
+  "tiger:LSAD": [
+    "25",
+    "47"
+  ],
+  "leisure": [
+    "dog_park",
+    "water_park",
+    "picnic_table",
+    "stadium",
+    "garden",
+    "swimming_pool",
+    "track",
+    "amusement_arcade",
+    "golf_course",
+    "park",
+    "nature_reserve",
+    "pinball",
+    "sports_centre",
+    "miniature_golf",
+    "playground",
+    "marina",
+    "pitch",
+    "slipway",
+    "recreation_ground",
+    "common"
+  ],
+  "tourism": [
+    "information",
+    "picnic_site",
+    "viewpoint",
+    "museum",
+    "hotel",
+    "Park",
+    "caravan_site",
+    "attraction",
+    "artwork",
+    "guest_house",
+    "motel",
+    "camp_site",
+    "hostel"
+  ],
+  "wetap:status": [
+    "working"
+  ],
+  "gnis_state_id": [
+    "48"
+  ],
+  "natural": [
+    "scrub",
+    "park",
+    "spring",
+    "tree",
+    "trees",
+    "heath",
+    "water",
+    "mud",
+    "sand",
+    "wood",
+    "wetland",
+    "peak",
+    "yes",
+    "bay",
+    "bare_rock",
+    "cliff"
+  ],
+  "undefined": [
+    "private"
+  ],
+  "lcn_ref": [
+    "LAB"
+  ],
+  "intermittent": [
+    "yes"
+  ],
+  "wheelchair": [
+    "limited",
+    "yes",
+    "no"
+  ],
+  "outdoor_seating": [
+    "yes",
+    "no"
+  ],
+  "addr:place": [
+    "Suite 370"
+  ],
+  "hgv": [
+    "designated"
+  ],
+  "historic": [
+    "bridge",
+    "memorial",
+    "courthouse",
+    "house",
+    "monument",
+    "yes",
+    "ruins"
+  ],
+  "takeaway": [
+    "yes"
+  ],
+  "addr:country": [
+    "US"
+  ],
+  "bicycle:oneway": [
+    "no"
+  ],
+  "office": [
+    "physician",
+    "financial",
+    "lawyer",
+    "government",
+    "company",
+    "Dentist",
+    "broker",
+    "research",
+    "travel_agent",
+    "estate_agent",
+    "it",
+    "yes",
+    "accountant",
+    "insurance"
+  ],
+  "maxspeed:backward": [
+    "20 mph",
+    "15 mph"
+  ],
+  "abandoned": [
+    "yes"
+  ],
+  "Destination": [
+    "Loop 1 south;Mopac Expressway south;Brodie Lane",
+    "William Cannon Drive",
+    "East Riverside Drive",
+    "Loop 1 north;Mopac Expressway north"
+  ],
+  "tiger:zip_right_1": [
+    "78612",
+    "78669",
+    "78617",
+    "78616",
+    "78620",
+    "78621",
+    "78745",
+    "78619",
+    "78737",
+    "78666",
+    "78744",
+    "78602",
+    "78957",
+    "78640",
+    "78654",
+    "78652",
+    "78610",
+    "78746",
+    "78724",
+    "78676"
+  ],
+  "payment:cash": [
+    "yes"
+  ],
+  "tiger:zip_right_3": [
+    "78749",
+    "78759",
+    "78724",
+    "78734",
+    "78660",
+    "78621",
+    "78730",
+    "78757",
+    "78676",
+    "78640",
+    "78653",
+    "78645"
+  ],
+  "drive_thru": [
+    "yes"
+  ],
+  "postal_code": [
+    "78721"
+  ],
+  "voltage": [
+    "345000",
+    "138000"
+  ],
+  "int_ref": [
+    "Highlands Expansion"
+  ],
+  "source:ref:note": [
+    "signs that say \"state maintenance ends\" and also signs on Morrow St"
+  ],
+  "exit_to:right": [
+    "I 35 S;San Antonio"
+  ],
+  "addr:housenumber": [
+    "2803",
+    "2911",
+    "203",
+    "4600",
+    "11006",
+    "1600",
+    "5720",
+    "3908",
+    "3800",
+    "1607",
+    "3208",
+    "1201",
+    "1500",
+    "13122",
+    "13116",
+    "1101",
+    "2110",
+    "2613",
+    "9300",
+    "7825"
+  ],
+  "lit": [
+    "yes",
+    "no"
+  ],
+  "man_made": [
+    "water_well",
+    "water_works",
+    "water_tank",
+    "mine",
+    "surveillance",
+    "reservoir_covered",
+    "wastewater_plant",
+    "mast",
+    "water_tower",
+    "communications_tower",
+    "cutline",
+    "flagpole",
+    "pipeline",
+    "tower",
+    "works",
+    "pier",
+    "storage_tank",
+    "chimney",
+    "silo"
+  ],
+  "cash_in": [
+    "yes"
+  ],
+  "fuel:gas": [
+    "yes"
+  ],
+  "created_by": [
+    "Merkaartor 0.12",
+    "xybot",
+    "OSM Fixer",
+    "polyshp2osm-multipoly",
+    "Potlatch 0.9c",
+    "Potlatch 0.9b",
+    "Potlatch 0.9a",
+    "Potlatch 0.10",
+    "Potlatch 0.10b",
+    "Potlatch 0.10c",
+    "Potlatch 0.10e",
+    "Potlatch 0.10f",
+    "Merkaartor 0.13"
+  ],
+  "parking:condition:both": [
+    "free"
+  ],
+  "bench": [
+    "yes",
+    "no"
+  ],
+  "gnis:ST_alpha": [
+    "TX"
+  ],
+  "noturn": [
+    "yes"
+  ],
+  "parts": [
+    "yes"
+  ],
+  "tiger:name_type": [
+    "Pky",
+    "Run",
+    "Trl",
+    "Ave",
+    "Ln",
+    "Xing",
+    "FMRd",
+    "St",
+    "Rd",
+    "Cir",
+    "Pl",
+    "Way",
+    "Hwy",
+    "Blvd",
+    "Path",
+    "Blvd:Dr",
+    "Dr",
+    "Cv",
+    "Loop",
+    "Ct"
+  ],
+  "location": [
+    "underground"
+  ],
+  "capacity:disabled": [
+    "yes",
+    "2",
+    "no"
+  ],
+  "usage": [
+    "tourism"
+  ],
+  "covered": [
+    "yes",
+    "no"
+  ],
+  "gnis:feature_id": [
+    "1330129",
+    "1332617",
+    "1332317",
+    "1331339",
+    "1329850",
+    "1329866",
+    "1332183",
+    "1331338",
+    "1332552",
+    "1330047",
+    "1331752",
+    "1332611",
+    "1329384",
+    "1331056",
+    "1331174",
+    "1332551",
+    "1330110",
+    "1329956",
+    "1332902",
+    "1329836"
+  ],
+  "tiger:zip_right": [
+    "78613",
+    "78612",
+    "78611",
+    "78636",
+    "78617",
+    "78616",
+    "78620",
+    "78621",
+    "78662",
+    "78605",
+    "78669",
+    "78602",
+    "78957",
+    "78640",
+    "78654",
+    "78630",
+    "78610",
+    "78650",
+    "78644",
+    "78681"
+  ],
+  "old_ref": [
+    "FM 150 (old Spur 5)",
+    "TX OSR",
+    "FM 150",
+    "TX 71;TX 95 (old US 290)",
+    "FM 620",
+    "RM 93",
+    "Loop 5",
+    "TX 71",
+    "230;231",
+    "US 81",
+    "SH 20",
+    "SH 232",
+    "SH 80",
+    "Loop 64 (old US 290)",
+    "Loop 4",
+    "Loop 111",
+    "SH 311",
+    "FM 150 (old FM 1078)",
+    "SH 29",
+    "US 290"
+  ],
+  "junction": [
+    "roundabout"
+  ],
+  "short_name": [
+    "McCombs Field",
+    "East Metro Park",
+    "CoTA"
+  ],
+  "government": [
+    "office"
+  ],
+  "fuel:biodiesel": [
+    "no"
+  ],
+  "practice": [
+    "pitch"
+  ],
+  "lake:shore_length:miles": [
+    "270"
+  ],
+  "tiger:separated": [
+    "yes",
+    "no"
+  ],
+  "Length": [
+    "07 Miles"
+  ],
+  "cutting": [
+    "yes"
+  ],
+  "bridge_name": [
+    "J J Seabrook Bidge"
+  ],
+  "addr:streetnumber": [
+    "1209"
+  ],
+  "recycling:newspaper": [
+    "yes"
+  ],
+  "fuel:octane_91": [
+    "yes"
+  ],
+  "foot": [
+    "yes",
+    "permissive",
+    "designated",
+    "yes;permissive",
+    "no"
+  ],
+  "rental": [
+    "yes"
+  ],
+  "gnis:edited": [
+    "02/03/2009",
+    "02/02/2008"
+  ],
+  "Shop": [
+    "yes"
+  ],
+  "payment:bitcoin": [
+    "yes"
+  ],
+  "fixme": [
+    "check bicycle route data",
+    "check spelling -- continues as DB Wood Road",
+    "check name. When does Chestnut become Pleasant Valley?",
+    "supply park boundaries",
+    "Does not exist in Bing maps",
+    "name? operator? starting/end points?",
+    "name_missing",
+    "check name!",
+    "double-check where East Howard becomes West Howard",
+    "extend line",
+    "is this *really* Frost Bank Tower?",
+    "flow direction unknown",
+    "should extend farther south, but does bicycle route 20 continue?"
+  ],
+  "odbl": [
+    "clean"
+  ],
+  "vending": [
+    "Ice"
+  ],
+  "name": [
+    "Jonestown",
+    "Shady Hollow",
+    "Mount Gainor",
+    "Montopolis",
+    "Norman",
+    "Manor",
+    "Hays",
+    "Kings Village",
+    "Littig",
+    "Pflugerville",
+    "Coupland",
+    "Mustang Ridge",
+    "Decker",
+    "Cloptins Crossing",
+    "Manda",
+    "Swiftex",
+    "Tanglewood Forest",
+    "Watterson",
+    "Mountain City",
+    "Bastrop"
+  ],
+  "designation": [
+    "Safeway 2482",
+    "Electronic Cigarettes",
+    "Safeway 2480",
+    "Safeway 2481",
+    "Safeway 2483",
+    "Safeway 1850",
+    "City Park",
+    "Safeway 2485",
+    "Commercial",
+    "moonlight tower",
+    "Veterinarian Clinic",
+    "Kitchen & Bar",
+    "Self Storage Facility",
+    "Safeway 2471",
+    "Dentist",
+    "Safeway 2475",
+    "yes",
+    "Safeway 2490",
+    "Minor",
+    "Store #77"
+  ],
+  "tiger:zip_left": [
+    "78613",
+    "78723",
+    "78611",
+    "78669",
+    "78617",
+    "78616",
+    "78620",
+    "78621",
+    "78662",
+    "78663",
+    "78602",
+    "78957",
+    "78640",
+    "78636",
+    "78654",
+    "78644",
+    "78650",
+    "78612",
+    "78605",
+    "78630"
+  ],
+  "have_riverbed": [
+    "yes"
+  ],
+  "route_ref": [
+    "240;383;481",
+    "240;383",
+    "174;383",
+    "3814",
+    "122;214;383;983;984;987",
+    "214;383",
+    "383",
+    "383;392;982;983",
+    "383;392"
+  ],
+  "currency:XBT": [
+    "yes"
+  ],
+  "embankment": [
+    "yes"
+  ],
+  "addr:postcode": [
+    "78705",
+    "78748",
+    "78721",
+    "78759",
+    "78701",
+    "78681",
+    "78723",
+    "78704",
+    "78741",
+    "78753",
+    "78660",
+    "78751",
+    "78745",
+    "78757",
+    "78664",
+    "78676",
+    "78752",
+    "78703",
+    "78731",
+    "78756"
+  ],
+  "crossing": [
+    "unknown",
+    "traffic_signals",
+    "uncontrolled",
+    "signals",
+    "zebra",
+    "island",
+    "uncontroller"
+  ],
+  "garage": [
+    "yes"
+  ],
+  "toll": [
+    "yes",
+    "no"
+  ],
+  "internet_access": [
+    "yes",
+    "wlan",
+    "no"
+  ],
+  "name_2": [
+    "Walton's Lane",
+    "County Road 332",
+    "County Road 241",
+    "County Road 104",
+    "County Road 85",
+    "Rosanky Cattle Company Road",
+    "County Road 117",
+    "County Road 178",
+    "County Road 280",
+    "County Road 113",
+    "Blackjack Oak Lane",
+    "County Road 56",
+    "County Road 191",
+    "County Road 402",
+    "County Road 243",
+    "Smith Road",
+    "County Road 129",
+    "County Road 374",
+    "County Road 306",
+    "East 2nd Street"
+  ],
+  "name_3": [
+    "County Road 227",
+    "Trail Driver Circle",
+    "McNeil Round Rock Rd",
+    "County Road 114",
+    "Highway 71 Srvc Road",
+    "Valley View West Road",
+    "Ranch to Market Road 620 North",
+    "I-35 Frontage"
+  ],
+  "name_1": [
+    "County Road 90",
+    "County Road 303",
+    "County Road 52",
+    "County Road 130",
+    "County Road 356",
+    "County Road 103",
+    "Pecan Street",
+    "County Road 220",
+    "County Road 73",
+    "Blue Jack Oak Drive",
+    "County Road 182",
+    "Lonesome Dove Drive",
+    "County Road 246",
+    "County Road 65",
+    "County Road 41",
+    "County Road 364",
+    "Elm Street",
+    "County Road 418",
+    "County Road 275",
+    "North Avenue H"
+  ],
+  "alt_name": [
+    "Big Bend Drive",
+    "J. C. Buchanan House",
+    "JCP",
+    "Undergraduate Admissions Center",
+    "Parmer Business Park",
+    "CR 328",
+    "Farm To Market 973",
+    "3 Forks",
+    "Pickle Parkway",
+    "Lucy Read Pre-kindergarten Demonstration School",
+    "The Palmetto",
+    "Sunset Advisory Commission",
+    "CR 279",
+    "Farm-to-Market Road 1460",
+    "The Bluff",
+    "CR112",
+    "Hippie Hollow Park",
+    "an american grill",
+    "James E Pearce College Preparatory Academy",
+    "Baby A's"
+  ],
+  "gnis:freature_id": [
+    "1345852",
+    "2361105"
+  ],
+  "recycling:plastic_bottles": [
+    "yes"
+  ],
+  "recycling:plastic_bags": [
+    "yes"
+  ],
+  "name:ar": [
+    "فولنت، تكساس"
+  ],
+  "generator:source": [
+    "gas"
+  ],
+  "frequency": [
+    "60"
+  ],
+  "wpt_symbol": [
+    "Residence"
+  ],
+  "full_name": [
+    "Roy G. Guerrero Colorado River Park"
+  ],
+  "loc_name": [
+    "Six Pack",
+    "Honors Quad",
+    "Guadalamar",
+    "The Tower",
+    "The Drag",
+    "BRP",
+    "The Talking Oil Well",
+    "San Jac",
+    "POB"
+  ],
+  "destination:ref": [
+    "FM 971",
+    "CR 104",
+    "FM 150",
+    "FM 967",
+    "FM 2001",
+    "William Cannon Drive",
+    "I 35",
+    "Pflugerville",
+    "TOLL 45;FM 1327",
+    "LOOP 1 South",
+    "TX 130 North",
+    "Fm 1626",
+    "TX 29",
+    "FM 967;Buda",
+    "US 183",
+    "SPUR 158",
+    "FM 1626",
+    "LOOP 1",
+    "Lockhart",
+    "Huston-Tillotson University"
+  ],
+  "Type": [
+    "Mexican Food"
+  ],
+  "ele:feet": [
+    "681"
+  ],
+  "local_ref": [
+    "2761",
+    "4326",
+    "1253",
+    "3491"
+  ],
+  "network": [
+    "Capital Metropolitan Transportation Authority"
+  ],
+  "oneway": [
+    "yes",
+    "-1",
+    "no"
+  ],
+  "source:Texas_Trunk_System": [
+    "Statewide Long-Range Transportation Plan 2035 http://www.txdot.gov/txdot_library/publications/transportation_plan.htm"
+  ],
+  "diesel": [
+    "yes"
+  ],
+  "religion": [
+    "eckankar",
+    "muslim",
+    "christian",
+    "unitarian_universalist",
+    "jewish",
+    "scientologist",
+    "buddhist",
+    "bahai"
+  ],
+  "old_name": [
+    "Maple Street",
+    "Cedar Drive",
+    "Cypress Street",
+    "East Campus Drive",
+    "Cedar Street",
+    "Water Avenue",
+    "Pecan Street",
+    "East Blanco Street",
+    "Mulberry Street",
+    "Chestnut Street",
+    "Live Oak Street",
+    "West 19th Street (old Magnolia Avenue)",
+    "Orange Street",
+    "Laurel Street",
+    "Ash Street",
+    "Hickory Street",
+    "Linden Street",
+    "Elm Street",
+    "North Avenue",
+    "Mesquite Street"
+  ],
+  "supervised": [
+    "yes",
+    "no"
+  ],
+  "tiger:CLASSFP": [
+    "C1"
+  ],
+  "ref": [
+    "217",
+    "220",
+    "215",
+    "213",
+    "210",
+    "233B;234A",
+    "232A",
+    "237A",
+    "428B",
+    "232B",
+    "247",
+    "228 / 229",
+    "233",
+    "229",
+    "227",
+    "226",
+    "423",
+    "431",
+    "223",
+    "426"
+  ],
+  "highway": [
+    "turning_circle",
+    "mini_roundabout",
+    "undefined",
+    "proposed",
+    "give_way",
+    "stop",
+    "motorway_junction",
+    "ford",
+    "priority",
+    "bus_stop",
+    "stop;priority",
+    "construction",
+    "motorway",
+    "traffic_signals",
+    "street_lamp",
+    "crosswalk",
+    "crossing",
+    "footway",
+    "service",
+    "motorway_link"
+  ],
+  "cycleway:left": [
+    "lane"
+  ],
+  "barrier": [
+    "lift_gate",
+    "toll_booth",
+    "chain",
+    "fence",
+    "cattle_grid",
+    "wall",
+    "wire_fence",
+    "cycle_barrier",
+    "entrance",
+    "bollard;gate",
+    "guard_rail",
+    "swing_gate",
+    "retaining_wall",
+    "bollard",
+    "gate",
+    "yes",
+    "ditch",
+    "kerb",
+    "hedge",
+    "block"
+  ],
+  "import_uuid": [
+    "bb7269ee-502a-5391-8056-e3ce0e66489c"
+  ],
+  "contact:phone": [
+    "512-528-8892",
+    "512-249-6464",
+    "512-241-1732",
+    "512-462-7227",
+    "(512) 338-9414",
+    "(512)703-4100",
+    "512-420-0001",
+    "512-238-8889",
+    "512-892-2744",
+    "512-480-8440",
+    "512-258-5445",
+    "512-342-2252",
+    "512-339-1688",
+    "(512) 821-0022",
+    "(512)491-8859",
+    "512-382-9106",
+    "(512)474-2575",
+    "(512)243-5588",
+    "+1-512-371-1711",
+    "(512)482-8244"
+  ],
+  "tiger:reviewed": [
+    "no; yes;no",
+    "aerial",
+    "no",
+    "Bing",
+    "yes",
+    "no; no; yes"
+  ],
+  "electrified": [
+    "no"
+  ],
+  "nudism": [
+    "yes"
+  ],
+  "payment:vertcoin": [
+    "yes"
+  ],
+  "is_in:state_code": [
+    "TX"
+  ],
+  "noexit": [
+    "yes"
+  ],
+  "organic": [
+    "yes"
+  ],
+  "segregated": [
+    "yes",
+    "no"
+  ],
+  "nrhp:id": [
+    "78003338",
+    "71000919",
+    "78003294",
+    "78003327",
+    "78003300",
+    "78003321",
+    "78003316",
+    "78003322",
+    "75001947",
+    "78003349",
+    "78003273",
+    "78003311",
+    "78003301",
+    "71000920",
+    "78003310",
+    "78003293",
+    "78003296",
+    "78003269",
+    "78003297",
+    "78003357"
+  ],
+  "route": [
+    "junction",
+    "bicycle"
+  ],
+  "atm": [
+    "yes",
+    "no"
+  ],
+  "cartype": [
+    "utility_vehicle",
+    "lorry"
+  ],
+  "shelter_type": [
+    "picnic_shelter",
+    "public_transport"
+  ],
+  "length": [
+    "0.5 miles",
+    "0.5 Miles",
+    "0.6 miles",
+    "1.5 miles",
+    "2.2 miles",
+    "1.25 Miles"
+  ],
+  "gnis:Class": [
+    "Populated Place"
+  ],
+  "place": [
+    "town",
+    "city",
+    "locality",
+    "island",
+    "hamlet",
+    "county",
+    "suburb",
+    "village",
+    "neighbourhood",
+    "Yellow Bike Project"
+  ],
+  "tiger:name_direction_prefix": [
+    "N:S",
+    "N;S;N:S",
+    "W; W; E",
+    "E",
+    "E; W; W",
+    "N:S; N",
+    "N:W",
+    "NE",
+    "N",
+    "S",
+    "W",
+    "W; N",
+    "W; E",
+    "S:W",
+    "N; S; N"
+  ],
+  "payment:litecoin": [
+    "yes",
+    "no"
+  ],
+  "footway": [
+    "crossing",
+    "sidewalk"
+  ],
+  "tiger:PLACENS": [
+    "02412035",
+    "02413531",
+    "02409761",
+    "02412124",
+    "02411612",
+    "02410260",
+    "02413600",
+    "02411564",
+    "02412014",
+    "02412223",
+    "02411022",
+    "02411256",
+    "02410723",
+    "02413588",
+    "02410833",
+    "02413579",
+    "02412297",
+    "02409418",
+    "02410584",
+    "02411203"
+  ],
+  "origin": [
+    "asian"
+  ],
+  "destination": [
+    "Woodland Avenue",
+    "FM 1825",
+    "Oltorf Street",
+    "Slaughter Creek Overpass",
+    "Yarrington Road",
+    "Waco",
+    "William Cannon Drive;Stassney Lane",
+    "Riverside Drive",
+    "East 15th Street",
+    "Enfield Road",
+    "Avery Ranch Boulevard",
+    "Kyle",
+    "Stassney Lane",
+    "Oak Knoll Drive",
+    "Kyle Crossing",
+    "Slaughter Lane",
+    "Anderson Mill Road;Lake Creek Parkway",
+    "Brushy Creek Road;Cypress Creek Road",
+    "Toll 45 East",
+    "Mopac Boulevard"
+  ],
+  "propsoed": [
+    "tertiary"
+  ],
+  "recycling:glass": [
+    "yes"
+  ],
+  "sac_scale": [
+    "mountain_hiking",
+    "hiking"
+  ],
+  "contact:website": [
+    "https://momentsfromtheheart.com",
+    "http://www.ampofirearms.com/"
+  ],
+  "entrance": [
+    "yes",
+    "main",
+    "contractor_pickup"
+  ],
+  "mtb:scale": [
+    "3"
+  ],
+  "addr:county": [
+    "Hays, TX"
+  ],
+  "parking:lane:both": [
+    "fire_lane",
+    "perpendicular"
+  ],
+  "operator": [
+    "Regions",
+    "Austin Parks and Recreation Department",
+    "Shell",
+    "Bicycle Sport Shop",
+    "Capital One Bank",
+    "Wells Fargo",
+    "Bank of America",
+    "First State Bank Central Texas",
+    "Wells Fargo Bank",
+    "Hallmark Gold Crown",
+    "Chase Bank",
+    "T-Mobile",
+    "Tetco",
+    "Redeemer Lutheran Church",
+    "Lakeline Mall",
+    "Farm To Market",
+    "Jack Murray",
+    "Capitol Credit Union",
+    "Capital Metropolitan Transportation Authority",
+    "Amplify"
+  ],
+  "tiger:FUNCSTAT": [
+    "A"
+  ],
+  "tiger:CPI": [
+    "Y",
+    "N"
+  ],
+  "Texas_Trunk_System": [
+    "yes",
+    "formerly Phase 1 (now inside CAMPO)"
+  ],
+  "Paved": [
+    "Yes"
+  ],
+  "horse": [
+    "yes",
+    "no"
+  ],
+  "tiger:upload_uuid": [
+    "bulk_upload.pl-fe5dd940-0c36-4278-b06b-0870abb734c8",
+    "bulk_upload.pl-a170b62b-143d-4da1-a941-18646a7f660b",
+    "bulk_upload.pl-7e0ca43e-1540-42be-b41f-9a7bbb8073a6",
+    "bulk_upload.pl-6f0acd67-1a7c-4153-bcae-9de3b9fe5943",
+    "bulk_upload.pl-068d2fa3-4fc1-4157-aff6-1fd68251d336",
+    "bulk_upload.pl-26958ed0-1ff2-4f37-b650-891dd917acec",
+    "bulk_upload.pl-f929f7f4-9fbb-4319-bfff-ec7f596b4dcf",
+    "bulk_upload.pl-9f2d4f4c-baa4-479c-aeb2-ab18d3330ecb",
+    "bulk_upload.pl-d2be3ce0-24d6-40df-9a5f-7cd099f6eb32; bulk_upload.pl-749b8ce7-47ff-4cbe-90c4-fa27cdffb9b0",
+    "bulk_upload.pl-d2be3ce0-24d6-40df-9a5f-7cd099f6eb32",
+    "bulk_upload.pl-749b8ce7-47ff-4cbe-90c4-fa27cdffb9b0",
+    "bulk_upload.pl-a170b62b-143d-4da1-a941-18646a7f660b; bulk_upload.pl-7e0ca43e-1540-42be-b41f-9a7bbb8073a6; bulk_upload.pl-7e0ca43e-1540-42be-b41f-9a7bbb8073a6"
+  ],
+  "service": [
+    "tyres",
+    "delivery",
+    "yard",
+    "pa\\",
+    "alley",
+    "emergency_access",
+    "drive-through",
+    "siding",
+    "Street",
+    "drive-through;driveway",
+    "driveway",
+    "parking",
+    "parking_aisle",
+    "commercial_office_park driveway",
+    "spur"
+  ],
+  "area": [
+    "yes",
+    "no"
+  ],
+  "button_operated": [
+    "yes",
+    "no"
+  ],
+  "opening_hours": [
+    "11:00-20:00",
+    "(512) 321-1033",
+    "12pm - 12am",
+    "Mo-Fr 09:00-18:00; Sa 10:00-18:00",
+    "Mo-Fr 07:30-18:00; Sa 09:00-12:00",
+    "Monday-Friday 8-6; Saturday, 9-2",
+    "Monday 10:30 am – 9:00 pm Tuesday 10:30 am – 9:00 pm Wednesday 10:30 am – 9:00 pm Thursday 10:30 am – 9:00 pm Friday 10:30 am – 10:00 pm Saturday 10:30 am – 10:00 pm Sunday 10:30 am – 9:00 pm",
+    "24/7",
+    "7:00am - 12:00am",
+    "Monday Thru Friday 7:00am until 7:00pm; Saturday 9:00am until 4:00pm; Closed Sundays",
+    "9:00-23:00",
+    "Mo-Sa 14:00-02:00; Su 12:00-02:00",
+    "We 16:00-22:00; Th-Su 14:00-22:00",
+    "Mo-Fr 07:30-18:00",
+    "Mo-Sa 11:00-20:00",
+    "Mo-Fr 08:00-17:00",
+    "Mo-Fr 07:30-17:00",
+    "Monday 9:00 am – 9:00 pm Tuesday 9:00 am – 9:00 pm Wednesday 9:00 am – 9:00 pm Thursday 9:00 am – 9:00 pm Friday 9:00 am – 9:00 pm Saturday 9:00 am – 9:00 pm Sunday 10:00 am – 7:00 pm",
+    "Mo-Fr 11:30-14:30,17:30-22:00;Sa 12:00-22:00",
+    "Mon-Sat:  8:00am - 9:00pm Sun:  10:00am - 8:00pm"
+  ],
+  "lake:surface_area": [
+    "7.660"
+  ],
+  "addr:housename": [
+    "Suite # 138",
+    "Suite #116",
+    "Lowes",
+    "Bldg # C",
+    "Tree House Italian Grill",
+    "Suite # 14",
+    "Wells Fargo Bank",
+    "4401",
+    "2728 South Congress Ave",
+    "New India Cuisine",
+    "Suite : B-400",
+    "Bldg D",
+    "Rockwood Plaza",
+    "1605 E. Oltorf",
+    "Suite # 501",
+    "\"basement\" of building where Chinatown is",
+    "Suite # E1",
+    "Suite # 146",
+    "Suite # 121",
+    "Southside Flying Pizza"
+  ],
+  "tiger:name_base_2": [
+    "County Road 332",
+    "County Road 374",
+    "County Road 85",
+    "Farm-to-Market Road 3000",
+    "County Road 117",
+    "County Road 178",
+    "Smith",
+    "Blackjack Oak",
+    "2nd",
+    "County Road 241",
+    "County Road 56",
+    "County Road 191",
+    "Rosanky Cattle Company",
+    "County Road 243",
+    "County Road 280",
+    "State Highway 95 (Bus)",
+    "County Road 129",
+    "County Road 113",
+    "County Road 306",
+    "County Road 402"
+  ],
+  "width": [
+    "20",
+    "46",
+    "varies",
+    "18m",
+    "1",
+    "3",
+    "2",
+    "7"
+  ],
+  "border_type": [
+    "county",
+    "city",
+    "village"
+  ],
+  "tiger:name_base_3": [
+    "County Road 227",
+    "State Highway 95",
+    "Trail Driver",
+    "Ranch to Market Road 620",
+    "Capital of Texas:United States Highway 290",
+    "Capital of Texas",
+    "County Road 114",
+    "State Loop 1",
+    "Hwy 71 Srvc Rd",
+    "I-35 Frontage",
+    "Valley View West",
+    "Farm-to-Market Road 1431",
+    "United States Highway 183",
+    "State Highway 29",
+    "State Highway 21"
+  ],
+  "stars": [
+    "5"
+  ],
+  "lake:max_depth:feet": [
+    "210"
+  ],
+  "park_ride": [
+    "bus",
+    "yes",
+    "no"
+  ],
+  "odbl:note": [
+    "Completely reworked this road based on TIGER 2011 data"
+  ],
+  "tiger:PLCIDFP": [
+    "4871324",
+    "4874216",
+    "4880058",
+    "4858586",
+    "4829336",
+    "4877632",
+    "4817612",
+    "4839952",
+    "4805000",
+    "4806242",
+    "4846440",
+    "4851492",
+    "4876924",
+    "4840984",
+    "4871948",
+    "4832906",
+    "4842664",
+    "4813552",
+    "4850200",
+    "4865552"
+  ],
+  "enforcement": [
+    "traffic_signals"
+  ],
+  "tiger:NAMELSAD": [
+    "Cedar Park city",
+    "Creedmoor city",
+    "Mustang Ridge city",
+    "Hays city",
+    "Webberville village",
+    "Lakeway city",
+    "Kyle city",
+    "Bear Creek village",
+    "Niederwald city",
+    "Woodcreek city",
+    "Uhland city",
+    "San Leanna village",
+    "Austin city",
+    "Manor city",
+    "West Lake Hills city",
+    "Sunset Valley city",
+    "Georgetown city",
+    "Taylor city",
+    "Point Venture village",
+    "Liberty Hill city"
+  ],
+  "complete": [
+    "no"
+  ],
+  "bus": [
+    "yes"
+  ],
+  "brand": [
+    "Fiat",
+    "Shell",
+    "Texaco",
+    "Wells Fargo",
+    "Toyota",
+    "Valero",
+    "Shamrock",
+    "Murphy USA",
+    "Exxon",
+    "Infiniti",
+    "Chevron",
+    "Buckee's",
+    "Lexus",
+    "Tesla Motors",
+    "Conoco"
+  ],
+  "tiger:NameLSAD": [
+    "Kyle city"
+  ],
+  "ford": [
+    "yes"
+  ],
+  "is_in:state": [
+    "Texas"
+  ],
+  "tiger:PCINECTA": [
+    "N"
+  ],
+  "construction": [
+    "building",
+    "service",
+    "apartments",
+    "residential",
+    "trunk",
+    "motorway_link;motorway",
+    "primary",
+    "motorway_link",
+    "motorway",
+    "secondary_link",
+    "yes",
+    "trunk_link",
+    "tertiary",
+    "secondary"
+  ],
+  "automated": [
+    "yes"
+  ],
+  "population": [
+    "2121",
+    "308",
+    "385",
+    "15322",
+    "852",
+    "790",
+    "4551",
+    "698",
+    "2657",
+    "190",
+    "7591",
+    "1472",
+    "5794",
+    "241",
+    "2703",
+    "42467",
+    "2197",
+    "486",
+    "20655",
+    "376"
+  ],
+  "recycling:aluminium": [
+    "yes"
+  ],
+  "waste": [
+    "trash"
+  ],
+  "toll:automatic": [
+    "TxTAG"
+  ],
+  "oneway:bicycle": [
+    "no"
+  ],
+  "tiger:name_direction_suffix": [
+    "E",
+    "E:W",
+    "SW",
+    "N",
+    "S",
+    "SW; NW",
+    "W",
+    "SE",
+    "NW"
+  ],
+  "name:backward": [
+    "Taylor Falls Drive"
+  ],
+  "tiger:zip_right_4": [
+    "78734",
+    "78642",
+    "78759",
+    "78757",
+    "78620"
+  ],
+  "bicycle_parking": [
+    "stands"
+  ],
+  "County": [
+    "Williamson"
+  ],
+  "gnis:reviewed": [
+    "no"
+  ],
+  "aeroway": [
+    "apron",
+    "runway",
+    "taxiway",
+    "helipad",
+    "gate",
+    "hangar",
+    "aerodrome"
+  ],
+  "voltage-low": [
+    "138000"
+  ],
+  "dispensing": [
+    "yes"
+  ],
+  "source:ref": [
+    "local_knowledge"
+  ],
+  "landuse": [
+    "retail",
+    "water well",
+    "reservoir",
+    "quarry",
+    "conservation",
+    "farm",
+    "residential",
+    "grass",
+    "cemetery",
+    "allotments",
+    "Horse Stable",
+    "landfill",
+    "village_green",
+    "industrial",
+    "commercial",
+    "forest",
+    "military",
+    "recreation_ground",
+    "Outdoor Horse Run",
+    "Covered Horse Arena"
+  ],
+  "tracktype": [
+    "grade1",
+    "grade3",
+    "grade2",
+    "grade5",
+    "grade4",
+    "grade2;grade3"
+  ],
+  "recycling:plastic": [
+    "yes"
+  ],
+  "bridge": [
+    "yes",
+    "viaduct",
+    "no"
+  ],
+  "fut_ref": [
+    "pro_Shop"
+  ],
+  "gnis:fcode": [
+    "46006",
+    "39011"
+  ],
+  "admin_level": [
+    "8",
+    "6"
+  ],
+  "drive_through": [
+    "yes",
+    "no"
+  ],
+  "tiger:PCICBSA": [
+    "Y",
+    "N"
+  ],
+  "car_wash": [
+    "no"
+  ],
+  "noname": [
+    "yes"
+  ],
+  "source:noname": [
+    "Texas Natural Resources Information System StratMap Transportation Layer (http://www.tnris.org/get-data?quicktabs_maps_data=1#transport)"
+  ],
+  "generator:method": [
+    "combustion"
+  ],
+  "trail_visibility": [
+    "intermediate"
+  ],
+  "cables": [
+    "3",
+    "4",
+    "6"
+  ],
+  "recycling:cardboard": [
+    "yes"
+  ],
+  "recycling_type": [
+    "centre"
+  ],
+  "sport": [
+    "soccer",
+    "multi",
+    "basketball",
+    "yoga",
+    "american_football",
+    "football; athletics",
+    "cycling",
+    "tennis",
+    "10pin",
+    "football",
+    "baseball",
+    "volleyball",
+    "softball",
+    "weightlifting",
+    "gymnastics",
+    "athletics",
+    "shooting",
+    "football; soccer; athletics",
+    "golf",
+    "swimming"
+  ],
+  "is_in:country": [
+    "USA"
+  ],
+  "building:levels": [
+    "2-3",
+    "26",
+    "15",
+    "16",
+    "44",
+    "56",
+    "37",
+    "1",
+    "3",
+    "2",
+    "5",
+    "4",
+    "7",
+    "6",
+    "8"
+  ],
+  "recycling:cans": [
+    "yes"
+  ],
+  "wetap:statusnote": [
+    "But warm and tepid water"
+  ],
+  "cycleway": [
+    "track",
+    "opposite_track",
+    "lane",
+    "none",
+    "no"
+  ],
+  "note": [
+    "formerly the John Cornelson House",
+    "FIXME",
+    "Record <a href=\"http://tin.er.usgs.gov/mineplant/show.php?labno=6172\">6172</a> of the <a href=\"http://tin.er.usgs.gov/mineplant/\">Active mines and mineral plants in the US</a>",
+    "Record <a href=\"http://tin.er.usgs.gov/mineplant/show.php?labno=2942\">2942</a> of the <a href=\"http://tin.er.usgs.gov/mineplant/\">Active mines and mineral plants in the US</a>",
+    "high mast",
+    "7, 127, 161, 935, BTI",
+    "100, 127",
+    "Record <a href=\"http://tin.er.usgs.gov/mineplant/show.php?labno=3374\">3374</a> of the <a href=\"http://tin.er.usgs.gov/mineplant/\">Active mines and mineral plants in the US</a>",
+    "Record <a href=\"http://tin.er.usgs.gov/mineplant/show.php?labno=6176\">6176</a> of the <a href=\"http://tin.er.usgs.gov/mineplant/\">Active mines and mineral plants in the US</a>",
+    "Record <a href=\"http://tin.er.usgs.gov/mineplant/show.php?labno=2538\">2538</a> of the <a href=\"http://tin.er.usgs.gov/mineplant/\">Active mines and mineral plants in the US</a>",
+    "11.29 acres",
+    "Record <a href=\"http://tin.er.usgs.gov/mineplant/show.php?labno=6173\">6173</a> of the <a href=\"http://tin.er.usgs.gov/mineplant/\">Active mines and mineral plants in the US</a>",
+    "Record <a href=\"http://tin.er.usgs.gov/mineplant/show.php?labno=6177\">6177</a> of the <a href=\"http://tin.er.usgs.gov/mineplant/\">Active mines and mineral plants in the US</a>",
+    "Full service animal hospital.",
+    "100",
+    "Record <a href=\"http://tin.er.usgs.gov/mineplant/show.php?labno=2531\">2531</a> of the <a href=\"http://tin.er.usgs.gov/mineplant/\">Active mines and mineral plants in the US</a>",
+    "100, 20",
+    "Record <a href=\"http://tin.er.usgs.gov/mineplant/show.php?labno=2539\">2539</a> of the <a href=\"http://tin.er.usgs.gov/mineplant/\">Active mines and mineral plants in the US</a>",
+    "4326. Add routes 100, 350",
+    "100, 101, 1L, 1M, 5, 7, 10, 20, 30d"
+  ],
+  "lake:max_depth": [
+    "64"
+  ],
+  "opening hours": [
+    "https://momentsfromtheheart.com/location/"
+  ],
+  "nq": [
+    "Chevron"
+  ],
+  "self_service": [
+    "yes"
+  ],
+  "fire_hydrant:type": [
+    "pillar"
+  ],
+  "tiger:name_direction_prefix_2": [
+    "S",
+    "E",
+    "W",
+    "N"
+  ],
+  "disused:amenity": [
+    "fuel",
+    "restaurant"
+  ],
+  "recycling:beverage_cartons": [
+    "yes"
+  ],
+  "Name": [
+    "Connecting Trail to Road"
+  ],
+  "recycling:paper_packaging": [
+    "yes"
+  ],
+  "shelter": [
+    "no\\",
+    "yes",
+    "no"
+  ],
+  "addr:full": [
+    "3424 W William Cannon Dr",
+    "2240 W Braker Ln",
+    "National Instruments Corporation11500 N Mopac ExpwyAustin, TX 78759-3504"
+  ],
+  "is_in:country_code": [
+    "US"
+  ],
+  "destination:right": [
+    "Monterey Oaks Boulevard"
+  ],
+  "parking:lane:right": [
+    "fire_lane",
+    "perpendicular"
+  ],
+  "tiger:name_base": [
+    "Monterrey",
+    "Brown",
+    "Schafer",
+    "Waihi",
+    "Cypress Creek",
+    "Bulter",
+    "Hawea",
+    "State Loop 150; Chestnut",
+    "Nanakuli",
+    "Scarlet Oak",
+    "Old Austin",
+    "Shadow Oaks",
+    "Keehe",
+    "Koloiki",
+    "Yupon",
+    "Ed Bluestein",
+    "Lisa",
+    "Youngs Prairie",
+    "Reids Bend",
+    "Tiger Woods"
+  ],
+  "ref:left": [
+    "238B"
+  ],
+  "gnis:created": [
+    "12/08/2003",
+    "04/11/2000",
+    "10/02/2003",
+    "07/13/1999",
+    "06/01/1990",
+    "12/03/2003",
+    "04/10/2000",
+    "08/01/1994;11/25/2003",
+    "12/09/2003",
+    "02/11/2004",
+    "08/01/1994",
+    "12/31/2003",
+    "04/12/2000",
+    "11/13/2007",
+    "10/09/2003",
+    "11/25/2003",
+    "02/18/2004",
+    "10/07/2003",
+    "11/30/1979",
+    "02/12/2004"
+  ],
+  "state_capital": [
+    "yes"
+  ],
+  "building": [
+    "entrance",
+    "hotel",
+    "pavilion",
+    "business",
+    "office",
+    "apartments",
+    "house",
+    "residential",
+    "university",
+    "civic",
+    "commercial",
+    "school",
+    "public",
+    "museum",
+    "construction",
+    "church",
+    "warehouse",
+    "yes",
+    "retail",
+    "Dobie Tower"
+  ],
+  "delivery": [
+    "no",
+    "No"
+  ],
+  "payment:coins": [
+    "yes"
+  ],
+  "url": [
+    "http://stores.lowes.com/lowes/cgi/site?site=2513",
+    "http://stores.lowes.com/lowes/cgi/site?site=0159",
+    "http://stores.lowes.com/lowes/cgi/site?site=2774"
+  ],
+  "proposed": [
+    "turning_circle",
+    "service",
+    "residential",
+    "Residential",
+    "secondary_link",
+    "service road",
+    "turning circle",
+    "tertiary",
+    "secondary"
+  ],
+  "wifi": [
+    "yes",
+    "free"
+  ],
+  "sale": [
+    "yes",
+    "no"
+  ],
+  "tiger:MTFCC": [
+    "G4110"
+  ],
+  "tactile_paving": [
+    "yes",
+    "no"
+  ],
+  "tiger:name_direction_suffix_2": [
+    "E",
+    "W",
+    "N"
+  ],
+  "tiger:name_direction_suffix_3": [
+    "S",
+    "N"
+  ],
+  "tiger:name_direction_suffix_1": [
+    "S",
+    "E",
+    "W",
+    "N"
+  ],
+  "maxspeed:forward": [
+    "10 mph"
+  ],
+  "is_in:iso_3166_2": [
+    "US:TX"
+  ]
+}
