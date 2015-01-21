@@ -1,4 +1,4 @@
-#Final Project for Data Wrangling with MongoDB ([PDF]())
+#Final Project for Data Wrangling with MongoDB ([PDF](https://github.com/allanbreyes/udacity-data-science/raw/master/p2/submission.pdf))
 by Allan Reyes in fulfillment of Udacity’s Data Analyst Nanodegree, Project 2
 ##Project Summary
 Name: Allan Reyes
@@ -247,16 +247,16 @@ There are still several opportunities for cleaning and validation that I left un
 This review of this data is cursory.  While there are many additional opportunities for cleaning and validation, I believe the data set was well-cleaned for the purposes of this exercise.
 
 ##Files
-- `data/`:
-- `lesson6/`:
-- `audit.py`:
-- `data.py`:
-- `mapparser.py`:
-- `mongodb.conf`:
-- `query.py`:
-- `README.md`:
-- `setup.sh`: 
-- `submission.pdf`:
-- `subset.py`:
-- `suffix.py`:
-- `tags.py`:
+- `data/`: data files and output from scripts (`austin.osm` and `austin.osm.json` excluded)
+- `lesson6/`: source code for scripts completed in Lesson 6 of Data Wrangling with MongoDB
+- `audit.py`: audits streets and zipcodes, also provides cleaning methods
+- `data.py`: builds the JSON file from the OSM data; parses, cleans, and shapes data
+- `mapparser.py`: parses the OSM file and provides insight on tag data
+- `mongodb.conf`: configuration file for MongoDB server daemon
+- `query.py`: contains MongoDB queries
+- `README.md`: this file
+- `setup.sh`: shell script to launch MongoDB server
+- `submission.pdf`: PDF format of this document
+- `subset.py`: produces a smaller subset of the main data
+- `suffix.py`: parses data from a suffix CSV file, provides suffix conversion/cleaning methods
+- `tags.py`: script for conducting exploratory data analysis on tag data
