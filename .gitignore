@@ -4,3 +4,5 @@ courses
 *.pyc
 p2/data/austin.osm
 p2/data/austin.osm.json
+*/db
+*/log
