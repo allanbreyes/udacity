@@ -1,3 +1,6 @@
 courses
 *.docx
 *.tmp
+*.pyc
+p2/data/austin.osm
+p2/data/austin.osm.json

@@ -13,13 +13,9 @@ import xml.etree.ElementTree as ET
 import pprint
 
 def count_tags(filename):
-    tree = ET.parse(filename)
-    root = tree.getroot()
-    tag_count = {root.tag: 1}
-    for child in root:
-        add_tag(child.tag, tag_count)
-        for tag in get_subtags(child):
-            add_tag(tag, tag_count)
+    tag_count = {}
+    for _, element in ET.iterparse(filename, events=("start",)):
+        add_tag(element.tag, tag_count)
     return tag_count
 
 def add_tag(tag, tag_count):
@@ -27,13 +23,6 @@ def add_tag(tag, tag_count):
         tag_count[tag] += 1
     else:
         tag_count[tag] = 1
-
-def get_subtags(element):
-    tags = []
-    for child in element:
-        tags.append(child.tag)
-        tags += get_subtags(child)
-    return tags
 
 def test():
 
