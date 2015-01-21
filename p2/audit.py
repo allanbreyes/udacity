@@ -24,6 +24,7 @@ def is_word(string):
 def clean_suffix(string):
     return suffix_table.convert(string.lower()).title()
 
+<<<<<<< HEAD
 def clean_street_name(street_name):
     street_name_split = re.split(r'(\W+)', street_name)
     for i in range(len(street_name_split)):
@@ -33,6 +34,26 @@ def clean_street_name(street_name):
         if is_word(word) and suffix_table.has_suffix(word):
             street_name_split[i] = clean_suffix(word)
     return ''.join(street_name_split)
+=======
+def clean_street_address(street_address):
+    """ cleans up a street name """
+    # split street name at word/non-word boundaries
+    street_address_split = re.split(r'(\W+)', street_address)
+
+    # iterate through indexes of split street name array
+    for i in range(len(street_address_split)):
+        word = street_address_split[i]
+
+        # replace any periods in word
+        if '.' in word:
+            street_address_split[i] = word.replace('.', '')
+
+        # check if word-like and is present in suffix table
+        if is_word(word) and suffix_table.has_suffix(word):
+            # if true, clean the suffix
+            street_address_split[i] = clean_suffix(word)
+    return ''.join(street_address_split)
+>>>>>>> 138bd03... finish data.py
 
 
 def audit_street_type(street_types, street_name):
