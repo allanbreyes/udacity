@@ -19,15 +19,22 @@ To get started, download the entire directory, `p4`, and open it in a browser lo
 **Framerate timelines**: saved JSON timelines and screenshots for `pizza.html` are located in the `dev/` directory, and shown below:
 
 *Original*
+
 ![Original](https://raw.githubusercontent.com/allanbreyes/udacity-front-end/master/p4/dev/0-pizza-original.png)
 
+
 *After loop optimization*
+
 ![After loop optimization](https://raw.githubusercontent.com/allanbreyes/udacity-front-end/master/p4/dev/1-pizza-loop-optimization.png)
 
+
 *After debouncing*
+
 ![After debouncing](https://raw.githubusercontent.com/allanbreyes/udacity-front-end/master/p4/dev/2-pizza-animation-optimization.png)
 
+
 *After minify*
+
 ![After minify](https://raw.githubusercontent.com/allanbreyes/udacity-front-end/master/p4/dev/3-pizza-minify.png)
 
 ### Further areas of improvement
