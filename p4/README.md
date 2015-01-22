@@ -13,8 +13,22 @@ To get started, download the entire directory, `p4`, and open it in a browser lo
 - Minifying CSS/JS: all CSS and JS files were minified--but not obfuscated--to ensure faster downloading.  The formatted and indented files are still present in their respective directories, without the `.min` in their filenames.
 
 ## Frame rate optimization
-- Script optimization: unnecessary JS operations were pulled out of `for` loops where possible, in `views/js/main.js`.
+- Loop optimization: unnecessary JS operations were pulled out of `for` loops where possible, in `views/js/main.js`.
 - Debouncing: scroll events were 'debounced' to decouple the animations and only reflow/repaint when needed.
+
+**Framerate timelines**: saved JSON timelines and screenshots for `pizza.html` are located in the `dev/` directory, and shown below:
+
+*Original*
+![Original](https://raw.githubusercontent.com/allanbreyes/udacity-front-end/master/p4/dev/0-pizza-original.png)
+
+*After loop optimization*
+![After loop optimization](https://raw.githubusercontent.com/allanbreyes/udacity-front-end/master/p4/dev/1-pizza-loop-optimization.png)
+
+*After debouncing*
+![After debouncing](https://raw.githubusercontent.com/allanbreyes/udacity-front-end/master/p4/dev/2-pizza-animation-optimization.png)
+
+*After minify*
+![After minify](https://raw.githubusercontent.com/allanbreyes/udacity-front-end/master/p4/dev/3-pizza-minify.png)
 
 ## Further areas of improvement
 - Browser caching, configured server-side, could have reduced page loading time.
