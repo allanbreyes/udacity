@@ -228,7 +228,6 @@ var AppViewModel = function() {
       mapCanvas = $('#map-canvas')[0],
       center = new google.maps.LatLng(41.8886, -87.6310); // Chicago
 
-
   // google map marker tooltip
   var infoWindow = new google.maps.InfoWindow();
 
@@ -274,9 +273,10 @@ var AppViewModel = function() {
     return results;
   });
 
-  /* SELECTION */
-
   // triggered when a corner in `#list` is clicked or a marker is clicked
+  /* Fetches from marker/infowindow data and animate markers
+   * @param {object} corner - Corner instance
+   */
   self.selectCorner = function(corner) {
     // fetch and set html to info window content
     infoWindow.setContent(corner.formattedMeetupList());
@@ -296,9 +296,8 @@ var AppViewModel = function() {
     });
   };
 
-  /* MEETUP */
-
-  // fetch meetups via JSON-P from Meetup API
+  /* Fetches meetups via JSON-P from Meetup API
+   * @params {string} url - Meetup API URL */
   function fetchMeetups(url) {
     var data;
 
@@ -330,7 +329,7 @@ var AppViewModel = function() {
     });
   }
 
-  // parse through `meetupList` and extract `Corner` objects
+  /* Parses through the meetupList and extracts Corner objects */
   function extractCorners() {
     // loop through meetup list
     self.meetupList().forEach(function(meetup){
@@ -368,8 +367,9 @@ var AppViewModel = function() {
     });
   }
 
-  // checks if a specific corner by `id` already exists in `cornerList`
-  // TODO: check if they have the same lat/lon--but how to handle multiple floors?
+  /* Checks if a specific corner by `id` already exists in `cornerList`
+   * @param {int} id - id number
+   */
   function hasCornerId(id) {
     var result = false;
     self.cornerList().forEach(function(corner) {
@@ -380,7 +380,9 @@ var AppViewModel = function() {
     return result;
   }
 
-  // fetches a corner from `cornerList` by `id`
+  /* Fetches a corner from `cornerList` by `id`
+   * @param {int} id - id number
+   */
   // TODO: check if they have the same lat/lon--but how to handle multiple floors?
   function getCornerById(id) {
     var foundCorner = null;
@@ -394,8 +396,7 @@ var AppViewModel = function() {
     return foundCorner;
   }
 
-  /* LISTENERS */
-
+  // initialization listener
   google.maps.event.addDomListener(window, 'load', initialize);
 };
 
