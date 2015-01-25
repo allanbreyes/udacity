@@ -209,8 +209,6 @@ var GoogleMap = function(center, element) {
   return map;
 };
 
-
-
 /* Main application view model */
 var AppViewModel = function() {
   var self = this;
@@ -291,9 +289,10 @@ var AppViewModel = function() {
 
     // animate markers
     corner.marker.setAnimation(google.maps.Animation.BOUNCE);
-    console.log('Animate!');
-    self.cornerList().forEach(function(corner) {
-      corner.marker.setAnimation(null);
+    self.cornerList().forEach(function(old_corner) {
+      if (corner != old_corner) {
+        old_corner.marker.setAnimation(null);
+      }
     });
   };
 
