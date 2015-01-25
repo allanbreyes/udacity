@@ -1,8 +1,7 @@
 // signed url from meetup api, taken from https://secure.meetup.com/meetup_api/console/?path=/2/open_events
 var meetupApiUrl = 'http://api.meetup.com/2/open_events?status=upcoming&radius=5&category=34&and_text=False&limited_events=False&text=coding+programming+ruby+python+javascript+html&desc=False&offset=0&photo-host=public&format=json&lat=41.878114&page=100&lon=-87.629798&sig_id=178346822&sig=1a186723262b63d4b2deee474b8d95bc0ec2ec9f';
 
-/* monkey patches for additional string functionality */
-// capitalizes first letter of each word if sentence is longer than 10 characters
+/* Capitalizes first letter of each word if sentence is longer than 10 characters */
 String.prototype.titleize = function() {
   var words = this.split(' ');
   var array = [];
@@ -19,13 +18,16 @@ String.prototype.titleize = function() {
   return array.join(' ');
 };
 
-// checks if a substring `other` is found inside the string
+/* Checks if a substring `other` is found inside the string */
 String.prototype.contains = function(other) {
   return this.indexOf(other) !== -1;
 };
 
-// corner model constructor, where `venueObject` == sub-item from Meetup API `open_venue` JSON response
-var Corner = function(venueObject) {
+/* Represents a coding "corner", or a geographical place or venue.
+ * @constructor
+ * @param {object} venueObject - JSON-like venue from the Meetup open_venue API
+ */
+var Corner = function(venueObject, map) {
   var self = this;
 
   // load and check for latitude/longitude and set to `location`
@@ -49,18 +51,50 @@ var Corner = function(venueObject) {
   // initialize empty meetup
   self.meetups = ko.observableArray([]);
 
-  // initialize empty marker
-  self.marker = new google.maps.Marker();
+  // initialize marker
+  self.marker = (function(corner) {
+    var marker;
+
+    // validate that the corner has a location (see `Corner` model for pseudo-validation)
+    if (corner.location()) {
+      marker = new google.maps.Marker({
+        position: corner.location(),
+        map: map,
+      });
+    }
+
+    // return the marker object
+    return marker;
+  })(self);
+
+  // returns the formatted HTML for a corner's upcoming open meetups
+  self.formattedMeetupList = function() {
+    meetupSubstring = '<ul class="info-window-list">';
+    self.meetups().forEach(function(meetup) {
+      meetupSubstring += '<li>' + '<a href="' + meetup.url() + '">' +
+                           meetup.name() +
+                         '</a>' + ' on ' + meetup.date() + '</li>';
+    });
+    meetupSubstring += '</ul>';
+    return '<div class="info-window-content">' +
+              '<span class="info-window-header">' + self.name() + '</span>' +
+              '<p>' + self.address() + '</p>' +
+              meetupSubstring +
+              '</div>';
+  };
 };
 
-// meetup model constructor, where `meetup` == item from Meetup API `open_venue` JSON response
+/* Represents a Meetup event.
+ * @constructor
+ * @param {object} meetup - JSON-like meetup from the Meetup open_venue API
+ */
 var Meetup = function(meetup) {
   var self = this;
 
   // attach venue object
   self.venueObject = meetup.venue;
 
-  // returns if the meetup has a venue that's listed
+  // returns if the meetup has a venue that is listed
   self.hasVenue = ko.computed(function() {
     if (self.venueObject) {
       return true;
@@ -69,7 +103,6 @@ var Meetup = function(meetup) {
     }
   });
 
-  // load metadata
   self.id = ko.observable(meetup.id);
   self.name = ko.observable(meetup.name.titleize());
   self.group = ko.observable(meetup.group.name);
@@ -83,18 +116,120 @@ var Meetup = function(meetup) {
   self.url = ko.observable(meetup.event_url);
 };
 
-// main application View Model
-var ViewModel = function() {
+/* Represents a Google Map object */
+var GoogleMap = function(center, element) {
   var self = this;
 
-  // future google map object, assigned in `drawMap`
-  var map;
+  // styling elements from http://stackoverflow.com/questions/6588549/make-google-maps-plugin-black-white-or-with-sepia-filter
+  var roadAtlasStyles = [
+    {
+      "featureType": "road.highway",
+      "elementType": "geometry",
+      "stylers": [
+        { "saturation": -100 },
+        { "lightness": -8 },
+        { "gamma": 1.18 }
+      ]
+    }, {
+      "featureType": "road.arterial",
+      "elementType": "geometry",
+      "stylers": [
+        { "saturation": -100 },
+        { "gamma": 1 },
+        { "lightness": -24 }
+      ]
+    }, {
+      "featureType": "poi",
+      "elementType": "geometry",
+      "stylers": [
+        { "saturation": -100 }
+      ]
+    }, {
+      "featureType": "administrative",
+      "stylers": [
+        { "saturation": -100 }
+      ]
+    }, {
+      "featureType": "transit",
+      "stylers": [
+        { "saturation": -100 }
+      ]
+    }, {
+      "featureType": "water",
+      "elementType": "geometry.fill",
+      "stylers": [
+        { "saturation": -100 }
+      ]
+    }, {
+      "featureType": "road",
+      "stylers": [
+        { "color": '#D0B2B2' },
+      ]
+    }, {
+      "featureType": "administrative",
+      "stylers": [
+        { "saturation": -100 }
+      ]
+    }, {
+      "featureType": "landscape",
+      "stylers": [
+        { "saturation": -100 }
+      ]
+    }, {
+      "featureType": "poi",
+      "stylers": [
+        { "saturation": -100 }
+      ]
+    }
+  ];
 
-  // target map canvas from DOM
-  var mapCanvas = $('#map-canvas')[0];
+  var mapOptions = {
+    zoom: 14,
+    center: center,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'usroadatlas']
+    },
 
-  // default center location, currently set to chicago
-  var center = new google.maps.LatLng(41.8886, -87.6310);
+    // customize controls
+    mapTypeControl: false,
+    panControl: false,
+    streetViewControl: false,
+    zoomControl: false
+  };
+
+  // assign a google maps element
+  map = new google.maps.Map(element, mapOptions);
+
+  // apply custom map styling
+  var styledMapOptions = {};
+  var usRoadMapType = new google.maps.StyledMapType(roadAtlasStyles, styledMapOptions);
+  map.mapTypes.set('usroadatlas', usRoadMapType);
+  map.setMapTypeId('usroadatlas');
+
+  return map;
+};
+
+
+
+/* Main application view model */
+var AppViewModel = function() {
+  var self = this;
+
+  function initialize() {
+    map = GoogleMap(center, mapCanvas);
+    fetchMeetups(meetupApiUrl);
+  }
+
+  // check that Google Maps loaded
+  if (typeof google !== 'object' || typeof google.maps !== 'object') {
+    $('#search-summary').text("Could not load Google Maps API");
+  }
+
+  // initialize defaults
+  var map,
+      mapCanvas = $('#map-canvas')[0],
+      center = new google.maps.LatLng(41.8886, -87.6310); // Chicago
+
 
   // google map marker tooltip
   var infoWindow = new google.maps.InfoWindow();
@@ -111,13 +246,12 @@ var ViewModel = function() {
   /* SEARCH */
 
   // search query, bound to `#search-input` search box
-  // TODO: should be a computable
   self.query = ko.observable('');
 
   // bound to `#search-btn`
+  /* Search function. */
   self.search = function() {
-    // empty function for future functionality
-    // keep present to avoid page reload
+    // empty function for future functionality, keep present to avoid page reload
   };
 
   // returns a filtered list of corners if name contains `self.query` data
@@ -146,159 +280,22 @@ var ViewModel = function() {
 
   // triggered when a corner in `#list` is clicked or a marker is clicked
   self.selectCorner = function(corner) {
-
-    /* STUDENT NOTE: I was unable to get proper separation of concerns here, as I could not find
-     *  an intelligent way to use partials or layouts for Google Maps info windows.  I think that
-     *  this is also a security concern for injection attacks, and I would like feedback on how to
-     *  handle this.  Thank you!
-     */
-
-    // generate html for a corner's upcoming open meetups
-    var formattedMeetupList = (function(corner) {
-      result = '<ul class="info-window-list">';
-      corner.meetups().forEach(function(meetup) {
-        result += '<li>' +
-                  '<a href="' +
-                  meetup.url() +
-                  '">' +
-                    meetup.name() +
-                  '</a>' +
-                  ' on ' +
-                  meetup.date() +
-                  '</li>';
-      });
-      result += '</ul>';
-      return result;
-    })(corner);
-    // generate additional html and set to info window content
-    infoWindow.setContent('<div class="info-window-content">' +
-                          '<span class="info-window-header">' +
-                            corner.name() +
-                          '</span>' +
-                          '<p>' +
-                            corner.address() +
-                          '</p>' +
-                            formattedMeetupList +
-                          '</div>'
-                         );
+    // fetch and set html to info window content
+    infoWindow.setContent(corner.formattedMeetupList());
 
     // open up the appropriate info window at the selected corner's marker
     infoWindow.open(map, corner.marker);
 
     // scroll the map to the marker's position
     map.panTo(corner.marker.position);
+
+    // animate markers
+    corner.marker.setAnimation(google.maps.Animation.BOUNCE);
+    console.log('Animate!');
+    self.cornerList().forEach(function(corner) {
+      corner.marker.setAnimation(null);
+    });
   };
-
-  /* GOOGLE MAPS */
-
-  // creates a black and white google map centered on 'center' onto the 'element' DOM element
-  function drawMap(center, element) {
-    // styling elements from http://stackoverflow.com/questions/6588549/make-google-maps-plugin-black-white-or-with-sepia-filter
-    var roadAtlasStyles = [
-      {
-        "featureType": "road.highway",
-        "elementType": "geometry",
-        "stylers": [
-          { "saturation": -100 },
-          { "lightness": -8 },
-          { "gamma": 1.18 }
-        ]
-      }, {
-        "featureType": "road.arterial",
-        "elementType": "geometry",
-        "stylers": [
-          { "saturation": -100 },
-          { "gamma": 1 },
-          { "lightness": -24 }
-        ]
-      }, {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-          { "saturation": -100 }
-        ]
-      }, {
-        "featureType": "administrative",
-        "stylers": [
-          { "saturation": -100 }
-        ]
-      }, {
-        "featureType": "transit",
-        "stylers": [
-          { "saturation": -100 }
-        ]
-      }, {
-        "featureType": "water",
-        "elementType": "geometry.fill",
-        "stylers": [
-          { "saturation": -100 }
-        ]
-      }, {
-        "featureType": "road",
-        "stylers": [
-          { "color": '#D0B2B2' },
-        ]
-      }, {
-        "featureType": "administrative",
-        "stylers": [
-          { "saturation": -100 }
-        ]
-      }, {
-        "featureType": "landscape",
-        "stylers": [
-          { "saturation": -100 }
-        ]
-      }, {
-        "featureType": "poi",
-        "stylers": [
-          { "saturation": -100 }
-        ]
-      }
-    ];
-
-    var mapOptions = {
-      zoom: 14,
-      center: center,
-      mapTypeControlOptions: {
-        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'usroadatlas']
-      },
-
-      // customize controls
-      mapTypeControl: false,
-      panControl: false,
-      streetViewControl: false,
-      zoomControl: false
-    };
-
-    // assign a google maps element
-    map = new google.maps.Map(element, mapOptions);
-
-    // apply custom map styling
-    var styledMapOptions = {};
-    var usRoadMapType = new google.maps.StyledMapType(roadAtlasStyles, styledMapOptions);
-    map.mapTypes.set('usroadatlas', usRoadMapType);
-    map.setMapTypeId('usroadatlas');
-  }
-
-  // create a map marker
-  function addMarker(corner) {
-    var marker;
-
-    // validate that the corner has a location (see `Corner` model for pseudo-validation)
-    if (corner.location()) {
-      marker = new google.maps.Marker({
-        position: corner.location(),
-        map: map,
-      });
-      // add a listener for when it's clicked
-      google.maps.event.addListener(marker, 'click', function () {
-        self.selectCorner(corner);
-      });
-    }
-
-    // return the marker object
-    return marker;
-  }
 
   /* MEETUP */
 
@@ -352,7 +349,7 @@ var ViewModel = function() {
         // if does not exist
         } else {
           // instantiate a new corner object
-          corner = new Corner(meetup.venueObject);
+          corner = new Corner(meetup.venueObject, map);
 
           // check if has valid location
           if (corner.location()) {
@@ -362,8 +359,10 @@ var ViewModel = function() {
             // and push the meetup object onto that new corner object
             corner.meetups.push(meetup);
 
-            // add a marker
-            corner.marker = addMarker(corner);
+            // add a marker callback
+            google.maps.event.addListener(corner.marker, 'click', function () {
+              self.selectCorner(corner);
+            });
           }
         }
       }
@@ -396,16 +395,9 @@ var ViewModel = function() {
     return foundCorner;
   }
 
-  /* INITIALIZATION */
-
-  function initialize() {
-    drawMap(center, mapCanvas);
-    fetchMeetups(meetupApiUrl);
-  }
-
   /* LISTENERS */
 
   google.maps.event.addDomListener(window, 'load', initialize);
 };
 
-ko.applyBindings(new ViewModel());
+ko.applyBindings(new AppViewModel());
