@@ -6,3 +6,5 @@ p2/data/austin.osm
 p2/data/austin.osm.json
 p2/db
 */log
+.RData
+.Rhistory
