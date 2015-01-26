@@ -392,18 +392,27 @@ It is clear that there is a very strong relationship between the two.  Aside fro
 ## Multivariate Plots
 
 ```{r echo=FALSE, Multivariate_Plots}
+ggplot(data = df,
+       aes(x = citric.acid, y = volatile.acidity,
+           color = quality)) +
+  geom_point() +
+  facet_wrap(~rating)
 
+ggplot(data = df,
+       aes(x = alcohol, y = log10(sulphates),
+           color = quality)) +
+  geom_point() +
+  facet_wrap(~rating)
+
+ggplot(data = df,
+       aes(x = pH, y = alcohol, color = quality)) +
+  geom_point() +
+  facet_wrap(~rating)
 ```
 
 ## Multivariate Analysis
 
-### Talk about some of the relationships you observed in this part of the investigation. Were there features that strengthened each other in terms of looking at your feature(s) of interest?
-
-### Were there any interesting or surprising interactions between features?
-
-### OPTIONAL: Did you create any models with your dataset? Discuss the strengths and limitations of your model.
-
-------
+I primarily examined the 4 features which showed high correlation with quality.  These scatterplots were a bit crowded, so I faceted by `rating` to illustrate the population differences between good wines, average wines, and bad wines.  It's clear that a higher citric acid and lower volatile (acetic) acid contributes towards better wines.  Likewise, better wines tended to have higher sulphates and alcohol content.  Surprisingly, pH had very little visual impact on wine quality, and was shadowed by the larger impact of alcohol.  Interestingly, this shows that what makes a good wine depends on the type of acids that are present.
 
 ## Final Plots and Summary
 
