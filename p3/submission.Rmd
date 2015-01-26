@@ -178,24 +178,25 @@ qplot(df$TAC.acidity)
 I addressed the distributions in the 'Distributions' section.  Boxplots are better suited in visualizing the outliers.
 
 ```{r echo=FALSE}
-get_simple_boxplot <- function(column) {
+get_simple_boxplot <- function(column, ylab) {
   return(qplot(data = df, x = 'simple',
                y = column, geom = 'boxplot',
-               xlab = ''))
+               xlab = '',
+               ylab = ylab))
 }
 
-grid.arrange(get_simple_boxplot(df$fixed.acidity),
-             get_simple_boxplot(df$volatile.acidity),
-             get_simple_boxplot(df$citric.acid),
-             get_simple_boxplot(df$TAC.acidity),
-             get_simple_boxplot(df$residual.sugar),
-             get_simple_boxplot(df$chlorides),
-             get_simple_boxplot(df$free.sulfur.dioxide),
-             get_simple_boxplot(df$total.sulfur.dioxide),
-             get_simple_boxplot(df$density),
-             get_simple_boxplot(df$pH),
-             get_simple_boxplot(df$sulphates),
-             get_simple_boxplot(df$alcohol),
+grid.arrange(get_simple_boxplot(df$fixed.acidity, 'fixed acidity'),
+             get_simple_boxplot(df$volatile.acidity, 'volatile acidity'),
+             get_simple_boxplot(df$citric.acid, 'citric acid'),
+             get_simple_boxplot(df$TAC.acidity, 'TAC acidity'),
+             get_simple_boxplot(df$residual.sugar, 'residual sugar'),
+             get_simple_boxplot(df$chlorides, 'chlorides'),
+             get_simple_boxplot(df$free.sulfur.dioxide, 'free sulf. dioxide'),
+             get_simple_boxplot(df$total.sulfur.dioxide, 'total sulf. dioxide'),
+             get_simple_boxplot(df$density, 'density'),
+             get_simple_boxplot(df$pH, 'pH'),
+             get_simple_boxplot(df$sulphates, 'sulphates'),
+             get_simple_boxplot(df$alcohol, 'alcohol'),
              ncol = 4)
 ```
 
@@ -212,36 +213,60 @@ In univariate analysis, I chose not to tidy or adjust any data, short of plottin
 To get a quick snapshot of how the variables affect quality, I generated box plots for each.
 
 ```{r echo=FALSE, Bivariate_Plots}
-get_bivariate_boxplot <- function(x, y, xlab, ylab) {
-  return(qplot(data = df, x = x, y = y, geom = 'boxplot'))
+get_bivariate_boxplot <- function(x, y, ylab) {
+  return(qplot(data = df, x = x, y = y, geom = 'boxplot', ylab = ylab))
 }
 
-grid.arrange(get_bivariate_boxplot(df$quality, df$fixed.acidity),
-             get_bivariate_boxplot(df$quality, df$volatile.acidity),
-             get_bivariate_boxplot(df$quality, df$citric.acid),
-             get_bivariate_boxplot(df$quality, df$TAC.acidity),
-             get_bivariate_boxplot(df$quality, log10(df$residual.sugar)),
-             get_bivariate_boxplot(df$quality, log10(df$chlorides)),
-             get_bivariate_boxplot(df$quality, df$free.sulfur.dioxide),
-             get_bivariate_boxplot(df$quality, df$total.sulfur.dioxide),
-             get_bivariate_boxplot(df$quality, df$density),
-             get_bivariate_boxplot(df$quality, df$pH),
-             get_bivariate_boxplot(df$quality, log10(df$sulphates)),
-             get_bivariate_boxplot(df$quality, df$alcohol),
+grid.arrange(get_bivariate_boxplot(df$quality, df$fixed.acidity,
+                                   'fixed acidity'),
+             get_bivariate_boxplot(df$quality, df$volatile.acidity,
+                                   'volatile acidity'),
+             get_bivariate_boxplot(df$quality, df$citric.acid,
+                                   'citric acid'),
+             get_bivariate_boxplot(df$quality, df$TAC.acidity,
+                                   'TAC acidity'),
+             get_bivariate_boxplot(df$quality, log10(df$residual.sugar),
+                                   'residual sugar'),
+             get_bivariate_boxplot(df$quality, log10(df$chlorides),
+                                   'chlorides'),
+             get_bivariate_boxplot(df$quality, df$free.sulfur.dioxide,
+                                   'free sulf. dioxide'),
+             get_bivariate_boxplot(df$quality, df$total.sulfur.dioxide,
+                                   'total sulf. dioxide'),
+             get_bivariate_boxplot(df$quality, df$density,
+                                   'density'),
+             get_bivariate_boxplot(df$quality, df$pH,
+                                   'pH'),
+             get_bivariate_boxplot(df$quality, log10(df$sulphates),
+                                   'sulphates'),
+             get_bivariate_boxplot(df$quality, df$alcohol,
+                                   'alcohol'),
              ncol = 4)
 
-grid.arrange(get_bivariate_boxplot(df$rating, df$fixed.acidity),
-             get_bivariate_boxplot(df$rating, df$volatile.acidity),
-             get_bivariate_boxplot(df$rating, df$citric.acid),
-             get_bivariate_boxplot(df$rating, df$TAC.acidity),
-             get_bivariate_boxplot(df$rating, log10(df$residual.sugar)),
-             get_bivariate_boxplot(df$rating, log10(df$chlorides)),
-             get_bivariate_boxplot(df$rating, df$free.sulfur.dioxide),
-             get_bivariate_boxplot(df$rating, df$total.sulfur.dioxide),
-             get_bivariate_boxplot(df$rating, df$density),
-             get_bivariate_boxplot(df$rating, df$pH),
-             get_bivariate_boxplot(df$rating, log10(df$sulphates)),
-             get_bivariate_boxplot(df$rating, df$alcohol),
+grid.arrange(get_bivariate_boxplot(df$rating, df$fixed.acidity,
+                                   'fixed acidity'),
+             get_bivariate_boxplot(df$rating, df$volatile.acidity,
+                                   'volatile acidity'),
+             get_bivariate_boxplot(df$rating, df$citric.acid,
+                                   'citric acid'),
+             get_bivariate_boxplot(df$rating, df$TAC.acidity,
+                                   'TAC acidity'),
+             get_bivariate_boxplot(df$rating, log10(df$residual.sugar),
+                                   'residual sugar'),
+             get_bivariate_boxplot(df$rating, log10(df$chlorides),
+                                   'chlorides'),
+             get_bivariate_boxplot(df$rating, df$free.sulfur.dioxide,
+                                   'free sulf. dioxide'),
+             get_bivariate_boxplot(df$rating, df$total.sulfur.dioxide,
+                                   'total sulf. dioxide'),
+             get_bivariate_boxplot(df$rating, df$density,
+                                   'density'),
+             get_bivariate_boxplot(df$rating, df$pH,
+                                   'pH'),
+             get_bivariate_boxplot(df$rating, log10(df$sulphates),
+                                   'sulphates'),
+             get_bivariate_boxplot(df$rating, df$alcohol,
+                                   'alcohol'),
              ncol = 4)
 ```
 
@@ -259,22 +284,22 @@ By utilizing `cor.test`, I calculated the correlation for each of these variable
 
 ```{r echo=FALSE}
 simple_cor_test <- function(x, y) {
-  return(cor.test(x, y)$estimate)
+  return(cor.test(x, as.numeric(y))$estimate)
 }
 
 correlations <- c(
-  simple_cor_test(df$fixed.acidity, as.numeric(df$quality)),
-  simple_cor_test(df$volatile.acidity, as.numeric(df$quality)),
-  simple_cor_test(df$citric.acid, as.numeric(df$quality)),
-  simple_cor_test(df$TAC.acidity, as.numeric(df$quality)),
-  simple_cor_test(log10(df$residual.sugar), as.numeric(df$quality)),
-  simple_cor_test(log10(df$chlorides), as.numeric(df$quality)),
-  simple_cor_test(df$free.sulfur.dioxide, as.numeric(df$quality)),
-  simple_cor_test(df$total.sulfur.dioxide, as.numeric(df$quality)),
-  simple_cor_test(df$density, as.numeric(df$quality)),
-  simple_cor_test(df$pH, as.numeric(df$quality)),
-  simple_cor_test(log10(df$sulphates), as.numeric(df$quality)),
-  simple_cor_test(df$alcohol, as.numeric(df$quality)))
+  simple_cor_test(df$fixed.acidity, df$quality),
+  simple_cor_test(df$volatile.acidity, df$quality),
+  simple_cor_test(df$citric.acid, df$quality),
+  simple_cor_test(df$TAC.acidity, df$quality),
+  simple_cor_test(log10(df$residual.sugar), df$quality),
+  simple_cor_test(log10(df$chlorides), df$quality),
+  simple_cor_test(df$free.sulfur.dioxide, df$quality),
+  simple_cor_test(df$total.sulfur.dioxide, df$quality),
+  simple_cor_test(df$density, df$quality),
+  simple_cor_test(df$pH, df$quality),
+  simple_cor_test(log10(df$sulphates), df$quality),
+  simple_cor_test(df$alcohol, df$quality))
 names(correlations) <- c('fixed.acidity', 'volatile.acidity', 'citric.acid',
                          'TAC.acidity', 'log10.residual.sugar',
                          'log10.chlordies', 'free.sulfur.dioxide',
