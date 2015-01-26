@@ -85,8 +85,10 @@ I first looked at wine quality.  Although it has a discrete range of only 3-8, w
 Given the ratings and distribution of wine quality, I'll instantiate another categorical variable, classifying the wines as 'bad' (rating 0 to 4), 'average' (rating 5 or 6), and 'good' (rating 7 to 10).
 
 ```{r echo=FALSE, message=FALSE}
-df$rating <- ifelse(df$quality < 5, 'bad', ifelse(df$quality < 7, 'average', 'good'))
-df$rating <- ordered(df$rating, levels = c('bad', 'average', 'good'))
+df$rating <- ifelse(df$quality < 5, 'bad', ifelse(
+  df$quality < 7, 'average', 'good'))
+df$rating <- ordered(df$rating,
+                     levels = c('bad', 'average', 'good'))
 summary(df$rating)
 ```
 
@@ -433,7 +435,8 @@ These boxplots demonstrate the effect of alcohol content on wine quality.  Gener
 
 ### Plot Three
 ```{r echo=FALSE, Plot_Three}
-ggplot(data = subset(df, rating != 'average'), aes(x = volatile.acidity, y = alcohol,
+ggplot(data = subset(df, rating != 'average'),
+       aes(x = volatile.acidity, y = alcohol,
                       color = rating)) +
   geom_point() +
   ggtitle('Alcohol vs. Volatile Acidity and Wine Quality') +
