@@ -154,8 +154,6 @@ grid.arrange(p1, p2, ncol=1)
 rm(p1, p2)
 ```
 
-From these plots, it appears that chlorides and sulphates have a small number of high outliers.
-
 ### Short questions
 
 #### What other features in the dataset do you think will help support your investigation into your feature(s) of interest?
