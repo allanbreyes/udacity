@@ -415,29 +415,25 @@ I primarily examined the 4 features which showed high correlation with quality. 
 
 ## Final Plots and Summary
 
-### Effect of acids on wine quality
+### Plot 1: Effect of acids on wine quality
 ```{r echo=FALSE, Plot_One}
 grid.arrange(ggplot(data = df, aes(x = quality, y = fixed.acidity,
                                    fill = quality)) + 
-               ggtitle('Fixed Acidity in Different Wine Quality') +
                ylab('Fixed Acidity (g/dm^3)') +
                xlab('Quality') +
                geom_boxplot(),
              ggplot(data = df, aes(x = quality, y = volatile.acidity,
                                    fill = quality)) +
-               ggtitle('Volatile Acidity in Different Wine Quality') +
                ylab('Volatile Acidity (g/dm^3)') +
                xlab('Quality') +
                geom_boxplot(), 
              ggplot(data = df, aes(x = quality, y = citric.acid,
                                    fill = quality)) +
-               ggtitle('Citric Acidity in Different Wine Quality') +
                ylab('Citric Acid (g/dm^3)') +
                xlab('Quality') +
                geom_boxplot(), 
              ggplot(data = df, aes(x = quality, y = pH,
                                    fill = quality)) +
-               ggtitle('pH in Different Wine Quality') +
                ylab('pH') +
                xlab('Quality') +
                geom_boxplot())
@@ -446,7 +442,7 @@ grid.arrange(ggplot(data = df, aes(x = quality, y = fixed.acidity,
 
 These subplots were created to demonstrate the effect of acidity and pH on wine quality.  Generally, higher acidity (or lower pH) is seen in highly-rated wines.  To caveat this, a presence of volatile (acetic) acid negatively affected wine quality.  Citric acidity had a high correlation with wine quality, while fixed (tartaric) acid had a smaller impact.
 
-### Effect of Alcohol on Wine Quality
+### Plot 2: Effect of Alcohol on Wine Quality
 ```{r echo=FALSE, Plot_Two}
 ggplot(data = df, aes(x = quality, y = alcohol,
                       fill = rating)) +
@@ -458,7 +454,7 @@ ggplot(data = df, aes(x = quality, y = alcohol,
 
 These boxplots demonstrate the effect of alcohol content on wine quality.  Generally, higher alcohol content correlated with higher wine quality.  However, as the outliers and intervals show, alchol content alone did not produce a higher quality.
 
-### Plot Three
+### Plot 3: What makes good wines, good, and bad wines, bad?
 ```{r echo=FALSE, Plot_Three}
 ggplot(data = subset(df, rating != 'average'),
        aes(x = volatile.acidity, y = alcohol,
