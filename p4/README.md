@@ -42,4 +42,4 @@ Utilizing `scikit-learn` and machine learning methodologies, I built a "person o
 - `my_dataset.pkl`: generated dataset
 - `my_classifier.pkl`: generated classifier
 - `my_feature_list.pkl`: generated feature list
-- `emails_by_address/`: [not included due to size] contains messages to or from a particular email address, sub-foldered by sender/recipient
+- `emails_by_address/`: contains messages to or from a particular email address
