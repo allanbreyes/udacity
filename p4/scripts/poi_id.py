@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+from copy import copy
 import matplotlib.pyplot as plt
 import sys
 import pickle
@@ -37,40 +38,34 @@ financial_features_list = [
     'total_payments',
     'total_stock_value',
 ]
-features_list = financial_features_list + email_features_list
-for item in [features_list, email_features_list, financial_features_list]:
-    item.insert(0, target_label)
+features_list = [target_label] + financial_features_list + email_features_list
 
 # load the dictionary containing the dataset
 data_dict = pickle.load(open("../data/final_project_dataset.pkl", "r") )
 
 # remove outliers
 outlier_keys = ['TOTAL', 'THE TRAVEL AGENCY IN THE PARK', 'LOCKHART EUGENE E']
-eda.remove_keys(data_dict, outlier_keys)
+enron.remove_keys(data_dict, outlier_keys)
 
-# if you are creating any new features, you might want to do that here
-# store to my_dataset for easy export below
-my_dataset = data_dict
+# instantiate copies of dataset and features for grading purposes
+my_dataset = copy(data_dict)
+my_feature_list = copy(features_list)
 
+# add two new features
+enron.add_financial_aggregate(my_dataset, my_feature_list)
+enron.add_poi_interaction(my_dataset, my_feature_list)
 
+# get K-best features
+best_features = enron.get_k_best(my_dataset, my_feature_list, 10).keys()
+my_feature_list = [target_label] + best_features
 
-
-# these two lines extract the features specified in features_list
-# and extract them from data_dict, returning a numpy array
-data = featureFormat(my_dataset, features_list)
-
-
-
-# if you are creating new features, could also do that here
-
-
+# extract the features specified in features_list
+data = featureFormat(my_dataset, my_feature_list)
 
 # split into labels and features (this line assumes that the first
 # feature in the array is the label, which is why "poi" must always
-# be first in features_list
+# be first in the features list
 labels, features = targetFeatureSplit(data)
-
-
 
 # machine learning goes here!
 # please name your classifier clf for easy export below

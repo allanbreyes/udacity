@@ -58,6 +58,41 @@ def get_k_best(data_dict, features_list, k):
     print "{0} best features: {1}".format(k, k_best_features.keys())
     return k_best_features
 
+def add_poi_interaction(data_dict, features_list):
+    """ mutates data dict to add proportion of email interaction with pois """
+    fields = ['to_messages', 'from_messages',
+              'from_poi_to_this_person', 'from_this_person_to_poi']
+    for record in data_dict:
+        person = data_dict[record]
+        is_valid = True
+        for field in fields:
+            if person[field] == 'NaN':
+                is_valid = False
+        if is_valid:
+            total_messages = person['to_messages'] +\
+                             person['from_messages']
+            poi_messages = person['from_poi_to_this_person'] +\
+                           person['from_this_person_to_poi']
+            person['poi_interaction'] = float(poi_messages) / total_messages
+        else:
+            person['poi_interaction'] = 'NaN'
+    features_list += ['poi_interaction']
+
+def add_financial_aggregate(data_dict, features_list):
+    """ mutates data dict to add aggregate values from stocks and salary """
+    fields = ['total_stock_value', 'exercised_stock_options', 'salary']
+    for record in data_dict:
+        person = data_dict[record]
+        is_valid = True
+        for field in fields:
+            if person[field] == 'NaN':
+                is_valid = False
+        if is_valid:
+            person['financial_aggregate'] = sum([person[field] for field in fields])
+        else:
+            person['financial_aggregate'] = 'NaN'
+    features_list += ['financial_aggregate']
+
 if __name__ == '__main__':
     data_dict = pickle.load(open("../data/final_project_dataset.pkl", "r"))
     outliers = ['TOTAL', 'THE TRAVEL AGENCY IN THE PARK', 'LOCKHART EUGENE E']
@@ -86,3 +121,11 @@ if __name__ == '__main__':
                      'from_this_person_to_poi',
                      'shared_receipt_with_poi',
                      'to_messages']
+
+    add_poi_interaction(data_dict, features_list)
+    # visualize(data_dict, 'total_stock_value', 'poi_interaction')
+
+    add_financial_aggregate(data_dict, features_list)
+    # visualize(data_dict, 'poi_interaction', 'financial_aggregate')
+
+    k_best = get_k_best(data_dict, features_list, 10)
