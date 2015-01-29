@@ -8,6 +8,8 @@ sys.path.append("../tools/")
 from feature_format import featureFormat
 from feature_format import targetFeatureSplit
 
+import eda
+
 ### features_list is a list of strings, each of which is a feature name
 ### first feature must be "poi", as this will be singled out as the label
 features_list = ["poi"]
@@ -16,11 +18,14 @@ features_list = ["poi"]
 ### load the dictionary containing the dataset
 data_dict = pickle.load(open("../data/final_project_dataset.pkl", "r") )
 
-### we suggest removing any outliers before proceeding further
+### remove outliers
+outlier_keys = ['TOTAL', 'THE TRAVEL AGENCY IN THE PARK', 'LOCKHART EUGENE E']
+eda.remove_keys(data_dict, outlier_keys)
 
 ### if you are creating any new features, you might want to do that here
 ### store to my_dataset for easy export below
 my_dataset = data_dict
+
 
 
 
