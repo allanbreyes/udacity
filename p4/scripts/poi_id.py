@@ -67,7 +67,14 @@ data = featureFormat(my_dataset, my_feature_list)
 # be first in the features list
 labels, features = targetFeatureSplit(data)
 
-# machine learning goes here!
+# scale features via min-max
+from sklearn import preprocessing
+scaler = preprocessing.MinMaxScaler()
+features = scaler.fit_transform(features)
+
+
+### machine learning classifier
+
 # please name your classifier clf for easy export below
 
 clf = None # get rid of this line!  just here to keep code from crashing out-of-box
@@ -76,5 +83,5 @@ clf = None # get rid of this line!  just here to keep code from crashing out-of-
 # dump your classifier, dataset and features_list so
 # anyone can run/check your results
 pickle.dump(clf, open("../data/my_classifier.pkl", "w"))
-pickle.dump(data_dict, open("../data/my_dataset.pkl", "w"))
-pickle.dump(features_list, open("../data/my_feature_list.pkl", "w"))
+pickle.dump(my_dataset, open("../data/my_dataset.pkl", "w"))
+pickle.dump(my_feature_list, open("../data/my_feature_list.pkl", "w"))
