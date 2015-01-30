@@ -55,7 +55,7 @@ def get_k_best(data_dict, features_list, k):
     unsorted_pairs = zip(features_list[1:], scores)
     sorted_pairs = list(reversed(sorted(unsorted_pairs, key=lambda x: x[1])))
     k_best_features = dict(sorted_pairs[:k])
-    print "{0} best features: {1}".format(k, k_best_features.keys())
+    print "{0} best features: {1}\n".format(k, k_best_features.keys())
     return k_best_features
 
 def add_poi_interaction(data_dict, features_list):
