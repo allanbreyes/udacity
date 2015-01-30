@@ -53,7 +53,7 @@ my_dataset = copy(data_dict)
 my_feature_list = copy(features_list)
 
 # get K-best features
-num_features = 8
+num_features = 10 # 10 for logistic regression, 8 for k-means clustering
 best_features = enron.get_k_best(my_dataset, my_feature_list, num_features)
 my_feature_list = [target_label] + best_features.keys()
 
@@ -122,9 +122,12 @@ rf_clf = RandomForestClassifier()
 from sklearn.linear_model import SGDClassifier
 g_clf = SGDClassifier(loss='log')
 
+### Selected Classifiers Evaluation
+evaluate.evaluate_clf(l_clf, features, labels)
+evaluate.evaluate_clf(k_clf, features, labels)
+
 ### Final Machine Algorithm Selection
-clf = k_clf
-evaluate.evaluate_clf(clf, features, labels)
+clf = l_clf
 
 # dump your classifier, dataset and features_list so
 # anyone can run/check your results

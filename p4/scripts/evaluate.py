@@ -27,8 +27,4 @@ def evaluate_clf(clf, features, labels, num_iters=1000, test_size=0.3):
     print "done.\n"
     print "precision: {}".format(mean(precision))
     print "recall:    {}".format(mean(recall))
-    if mean(precision) > 0.3 and mean(recall) > 0.3:
-        print "SUCCESS!"
-    else:
-        print "FAIL!"
     return mean(precision), mean(recall)

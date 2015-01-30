@@ -93,6 +93,16 @@ def add_financial_aggregate(data_dict, features_list):
             person['financial_aggregate'] = 'NaN'
     features_list += ['financial_aggregate']
 
+def count_valid_values(data_dict):
+    """ counts the number of non-NaN values for each feature """
+    counts = dict.fromkeys(data_dict.itervalues().next().keys(), 0)
+    for record in data_dict:
+        person = data_dict[record]
+        for field in person:
+            if person[field] != 'NaN':
+                counts[field] += 1
+    return counts
+
 if __name__ == '__main__':
     data_dict = pickle.load(open("../data/final_project_dataset.pkl", "r"))
     outliers = ['TOTAL', 'THE TRAVEL AGENCY IN THE PARK', 'LOCKHART EUGENE E']
