@@ -1,0 +1,12 @@
+h2 {
+  color: black;
+  text-align: center;
+}
+
+.focused {
+  opacity: 0;
+  display: hidden;
+  color: pink;
+  fill: pink;
+}
+
