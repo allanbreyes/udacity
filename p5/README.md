@@ -71,6 +71,7 @@ I interviewed 3 individuals in person, and asked for their feedback on the data 
 
 - [dimple.js Documentation](http://dimplejs.org/)
 - [Data Visualization and D3.js (Udacity)](https://www.udacity.com/course/viewer#!/c-ud507-nd)
+- [D3 multi-series line chart with tooltips and legend](http://bl.ocks.org/Matthew-Weber/5645518)
 - Various [Stack Overflow](http://stackoverflow.com/search?q=dimple.js) posts
 
 ### Data
