@@ -56,15 +56,16 @@ d3.csv("data/data.csv", function(d) {
 
   // handle mouse events on paths
   d3.selectAll('path')
+    .style('opacity', 0.25)
     .on('mouseover', function(e) {
       d3.select(this)
-        .style('stroke-width', '6px')
+        .style('stroke-width', '8px')
         .style('opacity', 1)
         .attr('z-index', '1');
   }).on('mouseleave', function(e) {
       d3.select(this)
         .style('stroke-width', '2px')
-        .style('opacity', 0.75)
+        .style('opacity', 0.25)
         .attr('z-index', '0');
   });
 });

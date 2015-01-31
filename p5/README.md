@@ -65,7 +65,18 @@ I interviewed 3 individuals in person, and asked for their feedback on the data 
 
 ### Post-feedback Design
 
-`NotYetImplemented`
+Following the feedback from the 3 interviews, I implemented the following changes:
+
+- I added a `mouseover` event for the lines, so it would 'pop' it out and emphasize the path.  This would allow for better understanding of each individual airline's trend from 2003 to 2014.
+- I changed the chart title to be more consistent with the data presented.
+- I subdued and muted the grid lines.
+- I polished the tooltip variable names to be more natural.
+
+I chose not to include the arrival data and raw numbers.  I didn't think that it was the focus of the chart, or had any impact on the understanding of airline on-time arrival rates.
+
+Below is the final rendition of the data visualization:
+
+![Final Chart](https://raw.githubusercontent.com/allanbreyes/udacity-data-science/master/p5/img/dimple-final.png)
 
 ### Resources
 
