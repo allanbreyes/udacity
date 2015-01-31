@@ -1,6 +1,5 @@
-var format = d3.time.format("%Y");
-
 d3.csv("data/data.csv", function(d) {
+  var format = d3.time.format("%Y");
   return {
     year: format.parse(d.year),
     carrier_name: d.carrier_name,
@@ -9,19 +8,6 @@ d3.csv("data/data.csv", function(d) {
   };
 }, function(data) {
   'use strict';
-
-  var minOnTimeValue = (function(data, field) {
-    var minimum = 1;
-    data.forEach(function(record) {
-      if (record[field] < minimum) {
-        minimum = record[field];
-      }
-    });
-    return minimum;
-  })(data, 'on_time');
-
-  var minY = 0.5, //Math.round(minOnTimeValue*10)/10,
-      maxY = 1;
 
   d3.select('#content')
     .append('h2')
@@ -32,8 +18,11 @@ d3.csv("data/data.csv", function(d) {
       height = 640;
 
   var svg = dimple.newSvg('#content', 960, 640);
-
   var myChart = new dimple.chart(svg, data);
+
+  // set y axis limits
+  var minY = 0.5,
+      maxY = 1;
 
   // set x axis
   var x = myChart.addTimeAxis('x', 'year');
@@ -51,14 +40,20 @@ d3.csv("data/data.csv", function(d) {
   var legend = myChart.addLegend(width*0.65, 60, width*0.25, 60, 'right');
 
   // handle hover events
-  s.addEventHandler('mouseover', onHover);
-  s.addEventHandler('mouseleave', onLeave);
+  // s.addEventHandler('mouseover', onHover);
+  // s.addEventHandler('mouseleave', onLeave);
 
   myChart.draw();
+});
+
+$('.dimple-series-1').on('mouseover', function() {
+  console.log('hello!');
+  self.style('display: none');
 });
 
 function onHover(e) {
   console.log(e);
 }
 function onLeave(e) {
+  console.log(e.selectedShape);
 }
