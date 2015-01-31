@@ -33,7 +33,7 @@ I re-evaluated the design decisions that I made during exploratory data analysis
 
 This initial iteration can be viewed at `index-initial.html`, or below:
 
-![First Chart](https://raw.githubusercontent.com/allanbreyes/udacity-data-science/master/p5/img/dimple-initial.html)
+![First Chart](https://raw.githubusercontent.com/allanbreyes/udacity-data-science/master/p5/img/dimple-initial.png)
 
 ### Feedback
 
