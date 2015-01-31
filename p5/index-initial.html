@@ -11,150 +11,35 @@
         color: black;
         text-align: center;
       }
-
-      .axis {
-        font-family: arial;
-        font-size: 0.6em;
-      }
-
-      path {
-        fill: none;
-        stroke: black;
-        stroke-width: 2px;
-      }
-
-      .tick {
-        fill: none;
-        stroke: black;
-      }
-
-      circle {
-        opacity: 0.4;
-        stroke: none;
-      }
-
-      .line_plot {
-        fill: none;
-        stroke: #4eb0bb;
-        stroke-width: 1px;
-      }
     </style>
 
     <script type="text/javascript">
       format = d3.time.format("%Y");
 
       function draw(data) {
-          /*
-           * D3.js setup code
-           */
+        'use strict';
 
-          'use strict';
-          var margin = 20,
-              width = 960 - margin,
-              height = 640 - margin;
+        d3.select('#content')
+          .append('h2')
+          .attr('id', 'title')
+          .text('Airline Performance, 2003-2014');
 
-          var radius = 3,
-              multiplier = 2;
+        var width = 960,
+            height = 640;
 
-          d3.select('#content')
-              .append('h2')
-              .attr('id', 'title')
-              .text('Airline Performance, 2003-2014');
+        var svg = dimple.newSvg('#content', 960, 640);
 
-          var svg = d3.select('#content')
-              .append('svg')
-              .attr('width', width + margin)
-              .attr('height', height + margin)
-              .append('g')
-              .attr('class', 'img-responsive chart');
+        var myChart = new dimple.chart(svg, data);
 
-          /*
-           * Dimple.js Chart construction code
-           */
-          d3.select('svg')
-            .selectAll('circle')
-            .data(data)
-            .enter()
-            .append('circle')
+        var x = myChart.addCategoryAxis('x', 'year');
+        x.addOrderRule('Date');
 
-          var time_extent = d3.extent(data, function(d) {
-            return d.date;
-          });
+        myChart.addMeasureAxis('y', 'on_time')
+        myChart.addSeries('carrier_name', dimple.plot.line);
 
-          var date_scale = d3.time.scale()
-            .range([margin, width])
-            .domain(time_extent);
+        myChart.addLegend(width*3/4, height/2 - 30, width/4, 60, 'right');
 
-          var on_time_extent = d3.extent(data, function(d) {
-            return d.on_time;
-          });
-
-          var count_scale = d3.scale.linear()
-            .range([height, margin])
-            .domain(on_time_extent);
-
-          var date_axis = d3.svg.axis()
-            .scale(date_scale)
-            .ticks(d3.time.years, 2);
-
-          d3.select('svg')
-            .append('g')
-            .attr('class', 'x axis')
-            .attr('transform', 'translate(0,' + height + ')')
-            .call(date_axis);
-
-          var on_time_axis = d3.svg.axis()
-            .scale(count_scale)
-            .orient('left');
-
-          d3.select('svg')
-            .append('g')
-            .attr('class', 'y axis')
-            .attr('transform', 'translate(' + margin + ',0)')
-            .call(on_time_axis);
-
-          d3.selectAll('circle')
-            .attr('cx', function(d) {
-              return date_scale(d.date);
-            })
-            .attr('cy', function(d) {
-              return count_scale(d.on_time);
-            });
-
-          // var legend = svg.append('g')
-          //   .attr('class', 'legend')
-          //   .attr('transform', 'translate(' + (width - 100) + ',' + 20 + ')')
-          //   .selectAll('g')
-          //   .data(['Home Team', 'Others'])
-          //   .enter().append('g');
-
-          // legend.append('circle')
-          //   .attr('cy', function(d, i) {
-          //     return i * 30;
-          //   })
-          //   .attr('r', function(d) {
-          //     if (d == 'Home Team') {
-          //       return radius * multiplier;
-          //     } else {
-          //       return radius;
-          //     }
-          //   })
-          //   .attr('fill', function(d) {
-          //     if (d == 'Home Team') {
-          //       return 'red';
-          //     } else {
-          //       return 'blue';
-          //     }
-          //   });
-
-          // legend.append('text')
-          //   .attr('y', function(d, i) {
-          //     return i * 30 + 5;
-          //   })
-          //   .attr('x', radius * 5)
-          //   .text(function(d) {
-          //     return d;
-          //   });
+        myChart.draw();
       }
     </script>
   </head>
@@ -173,6 +58,7 @@
     d3.csv("data/data.csv", function(d) {
       return {
         year: format.parse(d.year),
+        carrier_name: d.carrier_name,
         on_time: +d.on_time,
         arrivals: +d.arrivals
       };
