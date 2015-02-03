@@ -78,12 +78,13 @@ aside {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 80%;
+  width: 75%;
 }
 
 .meetup-info {
   float: right;
-  width: 60px;
+  text-align: right;
+  width: 25%;
 }
 
 .meetup-icon {
