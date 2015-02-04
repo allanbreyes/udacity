@@ -31,7 +31,8 @@ def create_movie_tiles_content(movies):
         content += movie_tile_content.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            trailer_youtube_id=trailer_youtube_id,
+            year=movie.year
         )
     return content
 
@@ -53,10 +54,11 @@ def open_movies_page(movies, filename='fresh_tomatoes.html'):
 
 class Movie(object):
     """ represents a movie """
-    def __init__(self, title, image_url, youtube_url):
+    def __init__(self, title, image_url, youtube_url, year):
         self.title = title
         self.poster_image_url = image_url
         self.trailer_youtube_url = youtube_url
+        self.year = year
 
     def __str__(self):
         return self.title
@@ -65,11 +67,12 @@ def get_movies(filename):
     """ pulls movie data from csv and returns a list a Movie objects """
     movies = []
     with open(filename, 'rb') as csvfile:
-        reader = csv.DictReader(csvfile, delimiter='\t')
+        reader = csv.DictReader(csvfile)
         for movie in reader:
             movies.append(Movie(title=movie['name'],
                                 image_url=movie['image_url'],
-                                youtube_url=movie['youtube_url']))
+                                youtube_url=movie['youtube_url'],
+                                year=movie['year']))
     return movies
 
 def main():
