@@ -1,0 +1,3 @@
+[submodule "vm"]
+	path = vm
+	url = https://github.com/udacity/fullstack-nanodegree-vm
