@@ -1,3 +1,4 @@
 courses
 *.docx
 *.pyc
+*.db

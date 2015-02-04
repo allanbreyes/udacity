@@ -19,6 +19,7 @@ class Course(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(80), nullable=False)
+    course_url = Column(String(255))
     course_number = Column(String(20))
     description = Column(String(250))
     perpetual = Column(Boolean, default=False)

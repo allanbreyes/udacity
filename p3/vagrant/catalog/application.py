@@ -13,6 +13,17 @@ session = DBSession()
 
 base_uri = '/catalog/'
 
+# load fixture data
+load_fixtures = True
+if load_fixtures:
+    import json
+    with open('fixtures.json', 'rb') as f:
+        fixtures = json.load(f)
+    moocs = fixtures['moocs']
+    mooc = moocs[0]
+    courses = fixtures['courses']
+    course = courses[0]
+
 @app.route('/catalog')
 @app.route('/')
 def index():
@@ -51,5 +62,6 @@ def delete_course(course_id):
     return 'delete course #{0}'.format(course_id)
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run(host='0.0.0.0', port=5000)
+    pass
+    # app.debug = True
+    # app.run(host='0.0.0.0', port=5000)
