@@ -1,6 +1,6 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Date, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -21,6 +21,8 @@ class Course(Base):
     name = Column(String(80), nullable=False)
     course_number = Column(String(20))
     description = Column(String(250))
+    perpetual = Column(Boolean, default=False)
+    start_date = Column(Date)
     mooc_id = Column(Integer, ForeignKey('mooc.id'))
     mooc = relationship(Mooc)
 
@@ -32,6 +34,8 @@ class Course(Base):
             'name': self.name,
             'course_number': self.course_number,
             'description': self.description,
+            'perpetual': self.perpetual,
+            'start_date': self.start_date,
         }
 
 engine = create_engine('sqlite:///catalog.db')
