@@ -35,7 +35,7 @@ def get_by_id(id, items):
 @app.route('/')
 def index():
     featured_courses = [course for course in courses if course['featured']]
-    return render_template('course_listing.html',
+    return render_template('index_courses.html',
                            moocs=moocs, courses=featured_courses,
                            title='Featured Courses', title_link=None,
                            logged_in=True)
@@ -60,14 +60,22 @@ def index_courses(mooc_id):
         flash_message = NotImplemented
         return redirect(url_for('index'))
     mooc_courses = [course for course in courses if course['mooc_id'] == mooc_id]
-    return render_template('course_listing.html',
+    return render_template('index_courses.html',
                            moocs=moocs, courses=mooc_courses,
                            title=mooc['name'], title_link=mooc['homepage_url'],
                            logged_in=True)
 
 @app.route(base_uri+'courses/<int:course_id>', methods=['GET'])
 def view_course(course_id):
-    return 'view course #{}'.format(course_id)
+    try:
+        course = get_by_id(course_id, courses)
+    except LookupError:
+        flash_message = NotImplemented
+        return redirect(url_for('index'))
+    return render_template('view_course.html',
+                           moocs=moocs, course=course,
+                           title=course['name'],
+                           logged_in=True)
 
 @app.route(base_uri+'courses/new', methods=['GET', 'POST'])
 def new_course():
