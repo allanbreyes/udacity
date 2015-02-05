@@ -94,11 +94,11 @@ def new_course():
 
 @app.route(base_uri+'courses/<int:course_id>/edit', methods=['GET', 'POST'])
 def edit_course(course_id):
+    course = get_by_id(course_id, courses)
     if request.method == 'POST':
         flash_message = NotImplemented
         return redirect(url_for('view_course', course_id=course_id))
     else:
-        course = get_by_id(course_id, courses)
         return render_template('edit_course.html',
                                providers=providers, course=course,
                                title='Editing: ' + course['name'],
@@ -107,7 +107,16 @@ def edit_course(course_id):
 
 @app.route(base_uri+'courses/<int:course_id>/delete', methods=['GET', 'POST'])
 def delete_course(course_id):
-    return 'delete course #{0}'.format(course_id)
+    course = get_by_id(course_id, courses)
+    if request.method == 'POST':
+        provider = get_by_id(course['provider_id'], providers)
+        flash_message = NotImplemented
+        return redirect(url_for('index_courses', provider_id=provider['id']))
+    return render_template('delete_course.html',
+                           providers=providers, course=course,
+                           title='Are you sure that you want to DELETE:',
+                           form_action=url_for('delete_course', course_id=course_id),
+                           logged_in=True)
 
 if __name__ == '__main__':
     app.debug = True
