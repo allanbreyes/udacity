@@ -29,7 +29,9 @@ if load_fixtures:
 @app.route('/')
 def index():
     featured_courses = [course for course in courses if course['featured']]
-    return render_template('index.html', moocs=moocs, featured_courses=featured_courses, logged_in=True)
+    return render_template('featured_courses.html',
+                           moocs=moocs, featured_courses=featured_courses,
+                           logged_in=True)
 
 # @app.route(base_uri+'moocs/new', methods=['GET', 'POST'])
 # def new_mooc():

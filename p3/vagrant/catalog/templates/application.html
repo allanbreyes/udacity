@@ -40,7 +40,7 @@
               {% endif %}
             </li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
 
@@ -55,33 +55,10 @@
           </ul>
         </div>
         <div class="col-md-9">
-          <h3>Featured Courses</h3>
-          {% for course in featured_courses %}
-            <div class="media">
-              <div class="media-left">
-                <a href="{{url_for('view_course', course_id=course.id)}}">
-                  <img class="media-object" width="64" src="{{course.thumbnail_url}}" alt="icon">
-                </a>
-              </div>
-              <div class="media-body media-middle">
-                <a href="{{url_for('view_course', course_id=course.id)}}">
-                  <strong class="media-heading">{{course.name}}</strong>
-                </a>
-                <p>{{course.start_date}}</p>
-              </div>
-            </div>
-          {% endfor %}
-          {% if logged_in %}
-          <div class="media">
-            <a href="{{url_for('new_course')}}">
-              <i class="glyphicon glyphicon-plus"></i>
-              Add a course
-            </a>
-          </div>
-          {% endif %}
+          {% block content %}{% endblock %}
         </div>
       </div>
-    </div><!-- /.container -->
+    </div>
 
     <!-- <script src="main.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
