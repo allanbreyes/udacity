@@ -79,17 +79,33 @@ def view_course(course_id):
 
 @app.route(base_uri+'courses/new', methods=['GET', 'POST'])
 def new_course():
-    course = courses[0]
-    return render_template('edit_course.html',
-                           moocs=moocs, course=course,
-                           title=course['name'],
-                           logged_in=True)
+    if request.method == 'POST':
+        flash_message = NotImplemented
+        return redirect(url_for('index'))
+    else:
+        course = {"id": None, "name": "", "course_url": "", "thumbnail_url": "",
+                  "course_number": "", "description": "", "perpetual": False,
+                  "start_date": "", "featured": False, "mooc_id": None}
+        return render_template('edit_course.html',
+                               moocs=moocs, course=course,
+                               title='New Course',
+                               form_action=url_for('new_course'),
+                               logged_in=True)
 
-@app.route(base_uri+'courses/<int:course_id>/edit', methods = ['GET', 'POST'])
+@app.route(base_uri+'courses/<int:course_id>/edit', methods=['GET', 'POST'])
 def edit_course(course_id):
-    return 'edit course #{0}'.format(course_id)
+    if request.method == 'POST':
+        flash_message = NotImplemented
+        return redirect(url_for('view_course', course_id=course_id))
+    else:
+        course = get_by_id(course_id, courses)
+        return render_template('edit_course.html',
+                               moocs=moocs, course=course,
+                               title='Editing: ' + course['name'],
+                               form_action=url_for('edit_course', course_id=course_id),
+                               logged_in=True)
 
-@app.route(base_uri+'courses/<int:course_id>/delete', methods = ['GET', 'POST'])
+@app.route(base_uri+'courses/<int:course_id>/delete', methods=['GET', 'POST'])
 def delete_course(course_id):
     return 'delete course #{0}'.format(course_id)
 
