@@ -7,6 +7,15 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+class User(Base):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True)
+    access_token = Column(String(200))
+
+    def __init__(self, access_token):
+        self.access_token = access_token
+
 class Provider(Base):
     __tablename__ = 'provider'
 

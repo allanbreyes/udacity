@@ -1,28 +1,81 @@
-from flask import Flask, flash, render_template, request, redirect,\
-                  url_for, jsonify
+import os
+from flask import Flask, flash, g, jsonify, redirect, render_template,\
+                  request, session, url_for
+from flask.ext.github import GitHub
 
 app = Flask(__name__)
-app.secret_key = "superfragilisticexpialidocious"
+app.secret_key = "developmentkeyforthewin"
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Provider, Course
+# set-up github oauth - https://github-flask.readthedocs.org/en/latest/
+if os.environ.has_key('GITHUB_CLIENT_ID') and\
+   os.environ.has_key('GITHUB_CLIENT_SECRET'):
+    # set app configuration variables to environment variables
+    app.config['GITHUB_CLIENT_ID'] = os.environ['GITHUB_CLIENT_ID']
+    app.config['GITHUB_CLIENT_SECRET'] = os.environ['GITHUB_CLIENT_SECRET']
+else:
+    # set to None if they're not available
+    app.config['GITHUB_CLIENT_ID'] = None
+    app.config['GITHUB_CLIENT_SECRET'] = None
+github = GitHub(app)
+
+from database_setup import Base, User, Provider, Course
 from datetime import datetime
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, scoped_session
 
 engine = create_engine('sqlite:///catalog.db')
 Base.metadata.bind = engine
 
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
+DBSession = scoped_session(sessionmaker(bind=engine))
+db_session = DBSession()
 
+repo_uri = 'https://github.com/allanbreyes/udacity-full-stack/tree/master/p3'
 base_uri = '/catalog/'
 api_uri = base_uri + 'api/'
+
+# oauth
+@app.route('/login')
+def login():
+    if app.config['GITHUB_CLIENT_ID'] and app.config['GITHUB_CLIENT_SECRET']:
+        return github.authorize(redirect_uri=url_for('authorized', _external=True))
+    else:
+        flash('Howdy, developer! If you downloaded this, you still have to obtain a GitHub API client ID and key to get it wired up and working.', 'warning')
+        return redirect(url_for('index'))
+
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    session.pop('access_token', None)
+    flash('You\'ve been successfully logged out... mortal.', 'success')
+    return redirect(url_for('index'))
+
+@app.route('/github-callback')
+@github.authorized_handler
+def authorized(oauth_token):
+    next_url = request.args.get('next')
+    if oauth_token is None:
+        flash('Authorization failed.', 'danger')
+        return redirect(next_url)
+
+    user = db_session.query(User).filter_by(access_token=oauth_token).first()
+    if user is None:
+        user = User(oauth_token)
+        db_session.add(user)
+
+    user.access_token = oauth_token
+    db_session.commit()
+
+    session['user_id'] = user.id
+    session['user_token'] = user.access_token
+    if authenticated():
+        flash('You\'re logged in!  Now you have incredible superpowers...', 'success')
+    return redirect(url_for('index'))
 
 # helper functions
 def base_query():
     """ returns the full list of providers and courses """
-    providers = session.query(Provider).all()
-    courses = session.query(Course).all()
+    providers = db_session.query(Provider).all()
+    courses = db_session.query(Course).all()
     return providers, courses
 
 def parse_course_form(form):
@@ -45,10 +98,23 @@ def parse_course_form(form):
                     provider_id=form['course-provider'][0])
     return course
 
+def authenticated():
+    if session.has_key('user_id') and session.has_key('user_token'):
+        user = db_session.query(User).filter_by(id=session['user_id']).first()
+        if user:
+            return user.access_token == session['user_token']
+    return False
+
 # routes
+@app.route('/source')
+def source():
+    """ redirects to github repository """
+    return redirect(repo_uri)
+
 @app.route(base_uri+'seed')
 def seed_database(fixture_filename='fixtures.json'):
-    """ seed route, used to populate an empty database """
+    """ seed route, used to populate an empty database,
+    this should only have to run the first time. """
     providers, _ = base_query()
     if len(providers) != 0:
         pass
@@ -59,7 +125,7 @@ def seed_database(fixture_filename='fixtures.json'):
         seed_providers = fixtures['providers']
         for p in seed_providers:
             provider = Provider(name=p['name'], homepage_url=p['homepage_url'])
-            session.add(provider)
+            db_session.add(provider)
         seed_courses = fixtures['courses']
         for c in seed_courses:
             course = Course(name=c['name'],
@@ -70,10 +136,10 @@ def seed_database(fixture_filename='fixtures.json'):
                             start_date=datetime.strptime(c['start_date'], '%Y-%m-%d'),
                             featured=c['featured'],
                             provider_id=c['provider_id'])
-            session.add(course)
+            db_session.add(course)
         try:
-            session.commit()
-            flash('Database seeded with fixture data.', 'success')
+            db_session.commit()
+            flash('Database seeded with fixture data.', 'warning')
         except Exception as e:
             flash('Something imploded. {}'.format(e), 'danger')
     return redirect(url_for('index'))
@@ -85,11 +151,11 @@ def index():
     # call seed function
     seed_database()
     providers, _ = base_query()
-    featured_courses = session.query(Course).filter_by(featured=True).order_by(Course.start_date)
+    featured_courses = db_session.query(Course).filter_by(featured=True).order_by(Course.start_date)
     return render_template('index_courses.html',
                            providers=providers, courses=featured_courses,
                            title='Featured Courses', title_link=None,
-                           logged_in=True)
+                           logged_in=authenticated)
 
 # TODO: implement administrative privileges, routes, and templates for Provider CRUD operations
 # @app.route(base_uri+'providers/new', methods=['GET', 'POST'])
@@ -111,7 +177,7 @@ def index_providers_api():
 @app.route(api_uri+'providers/<int:provider_id>', methods=['GET'])
 def index_courses_api(provider_id):
     """ returns JSON response of courses """
-    provider_courses = session.query(Course).filter_by(provider_id=provider_id).order_by(Course.start_date)
+    provider_courses = db_session.query(Course).filter_by(provider_id=provider_id).order_by(Course.start_date)
     return jsonify(courses=[pc.serialize for pc in provider_courses])
 
 @app.route(base_uri+'providers/<int:provider_id>', methods=['GET'])
@@ -119,39 +185,41 @@ def index_courses(provider_id):
     """ provider show screen / courses index screen """
     providers, _ = base_query()
     try:
-        provider = session.query(Provider).filter_by(id=provider_id).one()
+        provider = db_session.query(Provider).filter_by(id=provider_id).one()
     except:
         flash('Could not find what you were looking for :(', 'danger')
         return redirect(url_for('index'))
-    provider_courses = session.query(Course).filter_by(provider_id=provider_id).order_by(Course.start_date)
+    provider_courses = db_session.query(Course).filter_by(provider_id=provider_id).order_by(Course.start_date)
     return render_template('index_courses.html',
                            providers=providers, courses=provider_courses,
                            title=provider.name, title_link=provider.homepage_url,
-                           logged_in=True)
+                           logged_in=authenticated)
 
 @app.route(base_uri+'courses/<int:course_id>', methods=['GET'])
 def view_course(course_id):
     """ course view screen """
     providers, _ = base_query()
     try:
-        course = session.query(Course).filter_by(id=course_id).one()
+        course = db_session.query(Course).filter_by(id=course_id).one()
     except:
         flash('Could not find what you were looking for :(', 'danger')
         return redirect(url_for('index'))
     return render_template('view_course.html',
                            providers=providers, course=course,
                            title=course.name,
-                           logged_in=True)
+                           logged_in=authenticated)
 
 @app.route(base_uri+'courses/new', methods=['GET', 'POST'])
 def new_course():
     """ handles new course creation """
+    if not authenticated():
+        return redirect(url_for('login'))
     providers, _ = base_query()
     if request.method == 'POST':
         course = parse_course_form(request.form)
-        session.add(course)
+        db_session.add(course)
         try:
-            session.commit()
+            db_session.commit()
             flash('New course created!', 'success')
             return redirect(url_for('view_course', course_id=course.id))
         except Exception as e:
@@ -165,13 +233,15 @@ def new_course():
                                providers=providers, course=course,
                                title='New Course',
                                form_action=url_for('new_course'),
-                               logged_in=True)
+                               logged_in=authenticated)
 
 @app.route(base_uri+'courses/<int:course_id>/edit', methods=['GET', 'POST'])
 def edit_course(course_id):
     """ handles course editing """
+    if not authenticated():
+        return redirect(url_for('login'))
     providers, _ = base_query()
-    course = session.query(Course).filter_by(id=course_id).one()
+    course = db_session.query(Course).filter_by(id=course_id).one()
     if request.method == 'POST':
         course_params = parse_course_form(request.form)
         # TODO: figure out a way to DRY this out... no bracket notation :(
@@ -183,9 +253,9 @@ def edit_course(course_id):
         course.start_date = course_params.start_date
         course.featured = course_params.featured
         course.provider_id = course_params.provider_id
-        session.add(course)
+        db_session.add(course)
         try:
-            session.commit()
+            db_session.commit()
             flash('Changes saved!', 'success')
         except Exception as e:
             flash('Something imploded. {}'.format(e), 'danger')
@@ -195,18 +265,20 @@ def edit_course(course_id):
                                providers=providers, course=course,
                                title='Editing: ' + course.name,
                                form_action=url_for('edit_course', course_id=course_id),
-                               logged_in=True)
+                               logged_in=authenticated)
 
 @app.route(base_uri+'courses/<int:course_id>/delete', methods=['GET', 'POST'])
 def delete_course(course_id):
     """ handles course deletion """
+    if not authenticated():
+        return redirect(url_for('login'))
     providers, _ = base_query()
-    course = session.query(Course).filter_by(id=course_id).one()
+    course = db_session.query(Course).filter_by(id=course_id).one()
     if request.method == 'POST':
-        provider = session.query(Provider).filter_by(id=course.provider_id).one()
-        session.delete(course)
+        provider = db_session.query(Provider).filter_by(id=course.provider_id).one()
+        db_session.delete(course)
         try:
-            session.commit()
+            db_session.commit()
             flash('Course was deleted... forevarrrrrrrr!', 'success')
             return redirect(url_for('index_courses', provider_id=provider.id))
         except Exception as e:
@@ -216,7 +288,7 @@ def delete_course(course_id):
                            providers=providers, course=course,
                            title='Are you sure that you want to DELETE:',
                            form_action=url_for('delete_course', course_id=course_id),
-                           logged_in=True)
+                           logged_in=authenticated)
 
 if __name__ == '__main__':
     app.debug = True

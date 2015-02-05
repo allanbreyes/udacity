@@ -24,7 +24,7 @@
       </div>
     </div>
   {% endfor %}
-  {% if logged_in %}
+  {% if logged_in() %}
   <div class="media">
     <a href="{{url_for('new_course')}}">
       <i class="glyphicon glyphicon-plus"></i>
