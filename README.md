@@ -1,8 +1,8 @@
 # Full-Stack Web Developer Nanodegree
 
 ## Projects:
-- **p1**: Movie Trailer Website
-- **p2**: Tournament Results
+- **p1**: Movie Trailer Website - ready for review
+- **p2**: Tournament Results - ready for review
 - **p3**: Item Catalog
 - **p4**: Conference Organization App
 - **p5**: Linux-based Server Configuration
