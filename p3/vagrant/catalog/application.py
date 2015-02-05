@@ -1,5 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, flash, render_template, request, redirect,\
+                  url_for, jsonify
+
 app = Flask(__name__)
+app.secret_key = "superfragilisticexpialidocious"
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -50,7 +53,7 @@ def parse_course_form(form):
 def seed_database(fixture_filename='fixtures.json'):
     providers, _ = base_query()
     if len(providers) != 0:
-        flash_message = 'Database is not empty.'
+        pass
     else:
         import json
         with open(fixture_filename, 'rb') as f:
@@ -71,14 +74,14 @@ def seed_database(fixture_filename='fixtures.json'):
                             provider_id=c['provider_id'])
             session.add(course)
         session.commit()
-        flash_message = 'Database seeded with fixture data.'
+        flash('Database seeded with fixture data.', 'success')
     return redirect(url_for('index'))
 
 @app.route('/catalog')
 @app.route('/')
 def index():
     seed_database()
-    providers, courses = base_query()
+    providers, _ = base_query()
     featured_courses = session.query(Course).filter_by(featured=True).order_by(Course.start_date)
     return render_template('index_courses.html',
                            providers=providers, courses=featured_courses,
@@ -102,11 +105,11 @@ def index():
 
 @app.route(base_uri+'providers/<int:provider_id>', methods=['GET'])
 def index_courses(provider_id):
-    providers, courses = base_query()
+    providers, _ = base_query()
     try:
         provider = session.query(Provider).filter_by(id=provider_id).one()
     except LookupError:
-        flash_message = NotImplemented
+        flash('Could not find what you were looking for :(', 'error')
         return redirect(url_for('index'))
     provider_courses = session.query(Course).filter_by(provider_id=provider_id).order_by(Course.start_date)
     return render_template('index_courses.html',
@@ -116,11 +119,11 @@ def index_courses(provider_id):
 
 @app.route(base_uri+'courses/<int:course_id>', methods=['GET'])
 def view_course(course_id):
-    providers, courses = base_query()
+    providers, _ = base_query()
     try:
         course = session.query(Course).filter_by(id=course_id).one()
     except LookupError:
-        flash_message = NotImplemented
+        flash('Could not find what you were looking for :(', 'error')
         return redirect(url_for('index'))
     return render_template('view_course.html',
                            providers=providers, course=course,
@@ -134,8 +137,8 @@ def new_course():
         course = parse_course_form(request.form)
         session.add(course)
         session.commit()
-        flash_message = NotImplemented
-        return redirect(url_for('index'))
+        flash('New course created!', 'success')
+        return redirect(url_for('view_course', course_id=course.id))
     else:
         course = {"id": None, "name": "", "course_url": "", "thumbnail_url": "",
                   "course_number": "", "description": "", "start_date": "",
@@ -148,7 +151,7 @@ def new_course():
 
 @app.route(base_uri+'courses/<int:course_id>/edit', methods=['GET', 'POST'])
 def edit_course(course_id):
-    providers, courses = base_query()
+    providers, _ = base_query()
     course = session.query(Course).filter_by(id=course_id).one()
     if request.method == 'POST':
         course_params = parse_course_form(request.form)
@@ -162,7 +165,7 @@ def edit_course(course_id):
         course.provider_id = course_params.provider_id
         session.add(course)
         session.commit()
-        flash_message = NotImplemented
+        flash('Changes saved!', 'success')
         return redirect(url_for('view_course', course_id=course_id))
     else:
         return render_template('edit_course.html',
@@ -173,13 +176,13 @@ def edit_course(course_id):
 
 @app.route(base_uri+'courses/<int:course_id>/delete', methods=['GET', 'POST'])
 def delete_course(course_id):
-    providers, courses = base_query()
+    providers, _ = base_query()
     course = session.query(Course).filter_by(id=course_id).one()
     if request.method == 'POST':
         provider = session.query(Provider).filter_by(id=course.provider_id).one()
         session.delete(course)
         session.commit()
-        flash_message = NotImplemented
+        flash('Course was deleted... forevarrrrrrrr!', 'success')
         return redirect(url_for('index_courses', provider_id=provider.id))
     return render_template('delete_course.html',
                            providers=providers, course=course,

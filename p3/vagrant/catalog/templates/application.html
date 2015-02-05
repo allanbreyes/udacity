@@ -54,6 +54,17 @@
           </ul>
         </div>
         <div class="col-md-9">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="panel panel-{{category}}">
+                  <div class="panel-body">
+                    <span class="text-{{category}}">{{message}}</span>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
           {% block content %}{% endblock %}
         </div>
       </div>
