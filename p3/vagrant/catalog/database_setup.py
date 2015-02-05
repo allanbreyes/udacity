@@ -20,10 +20,11 @@ class Course(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(80), nullable=False)
     course_url = Column(String(255))
+    thumbnail_url = Column(String(255))
     course_number = Column(String(20))
-    description = Column(String(250))
-    perpetual = Column(Boolean, default=False)
+    description = Column(String(1000))
     start_date = Column(Date)
+    featured = Column(Boolean, default=False)
     provider_id = Column(Integer, ForeignKey('provider.id'))
     provider = relationship(Provider)
 
