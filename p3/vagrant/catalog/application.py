@@ -79,7 +79,11 @@ def view_course(course_id):
 
 @app.route(base_uri+'courses/new', methods=['GET', 'POST'])
 def new_course():
-    return 'new course'
+    course = courses[0]
+    return render_template('edit_course.html',
+                           moocs=moocs, course=course,
+                           title=course['name'],
+                           logged_in=True)
 
 @app.route(base_uri+'courses/<int:course_id>/edit', methods = ['GET', 'POST'])
 def edit_course(course_id):

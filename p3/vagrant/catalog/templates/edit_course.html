@@ -1,0 +1,52 @@
+{% extends "application.html" %}
+{% block content %}
+  <h3>{{title}}</h3>
+  <form class="form well" id="course-form" role="form">
+    <div class="form-group col-md-8">
+      <label for="course-name">Course Name</label>
+      <input class="form-control" id="course-name" type="text" value="{{course.name}}" placeholder="Chainsaw Juggling 101">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="course-number">Course Number</label>
+      <input class="form-control" id="course-number" type="text" value="{{course.number}}" placeholder="867-5309">
+    </div>
+    <div class="form-group col-md-8">
+      <label for="course-url">Link</label>
+      <input class="form-control" id="course-url" type="url" value="{{course.course_url}}" placeholder="http://www.reddit.com">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="course-mooc">Provider</label>
+      <select class="form-control" id="course-mooc" form="course-form">
+        <option {% if not course.featured %}selected{% endif %}></option>
+        {% for mooc in moocs %}
+          <option value="{{mooc.id}}" {% if mooc.id == course.mooc_id %}selected{% endif %}>{{mooc.name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group col-md-8">
+      <label for="course-thumbnail-url">Thumbnail URL</label>
+      <input class="form-control" id="course-thumbnail-url" type="url" value="{{course.thumbnail_url}}" placeholder="http://placekitten.com/g/300/300">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="course-start-date">Start Date</label>
+      <input class="form-control" id="course-start-date" type="date" value="{{course.start_date}}">
+    </div>
+    <div class="form-group col-md-12">
+      <label for="course-description">Course Description</label>
+      <textarea class="form-control" id="course-description" rows="4" placeholder="In this course, you'll learn underwater-basketweaving and tomahawk-throwing...">{{course.description}}</textarea>
+    </div>
+    <div class="checkbox col-md-3">
+      <label>
+        <input id="course-featured" type="checkbox" {% if course.featured %}checked{% endif %}>
+        Featured Course
+      </label>
+    </div>
+    <div class="btn-group col-md-offset-6 col-md-3" role="group">
+      <button type="button" class="btn btn-success pull-right">
+        <i class="glyphicon glyphicon-ok"></i>
+        Submit
+      </button>
+    </div>
+    <div class="clearfix"></div>
+  </form>
+{% endblock %}
