@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Course catalog for massive open online courses.">
+    <meta name="author" content="Allan Reyes">
+    <!-- <link rel="icon" href="favicon.ico"> -->
+
+    <title>MOOC Course Catalog</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="style.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">MOOC Course Catalog</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li>
+              {% if logged_in %}
+                <button type="button" class="btn btn-danger navbar-btn">
+                  Logout
+                </button>
+              {% else %}
+                <button type="button" class="btn btn-success navbar-btn">
+                  Login
+                </button>
+              {% endif %}
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h3>Providers</h3>
+          <ul class="list-unstyled">
+          {% for mooc in moocs %}
+            <li><a href="{{url_for('index_courses', mooc_id=mooc.id)}}">{{mooc.name}}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-9">
+          <h3>Featured Courses</h3>
+          {% for course in featured_courses %}
+            <div class="media">
+              <div class="media-left">
+                <a href="{{url_for('view_course', course_id=course.id)}}">
+                  <img class="media-object" width="64" src="{{course.thumbnail_url}}" alt="icon">
+                </a>
+              </div>
+              <div class="media-body media-middle">
+                <a href="{{url_for('view_course', course_id=course.id)}}">
+                  <strong class="media-heading">{{course.name}}</strong>
+                </a>
+                <p>{{course.start_date}}</p>
+              </div>
+            </div>
+          {% endfor %}
+          {% if logged_in %}
+          <div class="media">
+            <a href="{{url_for('new_course')}}">
+              <i class="glyphicon glyphicon-plus"></i>
+              Add a course
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div><!-- /.container -->
+
+    <!-- <script src="main.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

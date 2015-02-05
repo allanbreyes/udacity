@@ -20,26 +20,28 @@ if load_fixtures:
     with open('fixtures.json', 'rb') as f:
         fixtures = json.load(f)
     moocs = fixtures['moocs']
-    mooc = moocs[0]
+    # mooc = moocs[0]
     courses = fixtures['courses']
-    course = courses[0]
+    # course = courses[0]
 
+# routes
 @app.route('/catalog')
 @app.route('/')
 def index():
-    return 'index feed'
+    featured_courses = [course for course in courses if course['featured']]
+    return render_template('index.html', moocs=moocs, featured_courses=featured_courses, logged_in=True)
 
-@app.route(base_uri+'moocs/new', methods=['GET', 'POST'])
-def new_mooc():
-    return 'new mooc'
+# @app.route(base_uri+'moocs/new', methods=['GET', 'POST'])
+# def new_mooc():
+#     return 'new mooc'
 
-@app.route(base_uri+'moocs/<int:mooc_id>/edit', methods=['GET', 'POST'])
-def edit_mooc(mooc_id):
-    return 'edit mooc #{}'.format(mooc_id)
+# @app.route(base_uri+'moocs/<int:mooc_id>/edit', methods=['GET', 'POST'])
+# def edit_mooc(mooc_id):
+#     return 'edit mooc #{}'.format(mooc_id)
 
-@app.route(base_uri+'moocs/<int:mooc_id>/delete', methods=['GET', 'POST'])
-def delete_mooc(mooc_id):
-    return 'delete mooc #{}'.format(mooc_id)
+# @app.route(base_uri+'moocs/<int:mooc_id>/delete', methods=['GET', 'POST'])
+# def delete_mooc(mooc_id):
+#     return 'delete mooc #{}'.format(mooc_id)
 
 @app.route(base_uri+'moocs/<int:mooc_id>', methods=['GET'])
 def index_courses(mooc_id):
@@ -62,6 +64,5 @@ def delete_course(course_id):
     return 'delete course #{0}'.format(course_id)
 
 if __name__ == '__main__':
-    pass
-    # app.debug = True
-    # app.run(host='0.0.0.0', port=5000)
+    app.debug = True
+    app.run(host='0.0.0.0', port=5000)
