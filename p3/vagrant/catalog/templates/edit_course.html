@@ -15,11 +15,11 @@
       <input class="form-control" id="course-url" type="url" value="{{course.course_url}}" placeholder="http://www.reddit.com">
     </div>
     <div class="form-group col-md-4">
-      <label for="course-mooc">Provider</label>
-      <select class="form-control" id="course-mooc" form="course-form">
+      <label for="course-provider">Provider</label>
+      <select class="form-control" id="course-provider" form="course-form">
         <option {% if not course.featured %}selected{% endif %}></option>
-        {% for mooc in moocs %}
-          <option value="{{mooc.id}}" {% if mooc.id == course.mooc_id %}selected{% endif %}>{{mooc.name}}</option>
+        {% for provider in providers %}
+          <option value="{{provider.id}}" {% if provider.id == course.provider_id %}selected{% endif %}>{{provider.name}}</option>
         {% endfor %}
       </select>
     </div>

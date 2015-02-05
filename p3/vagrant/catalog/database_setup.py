@@ -7,8 +7,8 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
-class Mooc(Base):
-    __tablename__ = 'mooc'
+class Provider(Base):
+    __tablename__ = 'provider'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(80), nullable=False)
@@ -24,8 +24,8 @@ class Course(Base):
     description = Column(String(250))
     perpetual = Column(Boolean, default=False)
     start_date = Column(Date)
-    mooc_id = Column(Integer, ForeignKey('mooc.id'))
-    mooc = relationship(Mooc)
+    provider_id = Column(Integer, ForeignKey('provider.id'))
+    provider = relationship(Provider)
 
     @property
     def serialize(self):

@@ -1,5 +1,5 @@
 {
-  "moocs": [
+  "providers": [
     {
       "id": 0,
       "name": "Udacity",
@@ -27,7 +27,7 @@
       "perpetual": false,
       "start_date": "2014-10-21",
       "featured": false,
-      "mooc_id": 1
+      "provider_id": 1
     },
     {
       "id": 1,
@@ -39,7 +39,7 @@
       "perpetual": false,
       "start_date": "2015-01-06",
       "featured": false,
-      "mooc_id": 1
+      "provider_id": 1
     },
     {
       "id": 2,
@@ -51,7 +51,7 @@
       "perpetual": false,
       "start_date": "2015-01-09",
       "featured": false,
-      "mooc_id": 1
+      "provider_id": 1
     },
     {
       "id": 3,
@@ -63,7 +63,7 @@
       "perpetual": false,
       "start_date": "2015-01-09",
       "featured": true,
-      "mooc_id": 1
+      "provider_id": 1
     },
     {
       "id": 4,
@@ -75,7 +75,7 @@
       "perpetual": false,
       "start_date": "2015-01-07",
       "featured": false,
-      "mooc_id": 1
+      "provider_id": 1
     },
     {
       "id": 5,
@@ -87,7 +87,7 @@
       "perpetual": false,
       "start_date": "2015-03-04",
       "featured": false,
-      "mooc_id": 1
+      "provider_id": 1
     },
     {
       "id": 6,
@@ -99,7 +99,7 @@
       "perpetual": false,
       "start_date": "2015-01-23",
       "featured": false,
-      "mooc_id": 2
+      "provider_id": 2
     },
     {
       "id": 7,
@@ -111,7 +111,7 @@
       "perpetual": false,
       "start_date": "2015-02-14",
       "featured": false,
-      "mooc_id": 2
+      "provider_id": 2
     },
     {
       "id": 8,
@@ -123,7 +123,7 @@
       "perpetual": false,
       "start_date": "2015-03-20",
       "featured": true,
-      "mooc_id": 2
+      "provider_id": 2
     },
     {
       "id": 9,
@@ -135,7 +135,7 @@
       "perpetual": false,
       "start_date": "2015-01-04",
       "featured": false,
-      "mooc_id": 0
+      "provider_id": 0
     },
     {
       "id": 10,
@@ -147,7 +147,7 @@
       "perpetual": false,
       "start_date": "2015-01-04",
       "featured": false,
-      "mooc_id": 0
+      "provider_id": 0
     },
     {
       "id": 11,
@@ -159,7 +159,7 @@
       "perpetual": false,
       "start_date": "2015-02-04",
       "featured": true,
-      "mooc_id": 0
+      "provider_id": 0
     }
   ]
 }

@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Mooc, Course
+from database_setup import Base, Provider, Course
 
 engine = create_engine('sqlite:///catalog.db')
 Base.metadata.bind = engine
@@ -19,7 +19,7 @@ if load_fixtures:
     import json
     with open('fixtures.json', 'rb') as f:
         fixtures = json.load(f)
-    moocs = fixtures['moocs']
+    providers = fixtures['providers']
     courses = fixtures['courses']
 
 # helper functions
@@ -36,33 +36,33 @@ def get_by_id(id, items):
 def index():
     featured_courses = [course for course in courses if course['featured']]
     return render_template('index_courses.html',
-                           moocs=moocs, courses=featured_courses,
+                           providers=providers, courses=featured_courses,
                            title='Featured Courses', title_link=None,
                            logged_in=True)
 
-# @app.route(base_uri+'moocs/new', methods=['GET', 'POST'])
-# def new_mooc():
-#     return 'new mooc'
+# @app.route(base_uri+'providers/new', methods=['GET', 'POST'])
+# def new_provider():
+#     return 'new provider'
 
-# @app.route(base_uri+'moocs/<int:mooc_id>/edit', methods=['GET', 'POST'])
-# def edit_mooc(mooc_id):
-#     return 'edit mooc #{}'.format(mooc_id)
+# @app.route(base_uri+'providers/<int:provider_id>/edit', methods=['GET', 'POST'])
+# def edit_provider(provider_id):
+#     return 'edit provider #{}'.format(provider_id)
 
-# @app.route(base_uri+'moocs/<int:mooc_id>/delete', methods=['GET', 'POST'])
-# def delete_mooc(mooc_id):
-#     return 'delete mooc #{}'.format(mooc_id)
+# @app.route(base_uri+'providers/<int:provider_id>/delete', methods=['GET', 'POST'])
+# def delete_provider(provider_id):
+#     return 'delete provider #{}'.format(provider_id)
 
-@app.route(base_uri+'moocs/<int:mooc_id>', methods=['GET'])
-def index_courses(mooc_id):
+@app.route(base_uri+'providers/<int:provider_id>', methods=['GET'])
+def index_courses(provider_id):
     try:
-        mooc = get_by_id(mooc_id, moocs)
+        provider = get_by_id(provider_id, providers)
     except LookupError:
         flash_message = NotImplemented
         return redirect(url_for('index'))
-    mooc_courses = [course for course in courses if course['mooc_id'] == mooc_id]
+    provider_courses = [course for course in courses if course['provider_id'] == provider_id]
     return render_template('index_courses.html',
-                           moocs=moocs, courses=mooc_courses,
-                           title=mooc['name'], title_link=mooc['homepage_url'],
+                           providers=providers, courses=provider_courses,
+                           title=provider['name'], title_link=provider['homepage_url'],
                            logged_in=True)
 
 @app.route(base_uri+'courses/<int:course_id>', methods=['GET'])
@@ -73,7 +73,7 @@ def view_course(course_id):
         flash_message = NotImplemented
         return redirect(url_for('index'))
     return render_template('view_course.html',
-                           moocs=moocs, course=course,
+                           providers=providers, course=course,
                            title=course['name'],
                            logged_in=True)
 
@@ -85,9 +85,9 @@ def new_course():
     else:
         course = {"id": None, "name": "", "course_url": "", "thumbnail_url": "",
                   "course_number": "", "description": "", "perpetual": False,
-                  "start_date": "", "featured": False, "mooc_id": None}
+                  "start_date": "", "featured": False, "provider_id": None}
         return render_template('edit_course.html',
-                               moocs=moocs, course=course,
+                               providers=providers, course=course,
                                title='New Course',
                                form_action=url_for('new_course'),
                                logged_in=True)
@@ -100,7 +100,7 @@ def edit_course(course_id):
     else:
         course = get_by_id(course_id, courses)
         return render_template('edit_course.html',
-                               moocs=moocs, course=course,
+                               providers=providers, course=course,
                                title='Editing: ' + course['name'],
                                form_action=url_for('edit_course', course_id=course_id),
                                logged_in=True)
