@@ -17,7 +17,7 @@ class User(Base):
         self.access_token = access_token
 
 class Provider(Base):
-    __tablename__ = 'provider'
+    __tablename__ = 'providers'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(80), nullable=False)
@@ -43,8 +43,10 @@ class Course(Base):
     description = Column(String(1000))
     start_date = Column(Date)
     featured = Column(Boolean, default=False)
-    provider_id = Column(Integer, ForeignKey('provider.id'))
+    provider_id = Column(Integer, ForeignKey('providers.id'))
     provider = relationship(Provider)
+    adder_id = Column(Integer, ForeignKey('users.id'))
+    adder = relationship(User)
 
     @property
     def serialize(self):

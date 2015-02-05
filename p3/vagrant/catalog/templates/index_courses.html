@@ -10,7 +10,7 @@
     {% endif %}
   </h3>
   {% for course in courses %}
-    <div class="media">
+    <div class="media" {%if editable(course)%}style="background: #F0F0FF"{%endif%}>
       <div class="media-left">
         <a href="{{url_for('view_course', course_id=course.id)}}">
           <img class="media-object" width="64" src="{{course.thumbnail_url}}" alt="icon">
@@ -20,6 +20,13 @@
         <a href="{{url_for('view_course', course_id=course.id)}}">
           <strong class="media-heading">{{course.name}}</strong>
         </a>
+        {% if editable(course) %}
+          <em class="text-muted pull-right">
+            (added with
+            <i class="glyphicon glyphicon-heart"></i>
+            by you!)
+          </em>
+        {% endif %}
         <p>{{course.start_date}}</p>
       </div>
     </div>

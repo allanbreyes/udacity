@@ -35,7 +35,7 @@
         <p>{{course.description}}</p>
       </li>
 
-      {% if logged_in() %}
+      {% if logged_in() and editable(course) %}
       <li class="list-group-item clearfix">
         <ul class="list-inline pull-right">
           <li>

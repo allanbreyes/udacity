@@ -36,6 +36,7 @@ api_uri = base_uri + 'api/'
 # oauth
 @app.route('/login')
 def login():
+    """ login route/routine """
     if app.config['GITHUB_CLIENT_ID'] and app.config['GITHUB_CLIENT_SECRET']:
         return github.authorize(redirect_uri=url_for('authorized', _external=True))
     else:
@@ -44,6 +45,7 @@ def login():
 
 @app.route('/logout')
 def logout():
+    """ logout route/routine """
     session.pop('user_id', None)
     session.pop('access_token', None)
     flash('You\'ve been successfully logged out... mortal.', 'success')
@@ -52,6 +54,7 @@ def logout():
 @app.route('/github-callback')
 @github.authorized_handler
 def authorized(oauth_token):
+    """ callback from github oauth """
     next_url = request.args.get('next')
     if oauth_token is None:
         flash('Authorization failed.', 'danger')
@@ -62,13 +65,15 @@ def authorized(oauth_token):
         user = User(oauth_token)
         db_session.add(user)
 
+    # store access token into database
     user.access_token = oauth_token
     db_session.commit()
 
+    # store user id and access token in session hash
     session['user_id'] = user.id
     session['user_token'] = user.access_token
-    if authenticated():
-        flash('You\'re logged in!  Now you have incredible superpowers...', 'success')
+
+    flash('You\'re logged in!  Now you have incredible superpowers...', 'success')
     return redirect(url_for('index'))
 
 # helper functions
@@ -99,11 +104,22 @@ def parse_course_form(form):
     return course
 
 def authenticated():
+    """ returns whether or not the session user is authenticated """
     if session.has_key('user_id') and session.has_key('user_token'):
         user = db_session.query(User).filter_by(id=session['user_id']).first()
         if user:
             return user.access_token == session['user_token']
     return False
+
+def can_edit(course):
+    """ returns whether the course is owned by the session user """
+    if authenticated():
+        if course.adder_id == None:
+            return False
+        else:
+            return session.has_key('user_id') and course.adder_id == session['user_id']
+    else:
+        return False
 
 # routes
 @app.route('/source')
@@ -155,7 +171,7 @@ def index():
     return render_template('index_courses.html',
                            providers=providers, courses=featured_courses,
                            title='Featured Courses', title_link=None,
-                           logged_in=authenticated)
+                           logged_in=authenticated, editable=can_edit)
 
 # TODO: implement administrative privileges, routes, and templates for Provider CRUD operations
 # @app.route(base_uri+'providers/new', methods=['GET', 'POST'])
@@ -193,7 +209,7 @@ def index_courses(provider_id):
     return render_template('index_courses.html',
                            providers=providers, courses=provider_courses,
                            title=provider.name, title_link=provider.homepage_url,
-                           logged_in=authenticated)
+                           logged_in=authenticated, editable=can_edit)
 
 @app.route(base_uri+'courses/<int:course_id>', methods=['GET'])
 def view_course(course_id):
@@ -207,7 +223,8 @@ def view_course(course_id):
     return render_template('view_course.html',
                            providers=providers, course=course,
                            title=course.name,
-                           logged_in=authenticated)
+                           logged_in=authenticated,
+                           editable=can_edit)
 
 @app.route(base_uri+'courses/new', methods=['GET', 'POST'])
 def new_course():
@@ -217,6 +234,7 @@ def new_course():
     providers, _ = base_query()
     if request.method == 'POST':
         course = parse_course_form(request.form)
+        course.adder_id = session['user_id']
         db_session.add(course)
         try:
             db_session.commit()
@@ -238,10 +256,13 @@ def new_course():
 @app.route(base_uri+'courses/<int:course_id>/edit', methods=['GET', 'POST'])
 def edit_course(course_id):
     """ handles course editing """
-    if not authenticated():
-        return redirect(url_for('login'))
     providers, _ = base_query()
     course = db_session.query(Course).filter_by(id=course_id).one()
+    if not authenticated():
+        return redirect(url_for('login'))
+    elif not can_edit(course):
+        flash('You don\'t own this! (Can\'t touch this, dun nan nan na... na na... na na.)', 'warning')
+        return redirect(url_for('view_course', course_id=course_id))
     if request.method == 'POST':
         course_params = parse_course_form(request.form)
         # TODO: figure out a way to DRY this out... no bracket notation :(
@@ -270,10 +291,13 @@ def edit_course(course_id):
 @app.route(base_uri+'courses/<int:course_id>/delete', methods=['GET', 'POST'])
 def delete_course(course_id):
     """ handles course deletion """
-    if not authenticated():
-        return redirect(url_for('login'))
     providers, _ = base_query()
     course = db_session.query(Course).filter_by(id=course_id).one()
+    if not authenticated():
+        return redirect(url_for('login'))
+    elif not can_edit(course):
+        flash('What are you doing here?', 'warning')
+        return redirect(url_for('view_course', course_id=course_id))
     if request.method == 'POST':
         provider = db_session.query(Provider).filter_by(id=course.provider_id).one()
         db_session.delete(course)

@@ -17,6 +17,6 @@ To spin this website up:
 3. Connect to the virtual machine: `vagrant ssh`.
 4. (Optional) Obtain your own GitHub API keys by [registering a new application](https://github.com/settings/applications).  Ensure you add `localhost:5000/github-callback` as the authorization callback URL.
 5. (Optional) Inside the virtual machine, `export` your own API keys, `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
-6. Run the provided key export shell script: `sh /vagrant/catalog/export_keys.sh`.
+6. Run the provided key export shell script: `source /vagrant/catalog/export_keys.sh`.
 7. Start the server: `python /vagrant/catalog/application.py`.
 8. Navigate to it in your browser of choice at `localhost:5000`.  The first-time run of the server will initialize the database with fixture data.
