@@ -22,11 +22,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MOOC Course Catalog</a>
+          <a class="navbar-brand" href="{{url_for('index')}}">MOOC Course Catalog</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home</a></li>
             <li><a href="#">GitHub</a></li>
             <li>
               {% if logged_in %}

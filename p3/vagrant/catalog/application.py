@@ -20,17 +20,24 @@ if load_fixtures:
     with open('fixtures.json', 'rb') as f:
         fixtures = json.load(f)
     moocs = fixtures['moocs']
-    # mooc = moocs[0]
     courses = fixtures['courses']
-    # course = courses[0]
+
+# helper functions
+def get_by_id(id, items):
+    """ returns an item in a list of items where item['id'] == id """
+    for item in items:
+        if id == item['id']:
+            return item
+    raise LookupError('id {} not found'.format(id))
 
 # routes
 @app.route('/catalog')
 @app.route('/')
 def index():
     featured_courses = [course for course in courses if course['featured']]
-    return render_template('featured_courses.html',
-                           moocs=moocs, featured_courses=featured_courses,
+    return render_template('course_listing.html',
+                           moocs=moocs, courses=featured_courses,
+                           title='Featured Courses', title_link=None,
                            logged_in=True)
 
 # @app.route(base_uri+'moocs/new', methods=['GET', 'POST'])
@@ -47,7 +54,16 @@ def index():
 
 @app.route(base_uri+'moocs/<int:mooc_id>', methods=['GET'])
 def index_courses(mooc_id):
-    return 'catalog for mooc #{}'.format(mooc_id)
+    try:
+        mooc = get_by_id(mooc_id, moocs)
+    except LookupError:
+        flash_message = NotImplemented
+        return redirect(url_for('index'))
+    mooc_courses = [course for course in courses if course['mooc_id'] == mooc_id]
+    return render_template('course_listing.html',
+                           moocs=moocs, courses=mooc_courses,
+                           title=mooc['name'], title_link=mooc['homepage_url'],
+                           logged_in=True)
 
 @app.route(base_uri+'courses/<int:course_id>', methods=['GET'])
 def view_course(course_id):

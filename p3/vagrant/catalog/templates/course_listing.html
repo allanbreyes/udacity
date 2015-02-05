@@ -1,7 +1,15 @@
 {% extends "application.html" %}
 {% block content %}
-  <h3>Featured Courses</h3>
-  {% for course in featured_courses %}
+  <h3>
+    {{ title }}
+    {% if title_link %}
+      <a class="btn btn-default pull-right small" href="{{title_link}}">
+        <i class="glyphicon glyphicon-share-alt"></i>
+        Website
+      </a>
+    {% endif %}
+  </h3>
+  {% for course in courses %}
     <div class="media">
       <div class="media-left">
         <a href="{{url_for('view_course', course_id=course.id)}}">
