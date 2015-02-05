@@ -16,6 +16,7 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 base_uri = '/catalog/'
+api_uri = base_uri + 'api/'
 
 # helper functions
 def base_query():
@@ -100,6 +101,18 @@ def index():
 # @app.route(base_uri+'providers/<int:provider_id>/delete', methods=['GET', 'POST'])
 # def delete_provider(provider_id):
 #     return 'delete provider #{}'.format(provider_id)
+
+@app.route(api_uri+'providers', methods=['GET'])
+def index_providers_api():
+    """ returns JSON response of providers """
+    providers, _ = base_query()
+    return jsonify(providers=[p.serialize for p in providers])
+
+@app.route(api_uri+'providers/<int:provider_id>', methods=['GET'])
+def index_courses_api(provider_id):
+    """ returns JSON response of courses """
+    provider_courses = session.query(Course).filter_by(provider_id=provider_id).order_by(Course.start_date)
+    return jsonify(courses=[pc.serialize for pc in provider_courses])
 
 @app.route(base_uri+'providers/<int:provider_id>', methods=['GET'])
 def index_courses(provider_id):

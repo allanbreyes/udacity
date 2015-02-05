@@ -14,6 +14,15 @@ class Provider(Base):
     name = Column(String(80), nullable=False)
     homepage_url = Column(String(255))
 
+    @property
+    def serialize(self):
+        """ JSON serializer method """
+        return {
+            'id': self.id,
+            'name': self.name,
+            'homepage_url': self.homepage_url
+        }
+
 class Course(Base):
     __tablename__ = 'course'
 
@@ -34,10 +43,13 @@ class Course(Base):
         return {
             'id': self.id,
             'name': self.name,
+            'course_url': self.course_url,
+            'thumbnail_url': self.thumbnail_url,
             'course_number': self.course_number,
             'description': self.description,
-            'perpetual': self.perpetual,
-            'start_date': self.start_date,
+            'start_date': str(self.start_date.isoformat()),
+            'featured': self.featured,
+            'provider_id': self.provider_id
         }
 
 engine = create_engine('sqlite:///catalog.db')
