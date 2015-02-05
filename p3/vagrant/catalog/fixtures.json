@@ -2,18 +2,18 @@
   "providers": [
     {
       "id": 1,
-      "name": "Udacity",
-      "homepage_url": "http://www.udacity.com"
-    },
-    {
-      "id": 2,
       "name": "edX",
       "homepage_url": "http://www.edx.org"
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "Coursera",
       "homepage_url": "http://www.coursera.org"
+    },
+    {
+      "id": 3,
+      "name": "Udacity",
+      "homepage_url": "http://www.udacity.com"
     }
   ],
   "courses": [
