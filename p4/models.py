@@ -16,7 +16,7 @@ import httplib
 import endpoints
 from protorpc import messages
 from google.appengine.ext import ndb
-from google.appengine.api import memcache
+# from google.appengine.api import memcache
 
 class ConflictException(endpoints.ServiceException):
     """ConflictException -- exception mapped to HTTP 409 response"""
@@ -24,22 +24,22 @@ class ConflictException(endpoints.ServiceException):
 
 class Profile(ndb.Model):
     """Profile -- User profile object"""
-    displayName = ndb.StringProperty()
-    mainEmail = ndb.StringProperty()
-    teeShirtSize = ndb.StringProperty(default='NOT_SPECIFIED')
-    conferenceKeysToAttend = ndb.StringProperty(repeated=True)
+    displayName             = ndb.StringProperty()
+    mainEmail               = ndb.StringProperty()
+    teeShirtSize            = ndb.StringProperty(default='NOT_SPECIFIED')
+    conferenceKeysToAttend  = ndb.StringProperty(repeated=True)
 
 class ProfileMiniForm(messages.Message):
     """ProfileMiniForm -- update Profile form message"""
-    displayName = messages.StringField(1)
-    teeShirtSize = messages.EnumField('TeeShirtSize', 2)
+    displayName             = messages.StringField(1)
+    teeShirtSize            = messages.EnumField('TeeShirtSize', 2)
 
 class ProfileForm(messages.Message):
     """ProfileForm -- Profile outbound form message"""
-    displayName = messages.StringField(1)
-    mainEmail = messages.StringField(2)
-    teeShirtSize = messages.EnumField('TeeShirtSize', 3)
-    conferenceKeysToAttend = messages.StringField(4, repeated=True)
+    displayName             = messages.StringField(1)
+    mainEmail               = messages.StringField(2)
+    teeShirtSize            = messages.EnumField('TeeShirtSize', 3)
+    conferenceKeysToAttend  = messages.StringField(4, repeated=True)
 
 class StringMessage(messages.Message):
     """StringMessage-- outbound (single) string message"""
@@ -86,22 +86,24 @@ class Session(ndb.Model):
     name            = ndb.StringProperty(required=True)
     highlights      = ndb.StringProperty()
     speaker         = ndb.StringProperty()
-    duration        = ndb.IntegerProperty() # units = minutes
-    typeOfSession   = ndb.StringProperty()
+    duration        = ndb.IntegerProperty() # in minutes
+    typeOfSession   = ndb.StringProperty(repeated=True)
     date            = ndb.DateProperty()
     startTime       = ndb.TimeProperty() # 24hr notation
     conference      = ndb.StructuredProperty(Conference)
-    # TODO: enable memcache?
+
+# enable memcache?
+Session._use_memcache = True
 
 class SessionForm(messages.Message):
     """SessionForm -- Session outbound form message"""
     name            = messages.StringField(1)
     highlights      = messages.StringField(2)
     speaker         = messages.StringField(3)
-    duration        = messages.IntegerField(4) # units = minutes
-    typeOfSession   = messages.StringField(5)
-    date            = messages.DateField(6)
-    startTime       = messages.TimeField(7) # 24hr notation
+    duration        = messages.IntegerField(4)
+    typeOfSession   = messages.StringField(5, repeated=True)
+    date            = messages.StringField(6) # DateTimeField()
+    startTime       = messages.StringField(7) # DateTimeField()
     websafeKey      = messages.StringField(8)
 
 class SessionForms(messages.Message):
