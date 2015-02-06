@@ -39,6 +39,7 @@ from models import ConferenceForm
 from models import ConferenceForms
 from models import Session
 from models import SessionForm
+from models import SessionForms
 from models import ConferenceQueryForm
 from models import ConferenceQueryForms
 from models import TeeShirtSize
@@ -354,6 +355,34 @@ class ConferenceApi(remote.Service):
                 conferences]
         )
 
+
+    @endpoints.method(CONF_GET_REQUEST, ConferenceForm,
+            path='conference/{websafeConferenceKey}/sessions',
+            http_method='GET', name='getConferenceSessions')
+    def getConferenceSessions(self, request):
+        """Given a conference, returns all sessions."""
+
+    @endpoints.method(CONF_GET_REQUEST,
+            path='conference/{websafeConferenceKey}/sessions/by_type',
+            http_method='GET', name='getConferenceSessionsByType')
+    def getConferenceSessionsByType(self, request):
+        """Given a conference, return all sessions of a specified type"""
+
+
+# - - - Session objects - - - - - - - - - - - - - - - - - - -
+
+    @endpoints.method(message_types.VoidMessage, SessionForms,
+            path='sessions',
+            http_method='GET', name='getSessionsBySpeaker')
+    def getSessionsBySpeaker(self, request):
+        """Given a speaker, return all sessions given by him/her across all conferences"""
+
+
+    @endpoints.method(SessionForm, SessionForm,
+            path='sessions',
+            http_method='POST', name='createSession')
+    def createSession(self, request):
+        """Open to the organizer of the conference"""
 
 # - - - Profile objects - - - - - - - - - - - - - - - - - - -
 

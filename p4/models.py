@@ -83,6 +83,9 @@ class ConferenceForms(messages.Message):
 
 class Session(ndb.Model):
     """Session -- Session object"""
+    # enable memcache?
+    _use_memcache   = True
+
     name            = ndb.StringProperty(required=True)
     highlights      = ndb.StringProperty()
     speaker         = ndb.StringProperty()
@@ -92,8 +95,6 @@ class Session(ndb.Model):
     startTime       = ndb.TimeProperty() # 24hr notation
     conference      = ndb.StructuredProperty(Conference)
 
-# enable memcache?
-Session._use_memcache = True
 
 class SessionForm(messages.Message):
     """SessionForm -- Session outbound form message"""
