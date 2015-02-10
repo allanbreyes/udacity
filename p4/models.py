@@ -93,19 +93,20 @@ class Session(ndb.Model):
     typeOfSession   = ndb.StringProperty(repeated=True)
     date            = ndb.DateProperty()
     startTime       = ndb.TimeProperty() # 24hr notation
-    conference      = ndb.StructuredProperty(Conference)
+    conferenceKey   = ndb.StringProperty()
 
 
 class SessionForm(messages.Message):
     """SessionForm -- Session outbound form message"""
-    name            = messages.StringField(1)
-    highlights      = messages.StringField(2)
-    speaker         = messages.StringField(3)
-    duration        = messages.IntegerField(4)
-    typeOfSession   = messages.StringField(5, repeated=True)
-    date            = messages.StringField(6) # DateTimeField()
-    startTime       = messages.StringField(7) # DateTimeField()
-    websafeKey      = messages.StringField(8)
+    conferenceKey   = messages.StringField(1)
+    name            = messages.StringField(2)
+    highlights      = messages.StringField(3)
+    speaker         = messages.StringField(4)
+    duration        = messages.IntegerField(5)
+    typeOfSession   = messages.StringField(6, repeated=True)
+    date            = messages.StringField(7) # DateTimeField()
+    startTime       = messages.StringField(8) # DateTimeField()
+    websafeKey      = messages.StringField(9)
 
 class SessionForms(messages.Message):
     """SessionForms -- multiple Session outbound form message"""

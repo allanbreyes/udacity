@@ -60,6 +60,7 @@ DEFAULTS = {
     "maxAttendees": 0,
     "seatsAvailable": 0,
     "topics": [ "Default", "Topic" ],
+    "typeOfSession": [ "Talk" ]
 }
 
 OPERATORS = {
@@ -355,34 +356,83 @@ class ConferenceApi(remote.Service):
                 conferences]
         )
 
-
-    @endpoints.method(CONF_GET_REQUEST, ConferenceForm,
+    #TODO: complete this
+    @endpoints.method(CONF_GET_REQUEST, SessionForms,
             path='conference/{websafeConferenceKey}/sessions',
-            http_method='GET', name='getConferenceSessions')
+            http_method='GET', name='XgetConferenceSessions')
     def getConferenceSessions(self, request):
         """Given a conference, returns all sessions."""
 
+        # copy ConferenceForm/ProtoRPC Message into dict
+        data = {field.name: getattr(request, field.name) for field in request.all_fields()}
+
+        # update existing conference
+        conf = ndb.Key(urlsafe=request.websafeConferenceKey).get()
+
+        # check that conference exists
+        if not conf:
+            raise endpoints.NotFoundException(
+                'No conference found with key: %s' % request.websafeConferenceKey)
+
+
+
+    #TODO: complete this
     @endpoints.method(CONF_GET_REQUEST,
             path='conference/{websafeConferenceKey}/sessions/by_type',
-            http_method='GET', name='getConferenceSessionsByType')
+            http_method='GET', name='XgetConferenceSessionsByType')
     def getConferenceSessionsByType(self, request):
         """Given a conference, return all sessions of a specified type"""
 
 
+
 # - - - Session objects - - - - - - - - - - - - - - - - - - -
 
+    def _createSessionObject(self, request):
+        """Create or update Conference object, returning ConferenceForm/request."""
+        # preload necessary data items
+        user = endpoints.get_current_user()
+        if not user:
+            raise endpoints.UnauthorizedException('Authorization required')
+        user_id = _getUserId()
+
+        if not request.name:
+            raise endpoints.BadRequestException("Session 'name' field required")
+
+        # copy SessionForm/ProtoRPC Message into dict
+        data = {field.name: getattr(request, field.name) for field in request.all_fields()}
+        del data['websafeKey']
+
+        # convert dates from strings to Date objects
+        if data['date']:
+            data['date'] = datetime.strptime(data['date'][:10], "%Y-%m-%d").date()
+
+        # convert time from strings to Time object (date-independent)
+        if data['startTime']:
+            data['startTime'] = datetime.strptime(data['startTime'][:5], "%H:%M").time()
+
+        # create Conference, send email to organizer confirming
+        # creation of Conference & return (modified) ConferenceForm
+        Session(**data).put()
+
+        return request
+
+
+    #TODO: complete this
+    @endpoints.method(SessionForm, SessionForm,
+            path='sessions',
+            http_method='POST', name='XcreateSession')
+    def createSession(self, request):
+        """Open to the organizer of the conference"""
+        return self._createSessionObject(request)
+
+
+    #TODO: complete this
     @endpoints.method(message_types.VoidMessage, SessionForms,
             path='sessions',
-            http_method='GET', name='getSessionsBySpeaker')
+            http_method='GET', name='XgetSessionsBySpeaker')
     def getSessionsBySpeaker(self, request):
         """Given a speaker, return all sessions given by him/her across all conferences"""
 
-
-    @endpoints.method(SessionForm, SessionForm,
-            path='sessions',
-            http_method='POST', name='createSession')
-    def createSession(self, request):
-        """Open to the organizer of the conference"""
 
 # - - - Profile objects - - - - - - - - - - - - - - - - - - -
 
