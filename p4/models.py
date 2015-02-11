@@ -62,6 +62,10 @@ class Conference(ndb.Model):
     maxAttendees    = ndb.IntegerProperty()
     seatsAvailable  = ndb.IntegerProperty()
 
+    @property
+    def sessions(self):
+        return Session.query(ancestor=self.key)
+
 class ConferenceForm(messages.Message):
     """ConferenceForm -- Conference outbound form message"""
     name            = messages.StringField(1)
@@ -86,27 +90,26 @@ class Session(ndb.Model):
     # enable memcache?
     _use_memcache   = True
 
-    name            = ndb.StringProperty(required=True)
-    highlights      = ndb.StringProperty()
-    speaker         = ndb.StringProperty()
-    duration        = ndb.IntegerProperty() # in minutes
-    typeOfSession   = ndb.StringProperty(repeated=True)
-    date            = ndb.DateProperty()
-    startTime       = ndb.TimeProperty() # 24hr notation
-    conferenceKey   = ndb.StringProperty()
-
+    name                    = ndb.StringProperty(required=True)
+    highlights              = ndb.StringProperty()
+    speaker                 = ndb.StringProperty(required=True)
+    duration                = ndb.IntegerProperty() # in minutes
+    typeOfSession           = ndb.StringProperty(repeated=True)
+    date                    = ndb.DateProperty()
+    startTime               = ndb.TimeProperty() # 24hr notation
+    organizerUserId         = ndb.StringProperty()
+    # conference              = ndb.KeyProperty(kind=Conference)
 
 class SessionForm(messages.Message):
     """SessionForm -- Session outbound form message"""
-    conferenceKey   = messages.StringField(1)
-    name            = messages.StringField(2)
-    highlights      = messages.StringField(3)
-    speaker         = messages.StringField(4)
-    duration        = messages.IntegerField(5)
-    typeOfSession   = messages.StringField(6, repeated=True)
-    date            = messages.StringField(7) # DateTimeField()
-    startTime       = messages.StringField(8) # DateTimeField()
-    websafeKey      = messages.StringField(9)
+    websafeConferenceKey    = messages.StringField(1)
+    name                    = messages.StringField(2)
+    highlights              = messages.StringField(3)
+    speaker                 = messages.StringField(4)
+    duration                = messages.IntegerField(5)
+    typeOfSession           = messages.StringField(6, repeated=True)
+    date                    = messages.StringField(7) # DateTimeField()
+    startTime               = messages.StringField(8) # DateTimeField()
 
 class SessionForms(messages.Message):
     """SessionForms -- multiple Session outbound form message"""

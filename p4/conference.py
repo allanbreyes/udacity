@@ -60,7 +60,6 @@ DEFAULTS = {
     "maxAttendees": 0,
     "seatsAvailable": 0,
     "topics": [ "Default", "Topic" ],
-    "typeOfSession": [ "Talk" ]
 }
 
 OPERATORS = {
@@ -356,7 +355,7 @@ class ConferenceApi(remote.Service):
                 conferences]
         )
 
-    #TODO: complete this
+#TODO: complete this
     @endpoints.method(CONF_GET_REQUEST, SessionForms,
             path='conference/{websafeConferenceKey}/sessions',
             http_method='GET', name='XgetConferenceSessions')
@@ -398,9 +397,20 @@ class ConferenceApi(remote.Service):
         if not request.name:
             raise endpoints.BadRequestException("Session 'name' field required")
 
+        # fetch and check conference
+        conf = ndb.Key(urlsafe=request.websafeConferenceKey).get()
+        # check that conference exists
+        if not conf:
+            raise endpoints.NotFoundException(
+                'No conference found with key: %s' % request.websafeConferenceKey)
+
+        # check that user is owner
+        if user_id != conf.organizerUserId:
+            raise endpoints.ForbiddenException(
+                'Only the owner can add sessions.')
+
         # copy SessionForm/ProtoRPC Message into dict
         data = {field.name: getattr(request, field.name) for field in request.all_fields()}
-        del data['websafeKey']
 
         # convert dates from strings to Date objects
         if data['date']:
@@ -410,8 +420,14 @@ class ConferenceApi(remote.Service):
         if data['startTime']:
             data['startTime'] = datetime.strptime(data['startTime'][:5], "%H:%M").time()
 
-        # create Conference, send email to organizer confirming
-        # creation of Conference & return (modified) ConferenceForm
+        # generate key based off of parent-child relationship
+        p_key = ndb.Key(Conference, conf.key.id())
+        c_id = Session.allocate_ids(size=1, parent=p_key)[0]
+        c_key = ndb.Key(Session, c_id, parent=p_key)
+        data['key'] = c_key
+        data['organizerUserId'] = user_id
+        del data['websafeConferenceKey']
+
         Session(**data).put()
 
         return request
