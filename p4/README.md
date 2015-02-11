@@ -10,7 +10,7 @@ This project is a cloud-based API server to support a web-based and native Andro
 - Session information
 - User wishlists
 
-The API is hosted on Google App Engine as application ID [full-stack-conference](https://full-stack-conference.appspot.com), and can be accessed via the [API explorer](https://apis-explorer.appspot.com/apis-explorer/?base=https://full-stack-conference.appspot.com/_ah/api#p/.
+The API is hosted on Google App Engine as application ID [full-stack-conference](https://full-stack-conference.appspot.com), and can be accessed via the [API explorer](https://apis-explorer.appspot.com/apis-explorer/?base=https://full-stack-conference.appspot.com/_ah/api#p/).
 
 ### Design and Improvement Tasks
 
