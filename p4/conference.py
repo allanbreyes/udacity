@@ -482,8 +482,8 @@ class ConferenceApi(remote.Service):
                     setattr(sf, field.name, str(getattr(session, field.name)))
                 else:
                     setattr(sf, field.name, getattr(session, field.name))
-            # elif field.name == "websafeKey":
-            #     setattr(sf, field.name, session.key.urlsafe())
+            elif field.name == "websafeKey":
+                setattr(sf, field.name, session.key.urlsafe())
         sf.check_initialized()
         return sf
 
@@ -588,6 +588,11 @@ class ConferenceApi(remote.Service):
     def saveProfile(self, request):
         """Update & return user profile."""
         return self._doProfile(request)
+
+    @endpoints.method(
+            http_method='POST', name='XaddSessionToWishlist')
+    def addSessionToWishlist(self, request):
+        """Saves a session to a user's wishlist"""
 
 
 # - - - Announcements - - - - - - - - - - - - - - - - - - - -
