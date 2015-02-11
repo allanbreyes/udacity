@@ -104,6 +104,11 @@ SPEAKER_GET_REQUEST = endpoints.ResourceContainer(
     speaker=messages.StringField(1, required=True),
 )
 
+WISHLIST_POST_REQUEST = endpoints.ResourceContainer(
+    message_types.VoidMessage,
+    websafeSessionKey=messages.StringField(1, required=True),
+)
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -589,10 +594,37 @@ class ConferenceApi(remote.Service):
         """Update & return user profile."""
         return self._doProfile(request)
 
-    @endpoints.method(
+    @endpoints.method(WISHLIST_POST_REQUEST, SessionForm,
             http_method='POST', name='XaddSessionToWishlist')
     def addSessionToWishlist(self, request):
         """Saves a session to a user's wishlist"""
+        # preload necessary data items
+        user = endpoints.get_current_user()
+        if not user:
+            raise endpoints.UnauthorizedException('Authorization required')
+        # user_id = _getUserId()
+
+        # fetch and check session
+        session = ndb.Key(urlsafe=request.websafeSessionKey).get()
+
+        # check that session exists
+        if not session:
+            raise endpoints.NotFoundException(
+                'No session found with key: %s' % request.websafeSessionKey)
+
+        # fetch profile
+        prof = self._getProfileFromUser()
+
+        # check if session already added to wishlist
+        if session.key in prof.sessionsToAttend:
+            raise endpoints.BadRequestException(
+                'Session already saved to wishlist: %s' % request.websafeSessionKey)
+
+        # append to user profile's wishlist
+        prof.sessionsToAttend.append(session.key)
+        prof.put()
+
+        return self._copySessionToForm(session)
 
 
 # - - - Announcements - - - - - - - - - - - - - - - - - - - -
