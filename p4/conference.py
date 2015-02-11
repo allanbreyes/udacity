@@ -99,6 +99,11 @@ SESSION_POST_REQUEST = endpoints.ResourceContainer(
     websafeConferenceKey=messages.StringField(1, required=True),
 )
 
+SPEAKER_GET_REQUEST = endpoints.ResourceContainer(
+    message_types.VoidMessage,
+    speaker=messages.StringField(1, required=True),
+)
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -490,12 +495,22 @@ class ConferenceApi(remote.Service):
         return self._createSessionObject(request)
 
 
-    #TODO: complete this
-    @endpoints.method(message_types.VoidMessage, SessionForms,
-            path='sessions',
+    @endpoints.method(SPEAKER_GET_REQUEST, SessionForms,
+            path='sessions/{speaker}',
             http_method='GET', name='XgetSessionsBySpeaker')
     def getSessionsBySpeaker(self, request):
         """Given a speaker, return all sessions given by him/her across all conferences"""
+        data = {field.name: getattr(request, field.name) for field in request.all_fields()}
+        speaker = data['speaker']
+
+        # query sessions by speaker, exact match
+        sessions = Session.query(Session.speaker == speaker)
+
+        # return set of ConferenceForm objects per Conference
+        return SessionForms(
+            items=[self._copySessionToForm(session) for session in sessions]
+        )
+
 
 
 # - - - Profile objects - - - - - - - - - - - - - - - - - - -
