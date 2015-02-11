@@ -373,7 +373,7 @@ class ConferenceApi(remote.Service):
 
     @endpoints.method(CONF_GET_REQUEST, SessionForms,
             path='conference/{websafeConferenceKey}/sessions',
-            http_method='GET', name='XgetConferenceSessions')
+            http_method='GET', name='getConferenceSessions')
     def getConferenceSessions(self, request):
         """Given a conference, returns all sessions."""
 
@@ -399,7 +399,7 @@ class ConferenceApi(remote.Service):
 
     @endpoints.method(SESSION_GET_REQUEST, SessionForms,
             path='conference/{websafeConferenceKey}/sessions/by_type/{typeOfSession}',
-            http_method='GET', name='XgetConferenceSessionsByType')
+            http_method='GET', name='getConferenceSessionsByType')
     def getConferenceSessionsByType(self, request):
         """Given a conference, return all sessions of a specified type"""
 
@@ -489,7 +489,7 @@ class ConferenceApi(remote.Service):
 
     @endpoints.method(SessionForm, SessionForm,
             path='sessions',
-            http_method='POST', name='XcreateSession')
+            http_method='POST', name='createSession')
     def createSession(self, request):
         """Open to the organizer of the conference"""
         return self._createSessionObject(request)
@@ -497,7 +497,7 @@ class ConferenceApi(remote.Service):
 
     @endpoints.method(SPEAKER_GET_REQUEST, SessionForms,
             path='sessions/{speaker}',
-            http_method='GET', name='XgetSessionsBySpeaker')
+            http_method='GET', name='getSessionsBySpeaker')
     def getSessionsBySpeaker(self, request):
         """Given a speaker, return all sessions given by him/her across all conferences"""
         data = {field.name: getattr(request, field.name) for field in request.all_fields()}
