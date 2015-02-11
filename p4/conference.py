@@ -396,7 +396,7 @@ class ConferenceApi(remote.Service):
         # create ancestor query for all key matches for this conference
         sessions = Session.query(ancestor=ndb.Key(Conference, conf.key.id()))
 
-        # return set of ConferenceForm objects per Conference
+        # return set of SessionForm objects per Session
         return SessionForms(
             items=[self._copySessionToForm(session) for session in sessions]
         )
@@ -625,6 +625,26 @@ class ConferenceApi(remote.Service):
         prof.put()
 
         return self._copySessionToForm(session)
+
+
+    @endpoints.method(message_types.VoidMessage, SessionForms,
+            http_method='POST', name='XgetSessionsInWishlist')
+    def getSessionsInWishlist(self, request):
+        """Returns a user's wishlist of sessions"""
+        # preload necessary data items
+        user = endpoints.get_current_user()
+        if not user:
+            raise endpoints.UnauthorizedException('Authorization required')
+
+        # fetch profile and wishlist
+        prof = self._getProfileFromUser()
+        session_keys = prof.sessionsToAttend
+        sessions = [session_key.get() for session_key in session_keys]
+
+        # return set
+        return SessionForms(
+            items=[self._copySessionToForm(session) for session in sessions]
+        )
 
 
 # - - - Announcements - - - - - - - - - - - - - - - - - - - -
