@@ -595,7 +595,7 @@ class ConferenceApi(remote.Service):
         return self._doProfile(request)
 
     @endpoints.method(WISHLIST_POST_REQUEST, SessionForm,
-            http_method='POST', name='XaddSessionToWishlist')
+            http_method='POST', name='addSessionToWishlist')
     def addSessionToWishlist(self, request):
         """Saves a session to a user's wishlist"""
         # preload necessary data items
@@ -628,7 +628,7 @@ class ConferenceApi(remote.Service):
 
 
     @endpoints.method(message_types.VoidMessage, SessionForms,
-            http_method='POST', name='XgetSessionsInWishlist')
+            http_method='POST', name='getSessionsInWishlist')
     def getSessionsInWishlist(self, request):
         """Returns a user's wishlist of sessions"""
         # preload necessary data items
