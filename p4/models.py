@@ -22,25 +22,6 @@ class ConflictException(endpoints.ServiceException):
     """ConflictException -- exception mapped to HTTP 409 response"""
     http_status = httplib.CONFLICT
 
-class Profile(ndb.Model):
-    """Profile -- User profile object"""
-    displayName             = ndb.StringProperty()
-    mainEmail               = ndb.StringProperty()
-    teeShirtSize            = ndb.StringProperty(default='NOT_SPECIFIED')
-    conferenceKeysToAttend  = ndb.StringProperty(repeated=True)
-
-class ProfileMiniForm(messages.Message):
-    """ProfileMiniForm -- update Profile form message"""
-    displayName             = messages.StringField(1)
-    teeShirtSize            = messages.EnumField('TeeShirtSize', 2)
-
-class ProfileForm(messages.Message):
-    """ProfileForm -- Profile outbound form message"""
-    displayName             = messages.StringField(1)
-    mainEmail               = messages.StringField(2)
-    teeShirtSize            = messages.EnumField('TeeShirtSize', 3)
-    conferenceKeysToAttend  = messages.StringField(4, repeated=True)
-
 class StringMessage(messages.Message):
     """StringMessage-- outbound (single) string message"""
     data = messages.StringField(1, required=True)
@@ -98,7 +79,6 @@ class Session(ndb.Model):
     date                    = ndb.DateProperty()
     startTime               = ndb.TimeProperty() # 24hr notation
     organizerUserId         = ndb.StringProperty()
-    # conference              = ndb.KeyProperty(kind=Conference)
 
 class SessionForm(messages.Message):
     """SessionForm -- Session outbound form message"""
@@ -110,10 +90,31 @@ class SessionForm(messages.Message):
     typeOfSession           = messages.StringField(6, repeated=True)
     date                    = messages.StringField(7) # DateTimeField()
     startTime               = messages.StringField(8) # DateTimeField()
+    websafeKey              = messages.StringField(9)
 
 class SessionForms(messages.Message):
     """SessionForms -- multiple Session outbound form message"""
     items = messages.MessageField(SessionForm, 1, repeated=True)
+
+class Profile(ndb.Model):
+    """Profile -- User profile object"""
+    displayName             = ndb.StringProperty()
+    mainEmail               = ndb.StringProperty()
+    teeShirtSize            = ndb.StringProperty(default='NOT_SPECIFIED')
+    conferenceKeysToAttend  = ndb.StringProperty(repeated=True)
+    sessionsToAttend        = ndb.KeyProperty(Session, repeated=True)
+
+class ProfileMiniForm(messages.Message):
+    """ProfileMiniForm -- update Profile form message"""
+    displayName             = messages.StringField(1)
+    teeShirtSize            = messages.EnumField('TeeShirtSize', 2)
+
+class ProfileForm(messages.Message):
+    """ProfileForm -- Profile outbound form message"""
+    displayName             = messages.StringField(1)
+    mainEmail               = messages.StringField(2)
+    teeShirtSize            = messages.EnumField('TeeShirtSize', 3)
+    conferenceKeysToAttend  = messages.StringField(4, repeated=True)
 
 class TeeShirtSize(messages.Enum):
     """TeeShirtSize -- t-shirt size enumeration value"""

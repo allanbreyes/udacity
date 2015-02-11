@@ -44,7 +44,10 @@ Session types (e.g. talk, lecture) were implemented more in a "tag" representati
 
 #### Task 2: Add Sessions to User Wishlist
 
-`NotImplemented`
+I modified the `Profile` model to accommodate a 'wishlist' stored as a repeated key property field, named `sessionsToAttend`.  In order to interact with this model in the API, I also had modify some of the previous methods in Task 1 to return a unique web-safe key for sessions.  I added two endpoint methods to the API:
+
+- `addSessionToWishlist`: given a session websafe key, saves a session to a user's wishlist.
+- `getSessionsInWishlist`: return a user's wishlist.
 
 #### Task 3: Indexes and Queries
 
