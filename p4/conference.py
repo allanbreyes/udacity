@@ -88,6 +88,17 @@ CONF_POST_REQUEST = endpoints.ResourceContainer(
     websafeConferenceKey=messages.StringField(1),
 )
 
+SESSION_GET_REQUEST = endpoints.ResourceContainer(
+    message_types.VoidMessage,
+    websafeConferenceKey=messages.StringField(1, required=True),
+    typeOfSession=messages.StringField(2)
+)
+
+SESSION_POST_REQUEST = endpoints.ResourceContainer(
+    SessionForm,
+    websafeConferenceKey=messages.StringField(1, required=True),
+)
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -381,13 +392,31 @@ class ConferenceApi(remote.Service):
         )
 
 
-    #TODO: complete this
-    @endpoints.method(CONF_GET_REQUEST,
-            path='conference/{websafeConferenceKey}/sessions/by_type',
+    @endpoints.method(SESSION_GET_REQUEST, SessionForms,
+            path='conference/{websafeConferenceKey}/sessions/by_type/{typeOfSession}',
             http_method='GET', name='XgetConferenceSessionsByType')
     def getConferenceSessionsByType(self, request):
         """Given a conference, return all sessions of a specified type"""
 
+        # copy ConferenceForm/ProtoRPC Message into dict
+        data = {field.name: getattr(request, field.name) for field in request.all_fields()}
+        typeOfSession = data['typeOfSession']
+
+        # fetch existing conference
+        conf = ndb.Key(urlsafe=request.websafeConferenceKey).get()
+
+        # check that conference exists
+        if not conf:
+            raise endpoints.NotFoundException(
+                'No conference found with key: %s' % request.websafeConferenceKey)
+
+        # create ancestor query for all key matches for this conference
+        sessions = Session.query(Session.typeOfSession == typeOfSession, ancestor=ndb.Key(Conference, conf.key.id()))
+
+        # return set of ConferenceForm objects per Conference
+        return SessionForms(
+            items=[self._copySessionToForm(session) for session in sessions]
+        )
 
 
 # - - - Session objects - - - - - - - - - - - - - - - - - - -
