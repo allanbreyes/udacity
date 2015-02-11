@@ -355,7 +355,6 @@ class ConferenceApi(remote.Service):
                 conferences]
         )
 
-#TODO: complete this
     @endpoints.method(CONF_GET_REQUEST, SessionForms,
             path='conference/{websafeConferenceKey}/sessions',
             http_method='GET', name='XgetConferenceSessions')
@@ -365,7 +364,7 @@ class ConferenceApi(remote.Service):
         # copy ConferenceForm/ProtoRPC Message into dict
         data = {field.name: getattr(request, field.name) for field in request.all_fields()}
 
-        # update existing conference
+        # fetch existing conference
         conf = ndb.Key(urlsafe=request.websafeConferenceKey).get()
 
         # check that conference exists
@@ -373,6 +372,13 @@ class ConferenceApi(remote.Service):
             raise endpoints.NotFoundException(
                 'No conference found with key: %s' % request.websafeConferenceKey)
 
+        # create ancestor query for all key matches for this conference
+        sessions = Session.query(ancestor=ndb.Key(Conference, conf.key.id()))
+
+        # return set of ConferenceForm objects per Conference
+        return SessionForms(
+            items=[self._copySessionToForm(session) for session in sessions]
+        )
 
 
     #TODO: complete this
@@ -432,8 +438,21 @@ class ConferenceApi(remote.Service):
 
         return request
 
+    def _copySessionToForm(self, session):
+        """Copy relevant fields from Session to SessionForm."""
+        sf = SessionForm()
+        for field in sf.all_fields():
+            if hasattr(session, field.name):
+                # convert Date to date string; just copy others
+                if field.name.endswith('Date'):
+                    setattr(sf, field.name, str(getattr(session, field.name)))
+                else:
+                    setattr(sf, field.name, getattr(session, field.name))
+            # elif field.name == "websafeKey":
+            #     setattr(sf, field.name, session.key.urlsafe())
+        sf.check_initialized()
+        return sf
 
-    #TODO: complete this
     @endpoints.method(SessionForm, SessionForm,
             path='sessions',
             http_method='POST', name='XcreateSession')
