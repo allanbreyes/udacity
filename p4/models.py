@@ -16,7 +16,6 @@ import httplib
 import endpoints
 from protorpc import messages
 from google.appengine.ext import ndb
-# from google.appengine.api import memcache
 
 class ConflictException(endpoints.ServiceException):
     """ConflictException -- exception mapped to HTTP 409 response"""
@@ -68,7 +67,6 @@ class ConferenceForms(messages.Message):
 
 class Session(ndb.Model):
     """Session -- Session object"""
-    # enable memcache?
     _use_memcache   = True
 
     name                    = ndb.StringProperty(required=True)
@@ -95,6 +93,11 @@ class SessionForm(messages.Message):
 class SessionForms(messages.Message):
     """SessionForms -- multiple Session outbound form message"""
     items = messages.MessageField(SessionForm, 1, repeated=True)
+
+class SpeakerForm(messages.Message):
+    """SpeakerForm -- Speaker outbound form message"""
+    speaker                 = messages.StringField(1)
+    sessionNames            = messages.StringField(2, repeated=True)
 
 class Profile(ndb.Model):
     """Profile -- User profile object"""

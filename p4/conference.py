@@ -17,6 +17,7 @@ from datetime import datetime, timedelta, time as timed
 import json
 import os
 import time
+import logging
 
 import endpoints
 from protorpc import messages
@@ -40,6 +41,7 @@ from models import ConferenceForms
 from models import Session
 from models import SessionForm
 from models import SessionForms
+from models import SpeakerForm
 from models import ConferenceQueryForm
 from models import ConferenceQueryForms
 from models import TeeShirtSize
@@ -501,6 +503,17 @@ class ConferenceApi(remote.Service):
 
         Session(**data).put()
 
+        # check if speaker exists in other sections; if so, add to memcache
+        sessions = Session.query(Session.speaker == data['speaker'],
+            ancestor=p_key)
+        if len(list(sessions)) > 1:
+            cache_data = {}
+            cache_data['speaker'] = data['speaker']
+            # cache_data['sessions'] = sessions # TODO: get pickler to load full properties...
+            cache_data['sessionNames'] = [session.name for session in sessions]
+            if not memcache.set('featured_speaker', cache_data):
+                logging.error('Memcache set failed.')
+
         return request
 
     def _copySessionToForm(self, session):
@@ -578,6 +591,42 @@ class ConferenceApi(remote.Service):
         return SessionForms(
             items=[self._copySessionToForm(session) for session in filtered_sessions]
         )
+
+
+    @endpoints.method(message_types.VoidMessage, SpeakerForm,
+            http_method='GET', name='getFeaturedSpeaker')
+    def getFeaturedSpeaker(self, request):
+        """Returns the sessions of the featured speaker"""
+        # attempt to get data from memcache
+        data = memcache.get('featured_speaker')
+        from pprint import pprint
+        pprint(data)
+        sessions = []
+        sessionNames = []
+        speaker = None
+
+        if data and data.has_key('speaker') and data.has_key('sessionNames'):
+            speaker = data['speaker']
+            sessionNames = data['sessionNames']
+
+        # if memcache fails or is empty, pull speaker from upcoming session
+        else:
+            upcoming_session = Session.query(Session.date >= datetime.now())\
+                                    .order(Session.date, Session.startTime).get()
+            if upcoming_session:
+                speaker = upcoming_session.speaker
+                sessions = Session.query(Session.speaker == speaker)
+                sessionNames = [session.name for session in sessions]
+
+        # populate speaker form
+        sf = SpeakerForm()
+        for field in sf.all_fields():
+            if field.name == 'sessionNames':
+                setattr(sf, field.name, sessionNames)
+            elif field.name == 'speaker':
+                setattr(sf, field.name, speaker)
+        sf.check_initialized()
+        return sf
 
 # - - - Profile objects - - - - - - - - - - - - - - - - - - -
 
