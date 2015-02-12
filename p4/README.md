@@ -60,7 +60,7 @@ For the specialized query, finding non-workshop sessions before 7pm, I ran into 
 
 #### Task 4: Add Featured Speaker
 
-`NotImplemented`
+I modified the `createSession` endpoint to cross-check if the speaker appeared in any other of the conference's sessions.  If so, the speaker name and relevant session names were added to the memcache under the `featured_speaker` key.  I added a final endpoint, `getFeaturedSpeaker`, which would check the memcache for the featured speaker.  If empty, it would simply pull the next upcoming speaker.
 
 ### Setup Instructions
 
