@@ -504,13 +504,14 @@ class ConferenceApi(remote.Service):
         Session(**data).put()
 
         # check if speaker exists in other sections; if so, add to memcache
-        featured_speaker = memcache.get('featured_speaker')
-        sessions = Session.query(Session.speaker == data['speaker'])
+        sessions = Session.query(Session.speaker == data['speaker'],
+            ancestor=p_key)
         if len(list(sessions)) > 1:
             cache_data = {}
             cache_data['speaker'] = data['speaker']
-            cache_data['sessions'] = sessions
-            if not memcache.add('featured_speaker', data):
+            # cache_data['sessions'] = sessions # TODO: get pickler to load full properties...
+            cache_data['sessionNames'] = [session.name for session in sessions]
+            if not memcache.set('featured_speaker', cache_data):
                 logging.error('Memcache set failed.')
 
         return request
@@ -598,23 +599,24 @@ class ConferenceApi(remote.Service):
         """Returns the sessions of the featured speaker"""
         # attempt to get data from memcache
         data = memcache.get('featured_speaker')
+        from pprint import pprint
+        pprint(data)
         sessions = []
-        if False:#data and data.has_key('speaker') and data.has_key('sessions'):
+        sessionNames = []
+        speaker = None
+
+        if data and data.has_key('speaker') and data.has_key('sessionNames'):
             speaker = data['speaker']
-            sessions = data['sessions']
+            sessionNames = data['sessionNames']
 
-        # if memcache fails or is empty, pull most recent speaker
+        # if memcache fails or is empty, pull speaker from upcoming session
         else:
-            recent_session = Session.query().order(-Session.date, -Session.startTime).get()
-            if recent_session:
-                speaker = recent_session.speaker
+            upcoming_session = Session.query(Session.date >= datetime.now())\
+                                    .order(Session.date, Session.startTime).get()
+            if upcoming_session:
+                speaker = upcoming_session.speaker
                 sessions = Session.query(Session.speaker == speaker)
-
-        # pull session names, if they exist
-        if sessions:
-            sessionNames = [session.name for session in sessions]
-        else:
-            sessionNames = []
+                sessionNames = [session.name for session in sessions]
 
         # populate speaker form
         sf = SpeakerForm()
