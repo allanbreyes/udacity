@@ -472,6 +472,7 @@ class ConferenceApi(remote.Service):
         data['key'] = c_key
         data['organizerUserId'] = user_id
         del data['websafeConferenceKey']
+        del data['websafeKey']
 
         Session(**data).put()
 
