@@ -14,6 +14,7 @@ __author__ = 'wesc+api@google.com (Wesley Chun)'
 
 
 from datetime import datetime
+from datetime import timedelta
 import json
 import os
 import time
@@ -429,6 +430,31 @@ class ConferenceApi(remote.Service):
         )
 
 
+    @endpoints.method(CONF_GET_REQUEST, SessionForms,
+            http_method='GET', name='XgetConferenceSessionFeed')
+    def getConferenceSessionFeed(self, request):
+        """Returns a conference's sorted feed of sessions occurring same day and later."""
+
+        # copy ConferenceForm/ProtoRPC Message into dict
+        data = {field.name: getattr(request, field.name) for field in request.all_fields()}
+
+        # fetch existing conference
+        conf = ndb.Key(urlsafe=request.websafeConferenceKey).get()
+
+        # check that conference exists
+        if not conf:
+            raise endpoints.NotFoundException(
+                'No conference found with key: %s' % request.websafeConferenceKey)
+
+        sessions = Session.query(ancestor=ndb.Key(Conference, conf.key.id()))\
+                          .filter(Session.date >= datetime.now()-timedelta(1))\
+                          .order(Session.date, Session.startTime)
+
+        # return set of SessionForm objects per Session
+        return SessionForms(
+            items=[self._copySessionToForm(session) for session in sessions]
+        )
+
 # - - - Session objects - - - - - - - - - - - - - - - - - - -
 
     def _createSessionObject(self, request):
@@ -517,6 +543,20 @@ class ConferenceApi(remote.Service):
             items=[self._copySessionToForm(session) for session in sessions]
         )
 
+
+    @endpoints.method(message_types.VoidMessage, SessionForms,
+            http_method='GET', name='XgetTBDSessions')
+    def getTBDSessions(self, request):
+        """Returns sessions missing time/date information"""
+
+        sessions = Session.query(ndb.OR(
+            Session.duration == None,
+            Session.startTime == None,
+            Session.date == None
+            ))
+        return SessionForms(
+            items=[self._copySessionToForm(session) for session in sessions]
+        )
 
 
 # - - - Profile objects - - - - - - - - - - - - - - - - - - -
