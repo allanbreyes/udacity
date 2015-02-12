@@ -13,7 +13,7 @@ created by wesc on 2014 apr 21
 __author__ = 'wesc+api@google.com (Wesley Chun)'
 
 
-from datetime import datetime
+from datetime import datetime, timedelta, time as timed
 import json
 import os
 import time
@@ -429,6 +429,31 @@ class ConferenceApi(remote.Service):
         )
 
 
+    @endpoints.method(CONF_GET_REQUEST, SessionForms,
+            http_method='GET', name='getConferenceSessionFeed')
+    def getConferenceSessionFeed(self, request):
+        """Returns a conference's sorted feed of sessions occurring same day and later."""
+
+        # copy ConferenceForm/ProtoRPC Message into dict
+        data = {field.name: getattr(request, field.name) for field in request.all_fields()}
+
+        # fetch existing conference
+        conf = ndb.Key(urlsafe=request.websafeConferenceKey).get()
+
+        # check that conference exists
+        if not conf:
+            raise endpoints.NotFoundException(
+                'No conference found with key: %s' % request.websafeConferenceKey)
+
+        sessions = Session.query(ancestor=ndb.Key(Conference, conf.key.id()))\
+                          .filter(Session.date >= datetime.now()-timedelta(1))\
+                          .order(Session.date, Session.startTime)
+
+        # return set of SessionForm objects per Session
+        return SessionForms(
+            items=[self._copySessionToForm(session) for session in sessions]
+        )
+
 # - - - Session objects - - - - - - - - - - - - - - - - - - -
 
     def _createSessionObject(self, request):
@@ -472,6 +497,7 @@ class ConferenceApi(remote.Service):
         data['key'] = c_key
         data['organizerUserId'] = user_id
         del data['websafeConferenceKey']
+        del data['websafeKey']
 
         Session(**data).put()
 
@@ -482,8 +508,8 @@ class ConferenceApi(remote.Service):
         sf = SessionForm()
         for field in sf.all_fields():
             if hasattr(session, field.name):
-                # convert Date to date string; just copy others
-                if field.name.endswith('Date'):
+                # convert Date and Time to date string; just copy others
+                if field.name in ['startTime', 'date']:
                     setattr(sf, field.name, str(getattr(session, field.name)))
                 else:
                     setattr(sf, field.name, getattr(session, field.name))
@@ -517,6 +543,41 @@ class ConferenceApi(remote.Service):
         )
 
 
+    @endpoints.method(message_types.VoidMessage, SessionForms,
+            http_method='GET', name='getTBDSessions')
+    def getTBDSessions(self, request):
+        """Returns sessions missing time/date information"""
+
+        sessions = Session.query(ndb.OR(
+            Session.duration == None,
+            Session.startTime == None,
+            Session.date == None
+            ))
+        return SessionForms(
+            items=[self._copySessionToForm(session) for session in sessions]
+        )
+
+
+    @endpoints.method(message_types.VoidMessage, SessionForms,
+            http_method='GET', name='getEarlyNonWorkshopSessions')
+    def getEarlyNonWorkshopSessions(self, request):
+        """Returns non-workshop sessions occurring before 7pm"""
+
+        sessions = Session.query(ndb.AND(
+                Session.startTime != None,
+                Session.startTime <= timed(hour=19)
+                ))
+
+        filtered_sessions = []
+        for session in sessions:
+            if 'workshop' in session.typeOfSession:
+                continue
+            else:
+                filtered_sessions.append(session)
+
+        return SessionForms(
+            items=[self._copySessionToForm(session) for session in filtered_sessions]
+        )
 
 # - - - Profile objects - - - - - - - - - - - - - - - - - - -
 
