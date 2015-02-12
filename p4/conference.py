@@ -430,7 +430,7 @@ class ConferenceApi(remote.Service):
 
 
     @endpoints.method(CONF_GET_REQUEST, SessionForms,
-            http_method='GET', name='XgetConferenceSessionFeed')
+            http_method='GET', name='getConferenceSessionFeed')
     def getConferenceSessionFeed(self, request):
         """Returns a conference's sorted feed of sessions occurring same day and later."""
 
@@ -544,7 +544,7 @@ class ConferenceApi(remote.Service):
 
 
     @endpoints.method(message_types.VoidMessage, SessionForms,
-            http_method='GET', name='XgetTBDSessions')
+            http_method='GET', name='getTBDSessions')
     def getTBDSessions(self, request):
         """Returns sessions missing time/date information"""
 
@@ -559,7 +559,7 @@ class ConferenceApi(remote.Service):
 
 
     @endpoints.method(message_types.VoidMessage, SessionForms,
-            http_method='GET', name='XgetEarlyNonWorkshopSessions')
+            http_method='GET', name='getEarlyNonWorkshopSessions')
     def getEarlyNonWorkshopSessions(self, request):
         """Returns non-workshop sessions occurring before 7pm"""
 
