@@ -13,8 +13,7 @@ created by wesc on 2014 apr 21
 __author__ = 'wesc+api@google.com (Wesley Chun)'
 
 
-from datetime import datetime
-from datetime import timedelta
+from datetime import datetime, timedelta, time as timed
 import json
 import os
 import time
@@ -558,6 +557,27 @@ class ConferenceApi(remote.Service):
             items=[self._copySessionToForm(session) for session in sessions]
         )
 
+
+    @endpoints.method(message_types.VoidMessage, SessionForms,
+            http_method='GET', name='XgetEarlyNonWorkshopSessions')
+    def getEarlyNonWorkshopSessions(self, request):
+        """Returns non-workshop sessions occurring before 7pm"""
+
+        sessions = Session.query(ndb.AND(
+                Session.startTime != None,
+                Session.startTime <= timed(hour=19)
+                ))
+
+        filtered_sessions = []
+        for session in sessions:
+            if 'workshop' in session.typeOfSession:
+                continue
+            else:
+                filtered_sessions.append(session)
+
+        return SessionForms(
+            items=[self._copySessionToForm(session) for session in filtered_sessions]
+        )
 
 # - - - Profile objects - - - - - - - - - - - - - - - - - - -
 
