@@ -92,13 +92,17 @@ def parse_course_form(form):
         form['course-featured'] = [False]
     else:
         form['course-featured'] = [True]
+    try:
+        start_date = datetime.strptime(form['course-start-date'][0], '%Y-%m-%d')
+    except ValueError as e:
+        start_date = datetime.now()
+        flash('You didn\'t enter a valid date (how\'d you manage that, anyway?). I picked today. Yay!', 'warning')
     course = Course(name=form['course-name'][0],
                     course_url=form['course-url'][0],
                     thumbnail_url=form['course-thumbnail-url'][0],
                     course_number=form['course-number'][0],
                     description=form['course-description'][0],
-                    start_date=datetime.strptime(form['course-start-date'][0],
-                                                 '%Y-%m-%d'),
+                    start_date=start_date,
                     featured=form['course-featured'][0],
                     provider_id=form['course-provider'][0])
     return course
