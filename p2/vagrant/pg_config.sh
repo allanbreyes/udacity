@@ -7,4 +7,4 @@ pip install bleach
 su postgres -c 'createuser -dRS vagrant'
 su vagrant -c 'createdb'
 su vagrant -c 'createdb tournament'
-su vagrant -c 'psql forum -f /vagrant/tournament/tournament.sql'
+su vagrant -c 'psql tournament -f /vagrant/tournament/tournament.sql'
