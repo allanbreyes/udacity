@@ -1,6 +1,6 @@
 # Data Analyst Nanodegree
 
-![Certificate](https://raw.githubusercontent.com/allanbreyes/udacity-front-end/master/udacity-dand-certificate.png)
+![Certificate](https://raw.githubusercontent.com/allanbreyes/udacity-data-science/master/udacity-dand-certificate.png)
 
 ### About
 This repository contains project work for Udacity's [Data Analyst Nanodegree](https://www.udacity.com/course/nd002) from the November 2014 cohort.
