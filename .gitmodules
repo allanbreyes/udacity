@@ -1,0 +1,6 @@
+[submodule "p0"]
+	path = p0
+	url = git@github.com:allanbreyes/mlnd-titanic-survival-exploration.git
+[submodule "p1"]
+	path = p1
+	url = git@github.com:allanbreyes/mlnd-boston-housing.git
