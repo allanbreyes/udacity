@@ -6,5 +6,5 @@ This repository contains submodules for project work associated with Udacity's [
 
 ### Projects:
 
-- **p1** - Titanic Survival Exploration
-- **p2** - Predicting Boston Housing Pricing
+- **p0** - Titanic Survival Exploration
+- **p1** - Predicting Boston Housing Pricing
