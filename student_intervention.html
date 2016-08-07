@@ -225,7 +225,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries</span>
@@ -277,7 +277,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">student_data</span>
@@ -332,7 +332,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Extract feature columns</span>
@@ -414,7 +414,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -485,7 +485,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># reference: http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.train_test_split.html</span>
@@ -496,7 +496,7 @@ Feature values:
 <span class="n">num_test</span> <span class="o">=</span> <span class="n">X_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_train</span> <span class="c1"># 95 (~25%)</span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">num_train</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">num_test</span><span class="p">)</span>
+    <span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">num_train</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">num_test</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="s2">&quot;Training set has {} samples.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">print</span> <span class="s2">&quot;Testing set has {} samples.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -520,7 +520,7 @@ Testing set has 95 samples.
 </div>
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -553,64 +553,40 @@ Testing set has 95 samples.
   </thead>
   <tbody>
     <tr>
-      <th>306</th>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>20</td>
-      <td>0.0</td>
-      <td>1.0</td>
+      <th>63</th>
       <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
+      <td>16</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
       <td>1</td>
+      <td>1</td>
       <td>0</td>
-      <td>0</td>
-      <td>5</td>
-      <td>5</td>
       <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>5</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>374</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>18</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>5</td>
       <td>4</td>
       <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>388</th>
+      <th>245</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>16</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>18</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>1</td>
@@ -618,21 +594,69 @@ Testing set has 95 samples.
       <td>0</td>
       <td>4</td>
       <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
       <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
+      <td>6</td>
     </tr>
     <tr>
-      <th>373</th>
-      <td>0.0</td>
+      <th>154</th>
       <td>1.0</td>
+      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>17</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>311</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>19</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>15</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -640,36 +664,12 @@ Testing set has 95 samples.
       <td>1</td>
       <td>1</td>
       <td>0</td>
-      <td>3</td>
       <td>5</td>
-      <td>5</td>
-      <td>1</td>
-      <td>3</td>
-      <td>1</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>271</th>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>18</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>4</td>
-      <td>5</td>
-      <td>5</td>
-      <td>1</td>
       <td>3</td>
       <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>5</td>
       <td>4</td>
     </tr>
   </tbody>
@@ -742,7 +742,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -815,7 +815,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
@@ -845,6 +845,85 @@ Testing set has 95 samples.
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>================================================================================
+Training a DecisionTreeClassifier using a training set size of 100. . .
+Trained model in 0.0009 seconds
+Made predictions in 0.0002 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0001 seconds.
+F1 score for test set: 0.6780.
+
+Training a DecisionTreeClassifier using a training set size of 200. . .
+Trained model in 0.0010 seconds
+Made predictions in 0.0002 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0001 seconds.
+F1 score for test set: 0.7273.
+
+Training a DecisionTreeClassifier using a training set size of 300. . .
+Trained model in 0.0018 seconds
+Made predictions in 0.0005 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0004 seconds.
+F1 score for test set: 0.7288.
+
+================================================================================
+Training a SVC using a training set size of 100. . .
+Trained model in 0.0014 seconds
+Made predictions in 0.0008 seconds.
+F1 score for training set: 0.8591.
+Made predictions in 0.0010 seconds.
+F1 score for test set: 0.7838.
+
+Training a SVC using a training set size of 200. . .
+Trained model in 0.0032 seconds
+Made predictions in 0.0022 seconds.
+F1 score for training set: 0.8693.
+Made predictions in 0.0011 seconds.
+F1 score for test set: 0.7755.
+
+Training a SVC using a training set size of 300. . .
+Trained model in 0.0060 seconds
+Made predictions in 0.0043 seconds.
+F1 score for training set: 0.8692.
+Made predictions in 0.0014 seconds.
+F1 score for test set: 0.7586.
+
+================================================================================
+Training a RandomForestClassifier using a training set size of 100. . .
+Trained model in 0.0369 seconds
+Made predictions in 0.0015 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0014 seconds.
+F1 score for test set: 0.7518.
+
+Training a RandomForestClassifier using a training set size of 200. . .
+Trained model in 0.0364 seconds
+Made predictions in 0.0020 seconds.
+F1 score for training set: 0.9962.
+Made predictions in 0.0015 seconds.
+F1 score for test set: 0.7518.
+
+Training a RandomForestClassifier using a training set size of 300. . .
+Trained model in 0.0381 seconds
+Made predictions in 0.0020 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0015 seconds.
+F1 score for test set: 0.7770.
+
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -878,23 +957,23 @@ Testing set has 95 samples.
 <tr>
 <td style="text-align:center">100</td>
 <td style="text-align:center">0.9 ms</td>
-<td style="text-align:center">0.1 ms</td>
+<td style="text-align:center">0.2 ms</td>
 <td style="text-align:center">1.0</td>
-<td style="text-align:center">0.7154</td>
+<td style="text-align:center">0.6780</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
 <td style="text-align:center">1.0 ms</td>
 <td style="text-align:center">0.1 ms</td>
 <td style="text-align:center">1.0</td>
-<td style="text-align:center">0.7328</td>
+<td style="text-align:center">0.7273</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">1.4 ms</td>
-<td style="text-align:center">0.1 ms</td>
+<td style="text-align:center">1.8 ms</td>
+<td style="text-align:center">0.5 ms</td>
 <td style="text-align:center">1.0</td>
-<td style="text-align:center">0.7259</td>
+<td style="text-align:center">0.7288</td>
 </tr>
 </tbody>
 </table>
@@ -911,24 +990,24 @@ Testing set has 95 samples.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">1.3 ms</td>
-<td style="text-align:center">0.9 ms</td>
-<td style="text-align:center">0.9167</td>
-<td style="text-align:center">0.7660</td>
+<td style="text-align:center">1.4 ms</td>
+<td style="text-align:center">1.0 ms</td>
+<td style="text-align:center">0.8591</td>
+<td style="text-align:center">0.7838</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">3.7 ms</td>
-<td style="text-align:center">1.2 ms</td>
-<td style="text-align:center">0.8627</td>
-<td style="text-align:center">0.8344</td>
+<td style="text-align:center">2.2 ms</td>
+<td style="text-align:center">1.1 ms</td>
+<td style="text-align:center">0.8693</td>
+<td style="text-align:center">0.7755</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">5.7 ms</td>
+<td style="text-align:center">4.3 ms</td>
 <td style="text-align:center">1.4 ms</td>
-<td style="text-align:center">0.8578</td>
-<td style="text-align:center">0.8333</td>
+<td style="text-align:center">0.8692</td>
+<td style="text-align:center">0.7586</td>
 </tr>
 </tbody>
 </table>
@@ -945,24 +1024,24 @@ Testing set has 95 samples.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">35.4 ms</td>
-<td style="text-align:center">1.5 ms</td>
+<td style="text-align:center">36.9 ms</td>
+<td style="text-align:center">1.4 ms</td>
 <td style="text-align:center">1.0</td>
-<td style="text-align:center">0.8028</td>
+<td style="text-align:center">0.7518</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">36.5 ms</td>
+<td style="text-align:center">36.4 ms</td>
 <td style="text-align:center">1.5 ms</td>
-<td style="text-align:center">1.0</td>
-<td style="text-align:center">0.8378</td>
+<td style="text-align:center">0.9962</td>
+<td style="text-align:center">0.7518</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">37.8 ms</td>
+<td style="text-align:center">38.1 ms</td>
 <td style="text-align:center">1.5 ms</td>
 <td style="text-align:center">1.0</td>
-<td style="text-align:center">0.8533</td>
+<td style="text-align:center">0.7770</td>
 </tr>
 </tbody>
 </table>
@@ -996,8 +1075,8 @@ Testing set has 95 samples.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>The Random Forest classifier proved to be the best model in terms of F1 score. It yielded high accuracy, precision, and recall; by all accounts, it was the best predictor of a student passing or failing.</p>
-<p>While it was the most costly in terms of training and prediction time, the small dataset still yielded quick results (~36ms). Furthermore, the prediction time is on par with the other classifiers. Assuming that the dataset size stays within reasonable bounds, this model will be fast enough to meet business requirements and needs.</p>
+<p>The Random Forest classifier proved to be the best model in terms of F1 score. It yielded high accuracy, precision, and recall; while it has reasonable performance compared to SVMs, RFs proved to be the best predictor for both training and test sets.</p>
+<p>While it was the most costly in terms of training and prediction time, the small dataset still yielded quick results (&lt;50ms). Furthermore, the prediction time is on par with the other classifiers. Assuming that the dataset size stays within reasonable bounds, this model will be fast enough to meet business requirements and needs.</p>
 
 </div>
 </div>
@@ -1051,7 +1130,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
@@ -1082,6 +1161,23 @@ Testing set has 95 samples.
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Made predictions in 0.0007 seconds.
+Tuned model has a training F1 score of 0.8523.
+Made predictions in 0.0006 seconds.
+Tuned model has a testing F1 score of 0.8056.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1098,7 +1194,7 @@ Testing set has 95 samples.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> The final F1 score for a grid search-optimized Random Forest classifier for training and testing were  1.0 and 0.8689, a marginal improvement over the original model. I searched over the number of estimators, max features, and max depth; however, its computation time grew unreasonably when including other parameters. Given more resources and tuning of hyperparameters, its reasonable to expect increased, but marginal gains in F1 score performance.</p>
+<p><strong>Answer: </strong> The final F1 score for a grid search-optimized Random Forest classifier for training and testing were  0.8523 and 0.8056, a marginal (but noticeable) improvement over the original model. I searched over the number of estimators, max features, and max depth; however, its computation time grew unreasonably when including other parameters. Given more resources and tuning of hyperparameters, its reasonable to expect increased, but marginal gains in F1 score performance.</p>
 
 </div>
 </div>
