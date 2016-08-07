@@ -4,3 +4,6 @@
 [submodule "p1"]
 	path = p1
 	url = git@github.com:allanbreyes/mlnd-boston-housing.git
+[submodule "p2"]
+	path = p2
+	url = git@github.com:allanbreyes/mlnd-student-intervention.git
