@@ -225,7 +225,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries</span>
@@ -277,12 +277,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">student_data</span>
 <span class="n">n_students</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;yes&#39;</span><span class="p">])</span>
 <span class="n">n_failed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;yes&#39;</span><span class="p">])</span>
 <span class="n">grad_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_passed</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_students</span><span class="p">)</span>
@@ -306,7 +306,7 @@ div#notebook {
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of students: 395
-Number of features: 31
+Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
 Graduation rate of the class: 67.09%
@@ -711,11 +711,11 @@ Testing set has 95 samples.
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ol>
-<li><p><strong>Decision Trees</strong> (DTs): DTs are my "go to" algorithm when first attacking a machine learning problem. DTs can be applied to data with non-linear trends and both numerical and categorical features. They're easy to interpret and they typically shed light on and inform other algorithms' design; specifically, features which tend to have high information gain might be candidates for boosting, while others for regularization. DTs are well-suited to handle feature interactions, are non-parametric, and are a great fit for binary classification (pass or fail). The main weakness of DTs is its tendency to overfit on the training set; cross-validation is critical!</p>
+<li><p><strong>Decision Trees</strong> (DTs): DTs are my "go to" algorithm when first attacking a machine learning problem. DTs can be applied to data with non-linear trends and both numerical and categorical features. They're easy to interpret and they typically shed light on and inform other algorithms' design; specifically, features which tend to have high information gain might be candidates for boosting, while others for regularization. DTs are well-suited to handle feature interactions, are non-parametric, and are a great fit for binary classification (pass or fail). The main weakness of DTs is its tendency to overfit on the training set; cross-validation is critical! To mitigate this weakness, we could also implement pruning and limiting the max depth.</p>
 </li>
-<li><p><strong>Support Vector Machines</strong> (SVMs): SVMs are linear classifiers, and are particularly apt for tasks that involve binary classification. Although they are a bit more complex to understand, they perform admirably when the dataset is small--a perfect fit for our student dataset. A major strength for SVMs are its high accuracy and robustness towards overfitting (due to regularization). However, while kernel selection provides incredible advantages in introducing domain expertise and knowledge, it also presents a challenge for tuning and improvement of the model.</p>
+<li><p><strong>Support Vector Machines</strong> (SVMs): SVMs are linear classifiers, and are particularly apt for tasks that involve binary classification. Although they are a bit more complex to understand, they perform admirably when the dataset is small--a perfect fit for our student dataset--because they maximize the margin between classes. A major strength for SVMs is its high accuracy and robustness towards overfitting (due to regularization). A weakness of SVMs (in most implementations) is computational requirements; when using Sequential Minimal Optimization, the time complexity is O(n^3) and the algorithm must hold the entire training set in memory. As a result, with scikit-learn's implementation, handling more than 10,000 samples is problematic. Nonetheless, our 300-sample training set is well below this threshold!</p>
 </li>
-<li><p><strong>Random Forests</strong> (RFs): RFs are ensemble learning methods suited for both classification and regression, and build off of the previously stated shortcomings of DTs. RFs tend to be incredibly accurate and easy to tune, but also tend to be computationally-expensive. However, its reliance on randomization yields non-deterministic results. I chose to utilize RFs after seeing the preliminary results from the earlier DT algorithm (#1). Given the small dataset size and small feature set, I did not anticipate significant computation time.</p>
+<li><p><strong>Random Forests</strong> (RFs): RFs are ensemble learning methods suited for both classification and regression, and build off of the previously stated shortcomings of DTs. RFs tend to be incredibly accurate and easy to tune, but also tend to be computationally-expensive. However, its reliance on randomization yields non-deterministic results. I chose to utilize RFs after seeing the preliminary results from the earlier DT algorithm (#1). Given the small dataset size and small feature set, I did not anticipate significant computation time. If scaled to a larger set, this algorithm can also be distributed and parallelized, reducing aggregate computation time.</p>
 </li>
 </ol>
 
@@ -1075,7 +1075,7 @@ F1 score for test set: 0.7770.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>The Random Forest classifier proved to be the best model in terms of F1 score. It yielded high accuracy, precision, and recall; while it has reasonable performance compared to SVMs, RFs proved to be the best predictor for both training and test sets.</p>
+<p>The Random Forest classifier proved to be the best model in terms of F1 score. It yielded high accuracy, precision, and recall; while it has reasonable performance compared to SVMs, RFs proved to be the best predictor for both training and test sets. The disparity between training and test sets suggests high variance and over-fitting, so improving the model involves regularization.</p>
 <p>While it was the most costly in terms of training and prediction time, the small dataset still yielded quick results (&lt;50ms). Furthermore, the prediction time is on par with the other classifiers. Assuming that the dataset size stays within reasonable bounds, this model will be fast enough to meet business requirements and needs.</p>
 
 </div>
@@ -1097,7 +1097,7 @@ F1 score for test set: 0.7770.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Random Forest classifiers are part of a family of "ensemble" methods, meaning that they incorporate multiple different machine learning methods. The base principle behind ensemble methods is that a group of "weak learners" are combined to form one "strong learner," or a stronger predictor than any individual weak learner.</p>
+<p>Random Forest classifiers are part of a family of "ensemble" methods, meaning that they incorporate multiple different machine learning methods. As an analogy, an ensemble method is similar to asking a panel of experts for their opinions and aggregating their results to produce a prediction better than any individual expert could have given.</p>
 <p>Random Forests produce "decision trees," which are conditional hierarchies used to classify each observation. In layman's terms, it is exemplified by the game "20 questions"; observations are grouped into different branches based on their features until each cohort can be reasonably be grouped into one class.</p>
 <p>The "forest" component combines multiple decision trees with random subsets, and combines their results and predictions to produce an optimal prediction.</p>
 
