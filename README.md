@@ -1,20 +1,38 @@
-# Project 4: Reinforcement Learning
-## Train a Smartcab How to Drive
+Training a Smartcab How to Drive
+================================
 
-### Install
+## General
 
-This project requires **Python 2.7** with the [pygame](https://www.pygame.org/wiki/GettingStarted
-) library installed
+TBD
 
-### Code
+## Implementing a Basic Driving Agent
 
-Template code is provided in the `smartcab/agent.py` python file. Additional supporting python code can be found in `smartcab/enviroment.py`, `smartcab/planner.py`, and `smartcab/simulator.py`. Supporting images for the graphical user interface can be found in the `images` folder. While some code has already been implemented to get you started, you will need to implement additional functionality for the `LearningAgent` class in `agent.py` when requested to successfully complete the project. 
+<!-- Observe what you see with the agent's behavior as it takes random actions. Does the smartcab eventually make it to the destination? Are there any other interesting observations to note? -->
 
-### Run
+With the goal of creating a simple, albeit naive, driving agent, I created a stochastic agent with random walk: it chose from valid actions at each cycle. The core logic was implemented in the `update` definition via:
 
-In a terminal or command window, navigate to the top-level project directory `smartcab/` (that contains this README) and run one of the following commands:
+```python
+action = random.choice([None, 'forward', 'left', 'right'])
+```
 
-```python smartcab/agent.py```  
-```python -m smartcab.agent```
+When disabling the deadline via `enforce_deadline=False`, the agent was observed to eventually reach its destination. Qualitatively speaking, it typically reached its destination quicker if the starting position was closer. The agent characteristics are that of random walk agents: there is no intelligence and it disregards any notions of risk or reward. The agent reaches the goal purely by chance.
 
-This will run the `agent.py` file and execute your agent code.
+<!-- What states have you identified that are appropriate for modeling the smartcab and environment? Why do you believe each of these states to be appropriate for this problem? -->
+
+<!-- What changes do you notice in the agent's behavior when compared to the basic driving agent when random actions were always taken? Why is this behavior occurring? -->
+
+<!-- Report the different values for the parameters tuned in your basic implementation of Q-Learning. For which set of parameters does the agent perform best? How well does the final driving agent perform? -->
+
+## Appendix
+
+### Installation
+
+This project requires **Python 2.7** with the [pygame](https://www.pygame.org/wiki/GettingStarted) library installed.
+
+### Running
+
+Run:
+
+```
+python smartcab/agent.py
+```  
