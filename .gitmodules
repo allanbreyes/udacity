@@ -7,3 +7,9 @@
 [submodule "p2"]
 	path = p2
 	url = git@github.com:allanbreyes/mlnd-student-intervention.git
+[submodule "p3"]
+	path = p3
+	url = git@github.com:allanbreyes/mlnd-customer-segments.git
+[submodule "p4"]
+	path = p4
+	url = git@github.com:allanbreyes/smartcab.git
