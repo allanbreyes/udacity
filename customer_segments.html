@@ -486,9 +486,9 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Customer 85: With the most grocery purchases and detergents and paper products, this business could potentially be a convenience or grocery store. The high volumes indicate that this is likely a reseller.</p>
-<p>Customer 154: With incredibly low purchases across all 6 categories, it's possible that this could be a residential customer or a very small business.</p>
-<p>Customer 338: With the most fresh purchases and high volumes across the board, this business is likely a market or organic store. It's similar to customer 85, but focuses on different types of products.</p>
+<p>Customer 85: With the most grocery purchases and detergents and paper products (max <code>Grocery</code> and <code>Detergents_Paper</code>), this business could potentially be a convenience or grocery store. The high volumes indicate that this is likely a reseller or retailer, or some type of chain: it has high spending compared to all category means.</p>
+<p>Customer 154: With incredibly low purchases across all 6 categories, it's possible that this could be a residential customer or a very small business. This data point has the lowest aggregate spending in the whole data set, and I chose it as it lands on the opposite spectrum of a high-spender, like Customer 85.</p>
+<p>Customer 338: With the most fresh purchases (max <code>Fresh</code>) and high volumes across the board, this business is likely a market or organic store. It's similar to customer 85, but focuses on different types of products. The high spending compared to category means also indicates that it's likely a retailer or reseller.</p>
 
 </div>
 </div>
@@ -9088,7 +9088,8 @@ dtype: float64
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Segment 0 might represent restaurants that serve mostly fresh food. Segment 1, with significantly more commodity items like groceries, detergents, and paper, might represent convenience and grocery stores. With Segment 1 having 150% more total purchase cost and volume, it strengthens the idea that Segment 1 represents resellers (stores) instead of restuarants.</p>
+<p>Segment 0 might represent restaurants that serve mostly fresh-type food. Overall, Segment 0 falls below the categorical mean spending for every single category, denoting that the overall spending is lower compared to the mean.</p>
+<p>Segment 1, with significantly more commodity items like groceries, detergents, and paper, might represent convenience and grocery stores. Segment 1 had higher grocery and detergent purchasing that the categorical means. With Segment 1 having 150% more total purchase cost and volume, it strengthens the idea that Segment 1 represents resellers (stores) instead of restuarants.</p>
 
 </div>
 </div>
@@ -9197,6 +9198,7 @@ Sample point 2 predicted to be in Cluster 1
 <blockquote><p>Note: Recall that 154 was removed in lieu of 97.</p>
 </blockquote>
 <p>The predictions seem to correlate with my earlier hypotheses. Based off of their purchase data, customers 85 and 181 fit into the "store" cluster, while the recently introduced customer 97 seems to fit into the "restaurant" cluster.</p>
+<p>When compared to categorical means, customers 85 and 181 were closer to Segment 0 in 5 out of 6 categories (mismatch on <code>Milk</code>). Likewise, customer 97 was closer to Segment 0 in 4 out of 6 categories (mismatch on <code>Milk</code> and <code>Frozen</code>). Overall, all three samples are consistent with one of the two identified customer segments.</p>
 
 </div>
 </div>
