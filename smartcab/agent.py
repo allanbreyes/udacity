@@ -17,9 +17,10 @@ class LearningAgent(Agent):
         self.color = 'red'  # override color
         self.planner = RoutePlanner(self.env, self)  # simple route planner to get next_waypoint
 
-        self.alpha   = 0.9  # learning rate
-        self.epsilon = 0.1  # exploration
-        self.gamma   = 0.20 # discount
+        self.alpha   = 0.9                  # learning rate
+        self.epsilon = 0.1                  # exploration
+        self.gamma   = 0.0                  # discount
+        self.decay   = self.epsilon / 90    # exploration decay
 
         self.q_dict = defaultdict(lambda: {
             'forward': 0,
@@ -31,9 +32,15 @@ class LearningAgent(Agent):
         self.running_reward = 0
 
         self.cycles = 0
+        self.violations = 0
 
         self.result = None
         self.results = []
+
+    def estimate(self, state, action):
+        # NOTE: since we have a myopic agent, the estimate of optimal future
+        #       value is disabled (it can't see into the future!)
+        return 0
 
     def explore(self):
         return float(random.random()) < self.epsilon
@@ -52,6 +59,9 @@ class LearningAgent(Agent):
         self.running_reward = 0
 
         self.cycles = 0
+        self.violations = 0
+        self.epsilon -= self.decay
+
         if self.result != None:
             self.results.append(self.result)
 
@@ -86,9 +96,17 @@ class LearningAgent(Agent):
         reward = self.env.act(self, action)
         self.running_reward += reward
 
+        if reward < 0:
+            self.violations += 1
+
         # learn policy based on state, action, reward
+        #  Q = old + alpha * ( reward + gamma * estimate - old)
         self.q_dict[self.state][action] = self.q_values()[action] + \
-            self.alpha * (reward - self.q_values()[action])
+            self.alpha * (
+                reward \
+                + self.gamma * self.estimate(self.state, action) \
+                - self.q_values()[action]
+            )
 
         if DEBUG:
             print "[update] d: {}, s: {}, a: {}, r: {}, rr: {}".format(
@@ -98,10 +116,9 @@ class LearningAgent(Agent):
                 reward,
                 self.running_reward)
 
-        self.result = (self.cycles, self.running_reward)
+        self.result = (self.cycles, self.running_reward, self.violations)
 
-
-def run():
+def run(msg = ''):
     """Run the agent for a finite number of trials."""
 
     # set up environment and agent
@@ -120,10 +137,23 @@ def run():
     results = a.results
     average_cycles = mean([result[0] for result in results])
     average_reward = mean([result[1] for result in results])
-    print '=' * 100
+    average_violations = mean([result[2] for result in results])
+    print '=' * 10, msg
     print 'Average Cycles:', average_cycles
     print 'Average Reward:', average_reward
+    print 'Average Violations:', average_violations
 
+    return average_cycles, average_reward, average_violations
 
 if __name__ == '__main__':
-    run()
+    meta_results = []
+    for r in range(100):
+        meta_results.append(run(str(r)))
+
+    meta_cycles = mean([meta_result[0] for meta_result in meta_results])
+    meta_reward = mean([meta_result[1] for meta_result in meta_results])
+    meta_violations = mean([meta_result[2] for meta_result in meta_results])
+    print '=' * 100
+    print 'Average Cycles:', meta_cycles
+    print 'Average Reward:', meta_reward
+    print 'Average Violations:', meta_violations
