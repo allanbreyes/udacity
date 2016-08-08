@@ -39,7 +39,7 @@ An egocentric approach is appropriate because of the nature of the problem: the 
 
 <!-- What changes do you notice in the agent's behavior when compared to the basic driving agent when random actions were always taken? Why is this behavior occurring? -->
 
-After implementing a basic Q-Learner in the driving agent architecture, I noticed significant reduction in the time needed to reach the destination. Specifically, the agent had bias towards movement to the next waypoint (as opposed to randomly). After 100 runs of 100 trials, the average running reward was `22.31` and the average number of steps taken was `13.34`. The agent was incredibly quick to learn and develop a robust policy layer; in comparison, in the first run of the first trial (learning from scratch) the agent received less than half the reward (`9.5`) and took more than twice as long to reach the destination (`28` steps). Most importantly, the agent acheived a 100% success rate in reaching its destination.
+After implementing a basic Q-Learner in the driving agent architecture, I noticed significant reduction in the time needed to reach the destination. Specifically, the agent had bias towards movement to the next waypoint (as opposed to randomly). After 100 runs of 100 trials, the average running reward was `21.3` and the average number of steps taken was `13.3`. The agent was incredibly quick to learn and develop a robust policy layer; in comparison, in the first run of the first trial (learning from scratch) the agent received less than half the reward (`9.5`) and took more than twice as long to reach the destination (`28` steps). Most importantly, the agent acheived a 100% success rate in reaching its destination.
 
 After the first trial, the agent quickly learned the "rules of the road", particularly for traffic signs. Throughout the remaining trials, less common encounters with other cars on the roads added increased, albeit marginal, knowledge and proficiency to the agent. Comparing the metrics from the first half to the last half across the 100 runs, I observed a `3%` increase in reward and `4%` decrease in steps taken. I believe this to be from learning from less common states, like complex intersection interactions.
 
@@ -54,11 +54,19 @@ After tuning, I found the following parameters to be the optimal combination:
 | Parameter             | Value   |
 |-----------------------|---------|
 | alpha (learning rate) | 0.9     |
-| epsilon (exploration) | 0.1     |
+| epsilon (exploration) | 0.2     |
 | gamma (discount)      | 0.0     |
 | epsilon decay         | 0.00111 |
 
-The agent was tuned using a manual grid search across two hyper-parameters `alpha` and `epsilon` by conducting 100 runs of 100 trials and comparing the reward and cycle time. Since the agent is myopic and egocentric, `gamma` and the optimal future estimate remained unused (set to `0`). The grid consisted of `100` different configurations, as `alpha` and `epsilon` were permuted from `0.1` to `1.0` with a `0.1` step size. In the proposed combination, the agent still maintained a `100%` success rate and achieved a marginal increase in reward (average of `23.01`) and a slight increase in time taken (`14.01`).
+The agent was tuned using a manual grid search across two hyper-parameters `alpha` and `epsilon` by conducting 100 runs of 100 trials and comparing the reward and cycle time. Since the agent is myopic and egocentric, `gamma` and the optimal future estimate remained unused (set to `0`). The grid consisted of `100` different configurations, as `alpha` and `epsilon` were permuted from `0.1` to `1.0` with a `0.1` step size. (See `data.csv` for test results.) The proposed combination was chosen because it maximized reward and minimized both cycles and violations. The agent still maintained a `100%` success rate and achieved a marginal increase in reward (average of `22.3`) and a slight increase in time taken (`14.6`).
+
+The agent was most sensitive to changes in `epsilon`. A typical chart at fixed alpha (`0.9`) looked like:
+
+![alpha 0.9](charts/alpha_09.png)
+
+All 10 alpha charts superimposed looked like:
+
+![all alpha](charts/alpha.png)
 
 I believe that the agent, with its immediate and "greedy" behavior, converges onto a policy that reaches the destination in minimum possible time, incurring minimal penalties. As alluded to earlier, the myopic state policies ensures that the agent produces knowledge of the optimal step at each intersection. However, the exploration factor (epsilon) does lead the agent to purposefully make incorrect moves. To mitigate this, I implemented a decay factor to decrease epsilon across trials. Nonetheless, the agent still incurs an average violation rate of `0.77` per run. While a minor contribution may be uncommon and complex intersection actions, another source of errors is due to misappropriation of reward. Concretely, at the end of each trial, the agent appropriates an exceedingly large amount of reward to the final step that takes it to the destination; with the myopic view compounded with exploration into violating actions, the agent might prefer to take that same action in a completely different context (far away from the destination).
 
