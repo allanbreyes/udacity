@@ -1,5 +1,6 @@
 from collections import defaultdict
 from environment import Agent, Environment
+from numpy import mean
 from planner import RoutePlanner
 from simulator import Simulator
 import random
@@ -16,9 +17,9 @@ class LearningAgent(Agent):
         self.color = 'red'  # override color
         self.planner = RoutePlanner(self.env, self)  # simple route planner to get next_waypoint
 
-        self.alpha   = 1    # learning rate
-        self.epsilon = 0.0  # exploration
-        self.gamma   = 0.25 # discount
+        self.alpha   = 0.9  # learning rate
+        self.epsilon = 0.1  # exploration
+        self.gamma   = 0.20 # discount
 
         self.q_dict = defaultdict(lambda: {
             'forward': 0,
@@ -28,6 +29,11 @@ class LearningAgent(Agent):
         })
 
         self.running_reward = 0
+
+        self.cycles = 0
+
+        self.result = None
+        self.results = []
 
     def explore(self):
         return float(random.random()) < self.epsilon
@@ -45,9 +51,14 @@ class LearningAgent(Agent):
         self.planner.route_to(destination)
         self.running_reward = 0
 
+        self.cycles = 0
+        if self.result != None:
+            self.results.append(self.result)
+
     def update(self, t):
         # initialize
         action = None
+        self.cycles += 1
 
         # gather inputs
         self.next_waypoint = self.planner.next_waypoint()  # from route planner, also displayed by simulator
@@ -76,8 +87,8 @@ class LearningAgent(Agent):
         self.running_reward += reward
 
         # learn policy based on state, action, reward
-        original = self.q_values()[action]
-        self.q_dict[self.state][action] = original + self.alpha * (reward - original) # heuristic function
+        self.q_dict[self.state][action] = self.q_values()[action] + \
+            self.alpha * (reward - self.q_values()[action])
 
         if DEBUG:
             print "[update] d: {}, s: {}, a: {}, r: {}, rr: {}".format(
@@ -86,8 +97,8 @@ class LearningAgent(Agent):
                 action,
                 reward,
                 self.running_reward)
-        else:
-            print deadline, '-->', self.running_reward
+
+        self.result = (self.cycles, self.running_reward)
 
 
 def run():
@@ -100,11 +111,18 @@ def run():
     # NOTE: you can set enforce_deadline=False while debugging to allow longer trials
 
     # Now simulate it
-    sim = Simulator(e, update_delay=0.5, display=False)  # create simulator (uses pygame when display=True, if available)
+    sim = Simulator(e, update_delay=0, display=False)  # create simulator (uses pygame when display=True, if available)
     # NOTE: to speed up simulation, reduce update_delay and/or set display=False
 
     sim.run(n_trials=100)  # run for a specified number of trials
     # NOTE: to quit midway, press Esc or close pygame window, or hit Ctrl+C on the command-line
+
+    results = a.results
+    average_cycles = mean([result[0] for result in results])
+    average_reward = mean([result[1] for result in results])
+    print '=' * 100
+    print 'Average Cycles:', average_cycles
+    print 'Average Reward:', average_reward
 
 
 if __name__ == '__main__':

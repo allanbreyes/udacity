@@ -39,7 +39,7 @@ For all intents and purposes, each intersection was equivalent. In that regard, 
 
 <!-- What changes do you notice in the agent's behavior when compared to the basic driving agent when random actions were always taken? Why is this behavior occurring? -->
 
-After implementing a basic Q-Learner in the driving agent architecture, I noticed significant reduction in the time needed to reach the destination. Specifically, the agent had bias towards movement to the next waypoint (as opposed to randomly). After 50 trials, the average running reward was `22.18` and the average number of steps taken was `13.38`. The agent was incredibly quick to learn and develop a robust policy layer; in comparison, the first trial (learning from scratch) received less than half the reward (`9.5`) and took more than twice as long to reach the destination (`28` steps).
+After implementing a basic Q-Learner in the driving agent architecture, I noticed significant reduction in the time needed to reach the destination. Specifically, the agent had bias towards movement to the next waypoint (as opposed to randomly). After 50 trials, the average running reward was `22.18` and the average number of steps taken was `13.38`. The agent was incredibly quick to learn and develop a robust policy layer; in comparison, the first trial (learning from scratch) received less than half the reward (`9.5`) and took more than twice as long to reach the destination (`28` steps). Most importantly, the agent acheived a 100% success rate in reaching its destination.
 
 After the first trial, the agent quickly learned the "rules of the road", particularly for traffic signs. Throughout the remaining trials, less common encounters with other cars on the roads added increased, albeit marginal, knowledge and proficiency to the agent. Comparing the metrics from the first half to the last half, I observed a `3%` increase in reward and `4%` decrease in steps taken. I believe this to be from learning from less common states.
 
@@ -48,6 +48,18 @@ Of important note, the agent is blind to both its current location and the deadl
 ## Improving the Q-Learning Driving Agent
 
 <!-- Report the different values for the parameters tuned in your basic implementation of Q-Learning. For which set of parameters does the agent perform best? How well does the final driving agent perform? -->
+
+After tuning, I found the following parameters to be the optimal combination:
+
+| Parameter             | Value |
+|-----------------------|-------|
+| alpha (learning rate) | 0.9   |
+| epsilon (exploration) | 0.1   |
+| gamma (discount)      | 0.20  |
+
+The agent still maintained a `100%` success rate, but achieved a marginal increase in reward (average of `23.01`) and a slight increase in time taken (`14.9`).
+
+I believe that the agent, with its immediate and "greedy" behavior, converges onto a policy that reaches the destination in minimum possible time without incurring penalties. As alluded to earlier, the myopic state policies ensures that the agent produces the optimal step at each intersection. However, in my opinion, this is not necessarily the optimal policy. In an extreme case, if a traffic light were "broken" and stayed red forever, the agent would have stayed at the intersection ad infinitum. A notion of history and memory is needed in the state (e.g. cycles stopped at an intersection) to correctly balance the delayed and long-term rewards. In that same example, the agent could have "escaped" the local minima by making a right turn, or simply passing through the red light (incurring a penalty, but resulting in a long-term reward). This optimal policy is highly-sensitive to the rewards and penalties of collisions, running red lights, and deadlines. Nonetheless, there's still room for improvement!
 
 ## Appendix
 
