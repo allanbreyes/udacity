@@ -8,6 +8,8 @@ import random
 # constants
 DEBUG = False
 ACTIONS = ['forward', 'left', 'right', None]
+ALPHA = 0.1
+EPSILON = 0.1
 
 class LearningAgent(Agent):
     """An agent that learns to drive in the smartcab world."""
@@ -17,8 +19,8 @@ class LearningAgent(Agent):
         self.color = 'red'  # override color
         self.planner = RoutePlanner(self.env, self)  # simple route planner to get next_waypoint
 
-        self.alpha   = 0.9                  # learning rate
-        self.epsilon = 0.1                  # exploration
+        self.alpha   = ALPHA                  # learning rate
+        self.epsilon = EPSILON                # exploration
         self.gamma   = 0.0                  # discount
         self.decay   = self.epsilon / 90    # exploration decay
 
@@ -138,22 +140,34 @@ def run(msg = ''):
     average_cycles = mean([result[0] for result in results])
     average_reward = mean([result[1] for result in results])
     average_violations = mean([result[2] for result in results])
-    print '=' * 10, msg
-    print 'Average Cycles:', average_cycles
-    print 'Average Reward:', average_reward
-    print 'Average Violations:', average_violations
+    # print '=' * 10, msg
+    # print 'Average Cycles:', average_cycles
+    # print 'Average Reward:', average_reward
+    # print 'Average Violations:', average_violations
 
     return average_cycles, average_reward, average_violations
 
-if __name__ == '__main__':
+def meta_run(n_runs):
     meta_results = []
-    for r in range(100):
+    for r in range(n_runs):
         meta_results.append(run(str(r)))
 
     meta_cycles = mean([meta_result[0] for meta_result in meta_results])
     meta_reward = mean([meta_result[1] for meta_result in meta_results])
     meta_violations = mean([meta_result[2] for meta_result in meta_results])
-    print '=' * 100
-    print 'Average Cycles:', meta_cycles
-    print 'Average Reward:', meta_reward
-    print 'Average Violations:', meta_violations
+    print str(meta_cycles) + '\t' + str(meta_reward) + '\t' + str(meta_violations)
+
+    return meta_cycles, meta_reward, meta_violations
+
+if __name__ == '__main__':
+    super_results = []
+    for i in range(10):
+        for j in range(10):
+            ALPHA = i/10.0 + 0.1
+            EPSILON = j/10.0 + 0.1
+            super_results.append(meta_run(20))
+
+    super_cycles = mean([super_result[0] for super_result in super_results])
+    super_reward = mean([super_result[1] for super_result in super_results])
+    super_violations = mean([super_result[2] for super_result in super_results])
+    print '\t'.join([str(ALPHA), str(EPSILON), str(super_cycles), str(super_reward), str(super_violations)])
