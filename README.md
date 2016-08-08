@@ -39,6 +39,12 @@ For all intents and purposes, each intersection was equivalent. In that regard, 
 
 <!-- What changes do you notice in the agent's behavior when compared to the basic driving agent when random actions were always taken? Why is this behavior occurring? -->
 
+After implementing a basic Q-Learner in the driving agent architecture, I noticed significant reduction in the time needed to reach the destination. Specifically, the agent had bias towards movement to the next waypoint (as opposed to randomly). After 50 trials, the average running reward was `22.18` and the average number of steps taken was `13.38`. The agent was incredibly quick to learn and develop a robust policy layer; in comparison, the first trial (learning from scratch) received less than half the reward (`9.5`) and took more than twice as long to reach the destination (`28` steps).
+
+After the first trial, the agent quickly learned the "rules of the road", particularly for traffic signs. Throughout the remaining trials, less common encounters with other cars on the roads added increased, albeit marginal, knowledge and proficiency to the agent. Comparing the metrics from the first half to the last half, I observed a `3%` increase in reward and `4%` decrease in steps taken. I believe this to be from learning from less common states.
+
+Of important note, the agent is blind to both its current location and the deadline. An optimal agent would have held a "holding pattern", accruing reward points for correctly obeying traffic rules, and only landing on the destination at the last possible cycle. However, given the inputs and how the agent was built, neither location nor deadline was incorporated into the state. As such, the agent is myopic in its handling of rewards: it maximizes its short-term reward with little regard for delayed, future rewards.
+
 ## Improving the Q-Learning Driving Agent
 
 <!-- Report the different values for the parameters tuned in your basic implementation of Q-Learning. For which set of parameters does the agent perform best? How well does the final driving agent perform? -->
