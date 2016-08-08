@@ -32,6 +32,13 @@ class LearningAgent(Agent):
         deadline = self.env.get_deadline(self)
 
         # update state
+        self.state = {
+            'light':    inputs['light'],
+            'next':     self.next_waypoint,
+            'oncoming': inputs['oncoming'],
+            'left':     inputs['left'],
+            'right':    inputs['right']
+        }
 
         # select action according to your policy
         action = random.choice(ACTIONS)
@@ -41,7 +48,7 @@ class LearningAgent(Agent):
 
         # learn policy based on state, action, reward
 
-        print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}".format(deadline, inputs, action, reward)  # [debug]
+        print "[update] d: {}, s: {}, a: {}, r: {}".format(deadline, self.state, action, reward)  # [debug]
 
 
 def run():
