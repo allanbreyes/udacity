@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+zip p1.zip Your_first_neural_network.*
+echo "zipped: p1.zip"

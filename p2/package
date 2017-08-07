@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+zip p2.zip dlnd_image_classification.ipynb helper.py problem_unittests.py
+echo "zipped: p2.zip"
