@@ -1,0 +1,4 @@
+cifar-10-batches-py/
+cifar-10-python.tar.gz
+.ipynb_checkpoints/
+preprocess_*
