@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+zip p3.zip dlnd_tv_script_generation.* helper.py problem_unittests.py
+echo "zipped: p3.zip"
