@@ -1,3 +1,6 @@
 .ipynb_checkpoints
 preprocess.p
 params.p
+.floydexpt
+.floydignore
+data/
