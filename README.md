@@ -1,6 +1,8 @@
 Deep Learning Nanodegree Foundation
 ===================================
 
+![Certificate](certificate.png)
+
 ## About
 
 This repository contains project work for Udacity's [Deep Learning Nanodegree
