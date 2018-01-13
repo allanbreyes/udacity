@@ -13,4 +13,4 @@ This repository contains submodules for project work associated with Udacity's [
 - **p2** - Student Intervention System (Supervised Learning)
 - **p3** - Creating Customer Segments (Unsupervised Learning)
 - **p4** - Training a Smartcab to Drive (Reinforcement Learning)
-- **p5** - Capstone Project (TBD)
+- **p5** - Training a Lunar Lander with Deep Q Networks (Capstone Project)
