@@ -1,5 +1,7 @@
 # Machine Learning Engineer Nanodegree
 
+![Certificate](udacity-mlnd-certificate.png)
+
 ### About
 
 This repository contains submodules for project work associated with Udacity's [Machine Learning Engineer Nanodegree](https://www.udacity.com/course/nd009).
