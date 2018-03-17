@@ -1,6 +1,6 @@
 # Full Stack Web Developer Nanodegree
 
-![Certificate](https://raw.githubusercontent.com/allanbreyes/udacity-full-stack/master/udacity-fsnd-certificate.png)
+[![Certificate](udacity-fsnd-certificate.png)](https://confirm.udacity.com/RDKKYDL4)
 
 ### About
 This repository contains project work for Udacity's [Full Stack Web Developer Nanodegree](https://www.udacity.com/course/nd004) from the February 2015 cohort.
@@ -18,3 +18,10 @@ This repository contains project work for Udacity's [Full Stack Web Developer Na
 - Full Stack Foundations
 - Developing Scalable Apps with Python
 - Linux Basics for Web Developers
+
+### Related Nanodegree Programs
+
+- [Data Analyst Nanodegree](https://github.com/allanbreyes/udacity-data-science)
+- [Deep Learning Nanodegree Foundation](https://github.com/allanbreyes/udacity-deep-learning-foundation)
+- [Front-end Web Developer Nanodegree](https://github.com/allanbreyes/udacity-front-end)
+- [Machine Learning Engineer Nanodegree](https://github.com/allanbreyes/udacity-machine-learning)
