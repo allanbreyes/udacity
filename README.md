@@ -1,6 +1,6 @@
 # Front-End Web Developer Nanodegree
 
-![Certificate](https://raw.githubusercontent.com/allanbreyes/udacity-front-end/master/udacity-fend-certificate.png)
+[![Certificate](udacity-fend-certificate.png)](https://confirm.udacity.com/66MQAEGD)
 
 ### About
 This repository contains project work for Udacity's [Front-End Web Developer Nanodegree](https://www.udacity.com/course/nd001) from the November 2014 cohort.
@@ -23,3 +23,10 @@ This repository contains project work for Udacity's [Front-End Web Developer Nan
 - Website Performance Optimization
 - Intro to AJAX
 - JavaScript Design Patterns
+
+### Related Nanodegree Programs
+
+- [Data Analyst Nanodegree](https://github.com/allanbreyes/udacity-data-science)
+- [Deep Learning Nanodegree Foundation](https://github.com/allanbreyes/udacity-deep-learning-foundation)
+- [Full Stack Web Developer Nanodegree](https://github.com/allanbreyes/udacity-full-stack)
+- [Machine Learning Engineer Nanodegree](https://github.com/allanbreyes/udacity-machine-learning)
