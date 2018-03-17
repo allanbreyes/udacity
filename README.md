@@ -1,6 +1,6 @@
 # Data Analyst Nanodegree
 
-![Certificate](https://raw.githubusercontent.com/allanbreyes/udacity-data-science/master/udacity-dand-certificate.png)
+[![Certificate](udacity-dand-certificate.png)](https://confirm.udacity.com/UGRVTKRS)
 
 ### About
 This repository contains project work for Udacity's [Data Analyst Nanodegree](https://www.udacity.com/course/nd002) from the November 2014 cohort.
@@ -18,3 +18,10 @@ This repository contains project work for Udacity's [Data Analyst Nanodegree](ht
 - Data Analysis with R
 - Intro to Machine Learning
 - Data Visualization and D3.js
+
+### Related Nanodegree Programs
+
+- [Deep Learning Nanodegree Foundation](https://github.com/allanbreyes/udacity-deep-learning-foundation)
+- [Front-end Web Developer Nanodegree](https://github.com/allanbreyes/udacity-front-end)
+- [Full Stack Web Developer Nanodegree](https://github.com/allanbreyes/udacity-full-stack)
+- [Machine Learning Engineer Nanodegree](https://github.com/allanbreyes/udacity-machine-learning)
