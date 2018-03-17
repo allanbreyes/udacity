@@ -1,18 +1,22 @@
-# Data Analyst Nanodegree
+Data Analyst Nanodegree
+=======================
 
 [![Certificate](udacity-dand-certificate.png)](https://confirm.udacity.com/UGRVTKRS)
 
 ### About
+
 This repository contains project work for Udacity's [Data Analyst Nanodegree](https://www.udacity.com/course/nd002) from the November 2014 cohort.
 
-### Projects:
+### Projects
+
 - **p1** - Analyzing the NYC Subway Dataset
 - **p2** - Data Wrangle OpenStreetMaps Data
 - **p3** - Explore and Summarize Data
 - **p4** - Identifying Fraud from Enron Email
 - **p5** - Make Effective Data Visualization
 
-### Courses:
+### Courses
+
 - Intro to Data Science
 - Data Wrangling with MongoDB
 - Data Analysis with R
