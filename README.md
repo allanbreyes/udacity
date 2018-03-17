@@ -1,11 +1,14 @@
-# Full Stack Web Developer Nanodegree
+Full Stack Web Developer Nanodegree
+===================================
 
 [![Certificate](udacity-fsnd-certificate.png)](https://confirm.udacity.com/RDKKYDL4)
 
 ### About
+
 This repository contains project work for Udacity's [Full Stack Web Developer Nanodegree](https://www.udacity.com/course/nd004) from the February 2015 cohort.
 
 ### Projects
+
 - **p1** - Movie Trailer Website
 - **p2** - Tournament Results
 - **p3** - Item Catalog
@@ -13,6 +16,7 @@ This repository contains project work for Udacity's [Full Stack Web Developer Na
 - **p5** - Linux-based Server Configuration
 
 ### Courses
+
 - Programming Foundations with Python
 - Intro to Relational Databases
 - Full Stack Foundations
