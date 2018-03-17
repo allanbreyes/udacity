@@ -13,3 +13,6 @@
 [submodule "p4"]
 	path = p4
 	url = git@github.com:allanbreyes/smartcab.git
+[submodule "p5"]
+	path = p5
+	url = git@github.com:allanbreyes/lunar-lander
