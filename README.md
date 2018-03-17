@@ -1,7 +1,7 @@
 Deep Learning Nanodegree Foundation
 ===================================
 
-![Certificate](certificate.png)
+[![Certificate](udacity-dlndf-certificate.png)](https://confirm.udacity.com/NVTW7VDG)
 
 ## About
 
@@ -20,3 +20,10 @@ Foundation](https://udacity.com/course/nd101).
   networks
 - **p5** - Generate Faces: using generative adversarial networks to generate
   realistic faces
+
+### Related Nanodegree Programs
+
+- [Data Analyst Nanodegree](https://github.com/allanbreyes/udacity-data-science)
+- [Front-end Web Developer Nanodegree](https://github.com/allanbreyes/udacity-front-end)
+- [Full Stack Web Developer Nanodegree](https://github.com/allanbreyes/udacity-full-stack)
+- [Machine Learning Engineer Nanodegree](https://github.com/allanbreyes/udacity-machine-learning)
