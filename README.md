@@ -1,4 +1,5 @@
-# Machine Learning Engineer Nanodegree
+Machine Learning Engineer Nanodegree
+====================================
 
 [![Certificate](udacity-mlnd-certificate.png)](https://confirm.udacity.com/G5QDJSQA)
 
