@@ -22,3 +22,8 @@ This repository contains submodules for project work associated with Udacity's [
 - [Deep Learning Nanodegree Foundation](https://github.com/allanbreyes/udacity-deep-learning-foundation)
 - [Front-end Web Developer Nanodegree](https://github.com/allanbreyes/udacity-front-end)
 - [Full Stack Web Developer Nanodegree](https://github.com/allanbreyes/udacity-full-stack)
+
+### Personal Notes
+
+1. Please don't plagiarize any of my projects—it won't help you in the long run!
+2. Feel free to reach out to me on Twitter ([@allanbreyes](https://twitter.com/allanbreyes)) or [other methods](https://allan.reyes.sh/#contact).
