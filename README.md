@@ -29,3 +29,8 @@ This repository contains project work for Udacity's [Data Analyst Nanodegree](ht
 - [Front-end Web Developer Nanodegree](https://github.com/allanbreyes/udacity-front-end)
 - [Full Stack Web Developer Nanodegree](https://github.com/allanbreyes/udacity-full-stack)
 - [Machine Learning Engineer Nanodegree](https://github.com/allanbreyes/udacity-machine-learning)
+
+### Personal Notes
+
+1. Please don't plagiarize any of my projects—it won't help you in the long run!
+2. Feel free to reach out to me on Twitter ([@allanbreyes](https://twitter.com/allanbreyes)) or [other methods](https://allan.reyes.sh/#contact).
