@@ -1,0 +1,152 @@
+/* border-sizing */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* common elements */
+html, body, .wrapper {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+/* side bar */
+header, aside {
+  background: rgba(0,0,0,0.75);
+  color: white;
+  margin: 0;
+  padding: 8px;
+  position: absolute;
+  width: 350px;
+}
+
+header {
+  height: 100px;
+  top: 0;
+  left: 0;
+}
+header h1 {
+  color: #E44E49;
+  font-size: 24px;
+  margin: 0;
+  text-align: center;
+}
+aside {
+  height: 100%;
+  overflow: auto;
+  top: 0;
+  right: 0;
+}
+
+/* search */
+#search-form {
+  color: black;
+  padding: 8px;
+  text-align: center;
+  width: 100%;
+}
+#search-input {
+  width: 260px;
+}
+#search-summary {
+  display: block;
+  color: white;
+  margin: 8px;
+}
+/* list */
+#list {
+  padding: 0;
+}
+
+#list li {
+  font-size: 16px;
+  list-style-type: none;
+  padding: 8px;
+}
+
+#list li:hover {
+  cursor: pointer;
+  color: black;
+  background: #E44E49;
+}
+
+.corner-name {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 75%;
+}
+
+.meetup-info {
+  float: right;
+  text-align: right;
+  width: 25%;
+}
+
+.meetup-icon {
+  height: 24px;
+}
+
+/* map canvas */
+#map-canvas {
+  height: 100%;
+  width: 100%;
+}
+
+.info-window-content {
+  width: 250px;
+}
+
+.info-window-header {
+  font-weight: bold;
+}
+
+.info-window-list {
+  padding-left: 20px;
+}
+
+/* info window */
+@media only screen and (max-width: 700px) {
+  #map-canvas, .wrapper {
+    position: absolute;
+    left: 0;
+    height: 60%;
+    bottom: 0;
+  }
+  .mobile-container {
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    background: pink;
+    position: fixed;
+    height: 40%;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+  }
+  header {
+    background: black;
+    position: static;
+    height: 40%;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  aside {
+    height: 60%;
+    position: static;
+    left: 0;
+    top: 100px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-height: 600px) {
+  header h1,
+  #search-summary {
+    display: none;
+  }
+}
