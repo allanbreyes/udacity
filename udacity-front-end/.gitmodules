@@ -1,0 +1,9 @@
+[submodule "p2"]
+	path = p2
+	url = https://github.com/allanbreyes/resume
+[submodule "p4"]
+	path = p4
+	url = git@github.com:allanbreyes/portfolio.git
+[submodule "p5"]
+	path = p5
+	url = git@github.com:allanbreyes/c4.git

@@ -1,0 +1,23 @@
+body {
+  text-align: center;
+}
+h1 {
+  font-family: Impact, sans-serif;
+}
+.instructions {
+  font-family: Arial, sans-serif;
+  margin: 16px auto;
+  text-align: left;
+  width: 505px;
+}
+.subdued {
+  color: gray;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+p {
+  margin: 0;
+}
+canvas {
+  border: 1px solid black;
+}
