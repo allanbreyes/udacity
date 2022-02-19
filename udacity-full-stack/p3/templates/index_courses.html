@@ -1,0 +1,42 @@
+{% extends "application.html" %}
+{% block content %}
+  <h3>
+    {{ title }}
+    {% if title_link %}
+      <a class="btn btn-primary pull-right" href="{{title_link}}">
+        <i class="glyphicon glyphicon-share-alt"></i>
+        Website
+      </a>
+    {% endif %}
+  </h3>
+  {% for course in courses %}
+    <div class="media" {%if editable(course)%}style="background: #F0F0FF"{%endif%}>
+      <div class="media-left">
+        <a href="{{url_for('view_course', course_id=course.id)}}">
+          <img class="media-object" width="64" src="{{course.thumbnail_url}}" alt="icon">
+        </a>
+      </div>
+      <div class="media-body media-middle">
+        <a href="{{url_for('view_course', course_id=course.id)}}">
+          <strong class="media-heading">{{course.name}}</strong>
+        </a>
+        {% if editable(course) %}
+          <em class="text-muted pull-right">
+            (added with
+            <i class="glyphicon glyphicon-heart"></i>
+            by you!)
+          </em>
+        {% endif %}
+        <p>{{course.start_date}}</p>
+      </div>
+    </div>
+  {% endfor %}
+  {% if logged_in() %}
+  <div class="media">
+    <a href="{{url_for('new_course')}}">
+      <i class="glyphicon glyphicon-plus"></i>
+      Add a course
+    </a>
+  </div>
+  {% endif %}
+{% endblock %}

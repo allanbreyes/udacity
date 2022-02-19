@@ -1,0 +1,50 @@
+{% extends "application.html" %}
+{% block content %}
+  <h3>{{title}}</h3>
+  <form class="form well" id="course-form" name="course-form" role="form" method="POST" action="{{form_action}}">
+    <div class="form-group col-md-8">
+      <label for="course-name">Course Name</label>
+      <input class="form-control" name="course-name" type="text" value="{{course.name}}" placeholder="Chainsaw Juggling 101" autofocus required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="course-number">Course Number</label>
+      <input class="form-control" name="course-number" type="text" value="{{course.number}}" placeholder="867-5309">
+    </div>
+    <div class="form-group col-md-8">
+      <label for="course-url">Link</label>
+      <input class="form-control" name="course-url" type="url" value="{{course.course_url}}" placeholder="http://www.reddit.com/r/juggling" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="course-provider">Provider</label>
+      <select class="form-control" name="course-provider" form="course-form" required>
+        <option {% if not course.featured %}selected{% endif %}></option>
+        {% for provider in providers %}
+          <option value="{{provider.id}}" {% if provider.id == course.provider_id %}selected{% endif %}>{{provider.name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group col-md-8">
+      <label for="course-thumbnail-url">Thumbnail URL</label>
+      <input class="form-control" name="course-thumbnail-url" type="url" value="{{course.thumbnail_url}}" placeholder="http://placekitten.com/g/300/300">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="course-start-date">Start Date</label>
+      <input class="form-control" name="course-start-date" type="date" value="{{course.start_date}}" required>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="course-description">Course Description</label>
+      <textarea class="form-control" name="course-description" rows="4" placeholder="In this course, you'll learn underwater-basketweaving and tomahawk-throwing...">{{course.description}}</textarea>
+    </div>
+    <div class="checkbox col-md-3">
+      <label>
+        <input name="course-featured" type="checkbox" {% if course.featured %}checked{% endif %}>
+        Featured Course
+      </label>
+    </div>
+    <div class="col-md-offset-6 col-md-3">
+      <input type="submit" class="btn btn-success pull-right">
+      </input>
+    </div>
+    <div class="clearfix"></div>
+  </form>
+{% endblock %}

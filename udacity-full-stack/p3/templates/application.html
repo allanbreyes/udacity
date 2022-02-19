@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Course catalog for massive open online courses.">
+    <meta name="author" content="Allan Reyes">
+    <!-- <link rel="icon" href="favicon.ico"> -->
+    <title>The MOOC Catalog</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="style.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{url_for('index')}}">The MOOC Catalog</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse navbar-right">
+          <ul class="list-inline">
+          <li><a href="{{url_for('source')}}" class="text-muted">Fork me on GitHub</a></li>
+          <li>{% if logged_in() %}
+            <a href="{{url_for('logout')}}" class="btn btn-danger navbar-btn">
+              Logout
+            </a>
+          {% else %}
+            <a href="{{url_for('login')}}" class="btn btn-success navbar-btn">
+              Login with <i class="fa fa-github"></i>
+            </a>
+          {% endif %}</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h3>Providers</h3>
+          <ul class="list-unstyled">
+          {% for provider in providers %}
+            <li><a href="{{url_for('index_courses', provider_id=provider.id)}}">{{provider.name}}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-9">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="panel panel-{{category}}">
+                  <div class="panel-body">
+                    <span class="text-{{category}}">{{message}}</span>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+    <!-- <script src="main.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

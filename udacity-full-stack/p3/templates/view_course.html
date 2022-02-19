@@ -1,0 +1,58 @@
+{% extends "application.html" %}
+{% block content %}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        {{ title }}
+      </h3>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object" width="64" src="{{course.thumbnail_url}}" alt="icon">
+          </div>
+          <div class="media-body media-middle">
+            <a class="btn btn-primary pull-right" href="{{course.course_url}}">
+              <i class="glyphicon glyphicon-globe"></i>
+              Start
+            </a>
+            <ul class="list-unstyled">
+              <li><strong class="media-heading">{{course.course_number}}</strong></li>
+              <li>Starts {{course.start_date}}</li>
+              {% if course.featured %}
+                <li class="text-warning">
+                  <i class="glyphicon glyphicon-star"></i>
+                  Featured Course
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <strong>Description</strong>
+        <p>{{course.description}}</p>
+      </li>
+
+      {% if logged_in() and editable(course) %}
+      <li class="list-group-item clearfix">
+        <ul class="list-inline pull-right">
+          <li>
+            <a href="{{url_for('edit_course', course_id=course.id)}}">
+              <i class="glyphicon glyphicon-pencil"></i>
+              Edit
+            </a>
+          </li>
+          <li>
+            <a class="text-danger" href="{{url_for('delete_course', course_id=course.id)}}">
+              <i class="glyphicon glyphicon-trash"></i>
+              Delete
+            </a>
+          </li>
+        </ul>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+{% endblock %}

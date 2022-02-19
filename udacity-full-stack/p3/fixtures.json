@@ -1,0 +1,153 @@
+{
+  "providers": [
+    {
+      "id": 1,
+      "name": "edX",
+      "homepage_url": "http://www.edx.org"
+    },
+    {
+      "id": 2,
+      "name": "Coursera",
+      "homepage_url": "http://www.coursera.org"
+    },
+    {
+      "id": 3,
+      "name": "Udacity",
+      "homepage_url": "http://www.udacity.com"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "Engineering Software as a Service, Part I",
+      "course_url": "https://www.edx.org/course/engineering-software-service-uc-berkeleyx-cs169-1x",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/2184464082/edx_twitter_profile_FINAL.gif",
+      "course_number": "CS169.1x",
+      "description": "CS169.1x teaches the fundamentals for engineering long-lasting software using highly-productive Agile techniques to develop Software as a Service (SaaS) using Ruby on Rails. Students will understand the new challenges and opportunities of SaaS versus shrink-wrapped software. They will understand and apply fundamental programming techniques to the design, development, testing, and public cloud deployment of a simple SaaS application. Students will use best-of-breed tools that support modern development techniques including behavior-driven design, user stories, test-driven development, velocity, and pair programming. Students will learn how modern programming language features like metaprogramming and reflection can improve productivity and code maintainability. Students will work on weekly coding projects and quizzes. Those who successfully complete the assignments and earn a passing grade can get an honor code certificate or verified certificate from BerkeleyX. The videos and homeworks used in this offering of the course were revised in October 2013. The new class also includes embedded live chat with Teaching Assistants and other students and opportunities for remote pair programming with other students.",
+      "start_date": "2014-10-21",
+      "featured": false,
+      "provider_id": 1
+    },
+    {
+      "id": 2,
+      "name": "Engineering Software as a Service, Part II",
+      "course_url": "https://www.edx.org/course/engineering-software-service-part-2-uc-berkeleyx-cs169-2x",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/2184464082/edx_twitter_profile_FINAL.gif",
+      "course_number": "CS169.2x",
+      "description": "CS 169.2x is the second half of University of California, Berkeley's semester long course on Engineering Software as a Service. In the first half of the course, CS 169.1x, students use Agile development methods to deploy a simple SaaS app in the cloud. In the second half, CS 169.2x, students create more sophisticated apps by adding relationships between models in apps and by enhancing their apps with JavaScript. They also learn about what happens after the apps are deployed to real users, including how to monitor performance, identify and fix common performance problems, and avoid compromising customer data. Finally, students learn how to apply Agile techniques to enhance and refactor legacy code, a critical skill for professional programmers.",
+      "start_date": "2015-01-06",
+      "featured": false,
+      "provider_id": 1
+    },
+    {
+      "id": 3,
+      "name": "Entrepreneurship 101: Who is your customer?",
+      "course_url": "https://www.edx.org/course/entrepreneurship-101-who-customer-mitx-15-390-1x",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/2184464082/edx_twitter_profile_FINAL.gif",
+      "course_number": "15.390.1x",
+      "description": "Many seemingly great ideas and technologies come to a sudden halt in the face of one simple, inescapable question. 'Who is your customer?' MIT has been asking its student entrepreneurs this question for many years – and with great success.  The 25,600 companies started by MIT alumni generate $2 trillion in revenue and have created 3.3 million jobs.  If MIT were a country, it would be the 11th largest economy in the world.  Become a citizen of this 11th largest economy!  Join MIT in your entrepreneurial journey as you discover your startups most essential resource – the customer.  This is entrepreneurship – so don't expect a lecture.  Every class session will be an in-depth and focused case study of MIT entrepreneurs from areas as diverse as mobile applications, 3D printing, power electronics, international development, and watchmaking.  You will learn, through the stories of MIT entrepreneurs, how to go from idea or technology to the necessary understanding of who and why will want to buy your product.",
+      "start_date": "2015-01-09",
+      "featured": false,
+      "provider_id": 1
+    },
+    {
+      "id": 4,
+      "name": "Entrepreneurship 102: Who is your customer?",
+      "course_url": "https://www.edx.org/course/entrepreneurship-102-what-can-you-do-mitx-15-390-2x",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/2184464082/edx_twitter_profile_FINAL.gif",
+      "course_number": "15.390.2x",
+      "description": "Ask not what your customer can do for you – ask what you can do for your customer. In Entrepreneurship 101, you’ve learned to look at the world through the eyes of the customer – and ah, what a great perspective it is!  But the journey doesn’t stop there. For the holy grail of specificity – while already within reach – there is still much to learn before obtaining it.  Just as important as finding your customer is creating a great product that will solve the customer’s problem.  How will customers acquire your product?  How will it solve the customer’s problem? What value will your product bring?  What is your secret sauce?  How do you stack up vis-à-vis the competition?  From fields as diverse as virtual immortality, small business marketing, urban design, language education, healthcare, and entrepreneur support services, we use in-depth case studies of entrepreneurs to examine how they developed their product concepts, solved their customer’s problem, established a clear value proposition, refined their secret sauce, and understood their competition.  The journey continues.  Are you with us?  The customer is waiting. ",
+      "start_date": "2015-01-09",
+      "featured": true,
+      "provider_id": 1
+    },
+    {
+      "id": 5,
+      "name": "Intro to Computer Science and Programming Using Python",
+      "course_url": "https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-0",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/2184464082/edx_twitter_profile_FINAL.gif",
+      "course_number": "6.00.1x",
+      "description": "This course is the first of a two-course sequence: Introduction to Computer Science and Programming Using Python, and Introduction to Computational Thinking and Data Science. Together, they are designed to help people with no prior exposure to computer science or programming learn to think computationally and write programs to tackle useful problems. Some of the people taking the two courses will use them as a stepping stone to more advanced computer science courses, but for many it will be their first and last computer science courses.",
+      "start_date": "2015-01-07",
+      "featured": false,
+      "provider_id": 1
+    },
+    {
+      "id": 6,
+      "name": "Intro to Computational Thinking and Data Science",
+      "course_url": "https://www.edx.org/course/introduction-computational-thinking-data-mitx-6-00-2x-0",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/2184464082/edx_twitter_profile_FINAL.gif",
+      "course_number": "6.00.2x",
+      "description": "6.00.2x is aimed at students with some prior programming experience in Python and a rudimentary knowledge of computational complexity. We have chosen to focus on breadth rather than depth. The goal is to provide students with a brief introduction to many topics, so that they will have an idea of what’s possible when the time comes later in their career to think about how to use computation to accomplish some goal. That said, it is not a “computation appreciation” course. Students will spend a considerable amount of time writing programs to implement the concepts covered in the course. Topics covered include plotting, stochastic programs, probability and statistics, random walks, Monte Carlo simulations, modeling data, optimization problems, and clustering.",
+      "start_date": "2015-03-04",
+      "featured": false,
+      "provider_id": 1
+    },
+    {
+      "id": 7,
+      "name": "Algorithms, Part I",
+      "course_url": "https://www.coursera.org/course/algs4partI",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/522420603286872064/Pn98pzTS.png",
+      "course_number": "",
+      "description": "An introduction to fundamental data types, algorithms, and data structures, with emphasis on applications and scientific performance analysis of Java implementations. Specific topics covered include: union-find algorithms; basic iterable data types (stack, queues, and bags); sorting algorithms (quicksort, mergesort, heapsort) and applications; priority queues; binary search trees; red-black trees; hash tables; and symbol-table applications.",
+      "start_date": "2015-01-23",
+      "featured": false,
+      "provider_id": 2
+    },
+    {
+      "id": 8,
+      "name": "Algorithms, Part II",
+      "course_url": "https://www.coursera.org/course/algs4partII",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/522420603286872064/Pn98pzTS.png",
+      "course_number": "",
+      "description": "Part II covers graph-processing algorithms, including minimum spanning tree and shortest paths algorithms, and string processing algorithms, including string sorts, tries, substring search, regular expressions, and data compression, and concludes with an overview placing the contents of the course in a larger context.",
+      "start_date": "2015-02-14",
+      "featured": false,
+      "provider_id": 2
+    },
+    {
+      "id": 9,
+      "name": "Machine Learning",
+      "course_url": "https://www.coursera.org/course/ml",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/522420603286872064/Pn98pzTS.png",
+      "course_number": "",
+      "description": "Machine learning is the science of getting computers to act without being explicitly programmed. In the past decade, machine learning has given us self-driving cars, practical speech recognition, effective web search, and a vastly improved understanding of the human genome. Machine learning is so pervasive today that you probably use it dozens of times a day without knowing it. Many researchers also think it is the best way to make progress towards human-level AI. In this class, you will learn about the most effective machine learning techniques, and gain practice implementing them and getting them to work for yourself. More importantly, you'll learn about not only the theoretical underpinnings of learning, but also gain the practical know-how needed to quickly and powerfully apply these techniques to new problems. Finally, you'll learn about some of Silicon Valley's best practices in innovation as it pertains to machine learning and AI.  This course provides a broad introduction to machine learning, datamining, and statistical pattern recognition. Topics include: (i) Supervised learning (parametric/non-parametric algorithms, support vector machines, kernels, neural networks). (ii) Unsupervised learning (clustering, dimensionality reduction, recommender systems, deep learning). (iii) Best practices in machine learning (bias/variance theory; innovation process in machine learning and AI). The course will also draw from numerous case studies and applications, so that you'll also learn how to apply learning algorithms to building smart robots (perception, control), text understanding (web search, anti-spam), computer vision, medical informatics, audio, database mining, and other areas.",
+      "start_date": "2015-03-20",
+      "featured": true,
+      "provider_id": 2
+    },
+    {
+      "id": 10,
+      "name": "Front-End Web Developer Nanodegree",
+      "course_url": "https://www.udacity.com/course/nd001",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/2671170543/18debd694829ed78203a5a36dd364160.png",
+      "course_number": "nd001",
+      "description": "This Nanodegree program is the most efficient curriculum to prepare you for a career as a Front-End Web Developer. Participants in the program will learn to build beautiful, responsive websites optimized for security and performance. They will work with their peers and advisors on projects approved by leading employers as the critical indicators of job-readiness. We designed these projects with expert web developers and hiring managers. In addition to building your project portfolio, you’ll advance your career prospects by learning how to ace a technical job interview and by participating in code reviews.",
+      "start_date": "2015-01-04",
+      "featured": false,
+      "provider_id": 3
+    },
+    {
+      "id": 11,
+      "name": "Data Analyst Nanodegree",
+      "course_url": "https://www.udacity.com/course/nd002",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/2671170543/18debd694829ed78203a5a36dd364160.png",
+      "course_number": "nd002",
+      "description": "This nanodegree program is the most efficient curriculum to prepare you for a job as a Data Analyst. You will learn to: Wrangle, extract, transform, and load data from various databases, formats, and data sources.  Use exploratory data analysis techniques to identify meaningful relationships, patterns, or trends from complex data sets.  Classify unlabeled data or predict into the future with applied statistics and machine learning algorithms.  Communicate data analysis and findings well through effective data visualizations.  You will work with your peers and advisors on projects approved by leading employers as the critical indicators of job-readiness. We designed these projects with expert Data Analysts, Data Scientists, and hiring managers.",
+      "start_date": "2015-01-04",
+      "featured": false,
+      "provider_id": 3
+    },
+    {
+      "id": 12,
+      "name": "Full Stack Web Developer Nanodegree",
+      "course_url": "https://www.udacity.com/course/nd004",
+      "thumbnail_url": "https://pbs.twimg.com/profile_images/2671170543/18debd694829ed78203a5a36dd364160.png",
+      "course_number": "nd004",
+      "description": "This Nanodegree program is the most efficient curriculum to prepare you for a job as a Full Stack Web Developer. Participants in the program will learn to build complex server-side web applications that make use of powerful relational databases to persistently store data. You'll then learn how to secure and configure your very own Linux-based server to host your applications. Finally, you'll explore the challenges in horizontally scaling an application to support thousands of users with a cloud-based application hosting provider.",
+      "start_date": "2015-02-04",
+      "featured": true,
+      "provider_id": 3
+    }
+  ]
+}
