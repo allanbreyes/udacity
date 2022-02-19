@@ -1,6 +1,0 @@
-[submodule "vm"]
-	path = vm
-	url = https://github.com/udacity/fullstack-nanodegree-vm
-[submodule "p3/vagrant/catalog"]
-	path = p3/vagrant/catalog
-	url = https://github.com/allanbreyes/mooc-catalog.git
