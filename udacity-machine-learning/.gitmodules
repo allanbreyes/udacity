@@ -1,0 +1,18 @@
+[submodule "p0"]
+	path = p0
+	url = git@github.com:allanbreyes/mlnd-titanic-survival-exploration.git
+[submodule "p1"]
+	path = p1
+	url = git@github.com:allanbreyes/mlnd-boston-housing.git
+[submodule "p2"]
+	path = p2
+	url = git@github.com:allanbreyes/mlnd-student-intervention.git
+[submodule "p3"]
+	path = p3
+	url = git@github.com:allanbreyes/mlnd-customer-segments.git
+[submodule "p4"]
+	path = p4
+	url = git@github.com:allanbreyes/smartcab.git
+[submodule "p5"]
+	path = p5
+	url = git@github.com:allanbreyes/lunar-lander
