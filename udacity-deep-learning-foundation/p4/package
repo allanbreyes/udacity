@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+zip p4.zip dlnd_language_translation.* helper.py problem_unittests.py
+echo "zipped: p4.zip"
